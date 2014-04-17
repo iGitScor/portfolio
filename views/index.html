@@ -1,0 +1,87 @@
+{% extends 'layout.html' %}
+
+{% block title %}Curriculum vitae{% endblock %}
+
+{% block head %}
+  {% parent %}
+  <link rel="stylesheet" href="css/hint.css">
+  <link rel="stylesheet" href="css/badge.css">
+{% endblock %}
+
+{% block header_content %}
+<nav id="primary">          
+	<ul class="tiny-hide">
+		<li id="products" class="topnav here">
+  			<a href="#" title="Products">Mon curriculum vit&#230;</a>
+		</li>
+  	</ul>
+</nav>
+{% endblock %}
+
+{% block content %}
+<div class="container page no-fix">
+	<article>
+    	{% include 'cv/_navigation.html' %}
+
+		{% include 'cv/presentation.html' %}
+        {% include 'cv/professional.html' %}
+        {% include 'cv/realisations.html' %}
+		{% include 'cv/etudes.html' %}
+		{% include 'cv/competences.html' %}
+		{% include 'cv/hobbies.html' %}
+	</article>
+</div>
+{% endblock %}
+
+
+
+{% block footer_content %}
+<div class="container small-cta-touts hide-on-print">
+	<div class="row">
+		<div class="four columns small-cta-tout">
+			<div class="inner">
+				<h2>
+					<a class="pinned" data-icon="1" href="#">
+      					<span>T&eacute;l&eacute;chargement</span>
+    				</a>
+    			</h2>
+				<p>Ressources à t&eacute;l&eacute;charger.</p>
+	    		<p class="tight">
+	    			<a href="resources/CORREAUD-Curriculum_vitae.pdf" download="CORREAUD-Curriculum_vitae.pdf" class="button-box">Curriculum vit&#230;</a>
+	    		</p>
+  			</div>
+		</div>
+
+  		<div class="four columns small-cta-tout">
+  			<div class="inner">
+				<h2>
+					<a class="pinned" data-icon="2" href="#">
+      					<span>Liens relatifs</span>
+    				</a>
+    			</h2>
+				<p>Liens relatifs &agrave; mon curriculum vit&#230;</p>
+	    		<p class="tight">
+	    			<a href="http://github.com/FlipFlopWeekly" class="button-box external-link">Projets open source</a>
+	    		</p>
+	    		<p class="tight">
+	    			<a href="http://github.com/iGitScor" class="button-box external-link">Projets open source (suite)</a>
+	    		</p>
+  			</div>
+		</div>
+
+ 		<div class="four columns small-cta-tout end">
+			<div class="inner">
+				<h2>
+					<a class="pinned" data-icon="3" href="#">
+      					<span>Et aussi</span>
+    				</a>
+    			</h2>
+    			<p>Ma carte de voyageur</p>
+	    		<p class="tight">
+	    			<a href="https://mapsengine.google.com/map/viewer?mid=zJbOY1XSMido.k5KGhF2HHf8Q" class="button-box external-link">Google maps</a>
+	    		</p>
+  			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

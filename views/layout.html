@@ -1,0 +1,104 @@
+<!doctype html>
+<html class="js pinned">
+    <head>
+      <meta charset="utf-8" />
+      <title>SCOR Website - Portfolio - {% block title %}page.name{% endblock %}</title>
+    
+      {% block head %}
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/menu.css" />
+      {% endblock %}
+      
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    </head>
+
+    <body>
+    <nav id="dr-menu" class="dr-menu">
+        <div class="dr-trigger"><span class="dr-icon dr-icon-menu"></span><a class="dr-label">Menu</a></div>
+        <ul>
+            <li><a class="dr-icon" href="/">&#9658; &nbsp; Home</a></li>
+            <li><a class="dr-icon" href="#">&#9658; &nbsp; Projets</a></li>
+            <li><a class="dr-icon" href="#">&#9658; &nbsp; Dev Resources</a></li>
+            <li><a class="dr-icon" href="#">&#9658; &nbsp; Docs</a></li>
+        </ul>
+    </nav>
+    <div id="top"></div>
+      
+    <div>
+      	<div class="transformer">
+    		<header id="main-header" class="container state-open">
+      			<div class="row">
+    				<div id="logo">
+      					<a href="/" title="Home">Correaud S&eacute;bastien</a>
+      					<h5>Correaud S&eacute;bastien</h5>
+    				</div>
+
+                    {% block header_content %}{% endblock %}
+                </div>
+		 
+		        <div class="row">
+		            <nav id="utility">
+                        <ul>
+                            <li>
+                                <a href="/" title="Accueil">Home</a>
+                            </li>
+                            <li>
+                                <a href="#/projects" title="Support" rel="nofollow">Projets</a>
+                            </li>
+                            <li>
+                                <a href="#/developer-resources" title="Developer Resources" rel="nofollow">Dev Resources</a>
+                            </li>
+                            <li class="last">
+                                <a href="#/documentation" title="Documentation" rel="nofollow">Docs</a>
+                            </li>
+<!--                            <li class="search">
+                                <a href="#search-button" title="Search">Recherche<span></span></a>
+                            </li>-->
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+  	    </div>
+      </div>
+      
+      {% block content %}{% endblock %}
+      {% block footer_content %}{% endblock %}
+      
+      <footer id="main-footer" class="container">
+    	<div class="row hide-on-print">
+     		<ul class="icons">
+    			<li><a data-icon="B" href="http://www.facebook.com/sebastien.correaud" target="_blank"><span>Facebook</span></a></li>
+    			<li><a data-icon="F" href="http://www.linkedin.com/pub/s%C3%A9bastien-correaud/93/783/259" target="_blank"><span>LinkedIn</span></a></li>
+      		</ul>
+    	</div>
+      	<nav class="row">
+    		<div class="row">
+      			<h4><strong>&Agrave; propos de moi</strong></h4>
+      			<ul>
+    				<li>S&eacute;bastien Correaud</li>
+    				<li>T&eacute;l&eacute;phone : 06 72 79 62 91</li>
+       				<li>Email : sebastien.correaud@gmail.com</li>
+      			</ul>
+    		</div>
+     		<div class="row">
+      			<h4><strong>Me suivre</strong></h4>
+      			<ul>
+    				<li><a href="http://github.com/iGitScor" class="external-link">Github : iGitScor</a></li>
+      			</ul>
+    		</div>
+      	</nav>
+      	<div class="row util hide-on-print">
+    		<div class="six columns">
+      			<p>&copy; 2014&nbsp; S&eacute;bastien Correaud.&nbsp;</p>
+    		</div>
+      	</div>
+    </footer>
+    
+     {% block footer_script %}
+        <script src="js/ytmenu.js"></script>
+     {% endblock %}
+    
+    </body>
+
+
+</html>
