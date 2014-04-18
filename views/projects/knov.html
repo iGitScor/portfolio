@@ -1,18 +1,12 @@
 {% extends '../layout.html' %}
 
-{% block title %}KNOV{% endblock %}
-
-{% block head %}
-  {% parent %}
-  <link rel="stylesheet" href="css/hint.css">
-  <link rel="stylesheet" href="css/badge.css">
-{% endblock %}
+{% block title %}{{ title }}{% endblock %}
 
 {% block header_content %}
 <nav id="primary">          
 	<ul class="tiny-hide">
 		<li id="products" class="topnav here">
-  			<a href="#" title="Products">KNOV - Improve your mind !</a>
+  			<a href="#" title="Products">{{ title }} - Improve your mind !</a>
 		</li>
   	</ul>
 </nav>
@@ -27,7 +21,7 @@
           	</div>
           	
           	<div class="one columns end">
-        		<img src="img/github_ff_logo.png" alt="Flip Flop Logo"/>
+        		<img src="/img/github_ff_logo.png" alt="Flip Flop Logo"/>
           	</div>
           	
           	<div class="eleven columns end">
@@ -61,7 +55,7 @@
         		<p>Conception graphique</p>
           	</div>
             <div class="three columns end">
-	            <img src="img/projects/knov_home_capture.PNG"/>
+	            <img src="/img/projects/knov_home_capture.PNG"/>
             </div>
 	    </div>
 	    

@@ -1,0 +1,37 @@
+{% extends '../layout.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block header_content %}
+<nav id="primary">          
+	<ul class="tiny-hide">
+		<li class="topnav here">
+  			<a href="#">{{ subTitle }}</a>
+		</li>
+  	</ul>
+</nav>
+{% endblock %}
+
+{% block content %}
+<div class="container page no-fix">
+    <article>
+        <div class="row">
+    	    <h2>Oops, il semblerait que quelque chose soit cass&eacute; !</h2>
+    	    <h3>{{error|raw}}</h3>
+    	    {% if error.stack %}
+    	        <code>
+    	            {{error.stack}}
+    	        </code>
+    	    {% endif %}
+    	    <ul>
+<!--    	        <li>
+    	            Contactez-moi
+    	        </li>-->
+    	        <li>
+    	            Retour &agrave; la page d'accueil : <a href="/" title="Accueil">ici</a>
+    	        </li>
+    	    </ul>
+        </div>
+    </article>
+</div>
+{% endblock %}

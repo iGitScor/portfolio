@@ -16,15 +16,21 @@
 	font-size: 1.3em;
 	line-height: 2.5;
 	font-weight: 400;
-	padding-top: 1.5em;
+	padding-top: 1em;
 	position: absolute;
 	right: 0;
-	top: 0;
+	top: 120px;
 	z-index: 99999;
 	background-color: #f3f3ee;
 	border-bottom-left-radius: 25px;
 	border-left: 1px dotted;
 	border-bottom: 1px dotted;
+	height: 80px;
+}
+
+.dr-menu.dr-menu-open {
+    height: auto;
+    padding-top: 1.5em;
 }
 
 .dr-menu > div  {
@@ -41,9 +47,9 @@
 	font-size: 150%;
 	line-height: 1.6;
 	padding: 0 10px;
-	-webkit-transition: all 0.2s ease;
-	-moz-transition: all 0.2s ease;
-	transition: all 0.2s ease;
+	-webkit-transition: all 1.2s ease;
+	-moz-transition: all 2.2s ease;
+	transition: all 1.2s ease;
 }
 
 .dr-menu.dr-menu-open > div .dr-icon {
@@ -76,9 +82,9 @@
 	letter-spacing: 1px;
 	text-transform: uppercase;
 	line-height: 2.75;
-	-webkit-transition: all 0.2s ease;
-	-moz-transition: all 0.2s ease;
-	transition: all 0.2s ease;
+	-webkit-transition: all 0.0s ease;
+	-moz-transition: all 0.0s ease;
+	transition: all 0.0s ease;
 }
 
 .dr-menu.dr-menu-open > div .dr-label {
@@ -115,9 +121,9 @@
 	display: block;
 	margin: 0 0 5px 0;
 	opacity: 0;
-	-webkit-transition: opacity 0.3s ease;
-	-moz-transition: opacity 0.3s ease;
-	transition: opacity 0.3s ease;
+	-webkit-transition: opacity 0s ease;
+	-moz-transition: opacity 0s ease;
+	transition: opacity 0s ease;
 }
 
 .dr-menu.dr-menu-open ul li {
@@ -125,39 +131,39 @@
 }
 
 .dr-menu.dr-menu-open ul li:nth-child(2) {
-	-webkit-transition-delay: 35ms;
-	-moz-transition-delay: 35ms;
-	transition-delay: 35ms;
+	-webkit-transition-delay: 0ms;
+	-moz-transition-delay: 0ms;
+	transition-delay: 0ms;
 }
 
 .dr-menu.dr-menu-open ul li:nth-child(3) {
-	-webkit-transition-delay: 70ms;
-	-moz-transition-delay: 70ms;
-	transition-delay: 70ms;
+	-webkit-transition-delay: 0ms;
+	-moz-transition-delay: 0ms;
+	transition-delay: 0ms;
 }
 
 .dr-menu.dr-menu-open ul li:nth-child(4) {
-	-webkit-transition-delay: 105ms;
-	-moz-transition-delay: 105ms;
-	transition-delay: 105ms;
+	-webkit-transition-delay: 0ms;
+	-moz-transition-delay: 0ms;
+	transition-delay: 0ms;
 }
 
 .dr-menu.dr-menu-open ul li:nth-child(5) {
-	-webkit-transition-delay: 140ms;
-	-moz-transition-delay: 140ms;
-	transition-delay: 140ms;
+	-webkit-transition-delay: 0ms;
+	-moz-transition-delay: 0ms;
+	transition-delay: 0ms;
 }
 
 .dr-menu.dr-menu-open ul li:nth-child(6) {
-	-webkit-transition-delay: 175ms;
-	-moz-transition-delay: 175ms;
-	transition-delay: 175ms;
+	-webkit-transition-delay: 0ms;
+	-moz-transition-delay: 0ms;
+	transition-delay: 0ms;
 }
 
 .dr-menu.dr-menu-open ul li:nth-child(7) {
-	-webkit-transition-delay: 205ms;
-	-moz-transition-delay: 205ms;
-	transition-delay: 205ms;
+	-webkit-transition-delay: 0ms;
+	-moz-transition-delay: 0ms;
+	transition-delay: 0ms;
 }
 
 .dr-menu ul li a {

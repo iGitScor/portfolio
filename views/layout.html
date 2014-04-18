@@ -4,12 +4,18 @@
       <meta charset="utf-8" />
       <title>SCOR Website - Portfolio - {% block title %}page.name{% endblock %}</title>
     
-      {% block head %}
-        <link rel="stylesheet" href="css/style.css" />
-        <link rel="stylesheet" href="css/menu.css" />
+      {% block head_style %}
+        <link rel="stylesheet" href="/css/style.css" />
+        <link rel="stylesheet" href="/css/menu.css" />
+        <link rel="stylesheet" href="/css/hint.css">
+        <link rel="stylesheet" href="/css/badge.css">
       {% endblock %}
       
-      <link rel="shortcut icon" href="img/favicon.ico" />
+      {% block head_script %}
+        <script src="/js/external/jquery-2.1.0.min.js"></script>
+      {% endblock %}
+      
+      <link rel="shortcut icon" href="/img/favicon.ico" />
     </head>
 
     <body>
@@ -95,7 +101,7 @@
     </footer>
     
      {% block footer_script %}
-        <script src="js/ytmenu.js"></script>
+        <script src="/js/ytmenu.js"></script>
      {% endblock %}
     
     </body>
