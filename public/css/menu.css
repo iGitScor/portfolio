@@ -47,6 +47,7 @@
 	font-size: 150%;
 	line-height: 1.6;
 	padding: 0 10px;
+	-o-transition: all 1.2s ease;
 	-webkit-transition: all 1.2s ease;
 	-moz-transition: all 2.2s ease;
 	transition: all 1.2s ease;
@@ -54,6 +55,7 @@
 
 .dr-menu.dr-menu-open > div .dr-icon {
 	left: 100%;
+	-o-transform: translateX(-100%);
 	-webkit-transform: translateX(-100%);
 	-moz-transform: translateX(-100%);
 	-ms-transform: translateX(-100%);
@@ -82,12 +84,14 @@
 	letter-spacing: 1px;
 	text-transform: uppercase;
 	line-height: 2.75;
+	-o-transition: all 0.0s ease;
 	-webkit-transition: all 0.0s ease;
 	-moz-transition: all 0.0s ease;
 	transition: all 0.0s ease;
 }
 
 .dr-menu.dr-menu-open > div .dr-label {
+    -o-transform: translateY(-90%);
 	-webkit-transform: translateY(-90%);
 	-moz-transform: translateY(-90%);
 	-ms-transform: translateY(-90%);
@@ -102,6 +106,7 @@
 	position: relative;
 	z-index: 0;
 	pointer-events: none;
+	-o-transition: opacity 0s linear 205ms;
 	-webkit-transition: opacity 0s linear 205ms;
 	-moz-transition: opacity 0s linear 205ms;
 	transition: opacity 0s linear 205ms;
@@ -111,6 +116,7 @@
 	opacity: 1;
 	z-index: 200;
 	pointer-events: auto;
+	-o-transition: opacity 0s linear 0s;
 	-webkit-transition: opacity 0s linear 0s;
 	-moz-transition: opacity 0s linear 0s;
 	transition: opacity 0s linear 0s;
@@ -121,6 +127,7 @@
 	display: block;
 	margin: 0 0 5px 0;
 	opacity: 0;
+	-o-transition: opacity 0s ease;
 	-webkit-transition: opacity 0s ease;
 	-moz-transition: opacity 0s ease;
 	transition: opacity 0s ease;
@@ -131,36 +138,42 @@
 }
 
 .dr-menu.dr-menu-open ul li:nth-child(2) {
+    -o-transition-delay: 0ms;
 	-webkit-transition-delay: 0ms;
 	-moz-transition-delay: 0ms;
 	transition-delay: 0ms;
 }
 
 .dr-menu.dr-menu-open ul li:nth-child(3) {
+    -o-transition-delay: 0ms;
 	-webkit-transition-delay: 0ms;
 	-moz-transition-delay: 0ms;
 	transition-delay: 0ms;
 }
 
 .dr-menu.dr-menu-open ul li:nth-child(4) {
+    -o-transition-delay: 0ms;
 	-webkit-transition-delay: 0ms;
 	-moz-transition-delay: 0ms;
 	transition-delay: 0ms;
 }
 
 .dr-menu.dr-menu-open ul li:nth-child(5) {
+    -o-transition-delay: 0ms;
 	-webkit-transition-delay: 0ms;
 	-moz-transition-delay: 0ms;
 	transition-delay: 0ms;
 }
 
 .dr-menu.dr-menu-open ul li:nth-child(6) {
+    -o-transition-delay: 0ms;
 	-webkit-transition-delay: 0ms;
 	-moz-transition-delay: 0ms;
 	transition-delay: 0ms;
 }
 
 .dr-menu.dr-menu-open ul li:nth-child(7) {
+    -o-transition-delay: 0ms;
 	-webkit-transition-delay: 0ms;
 	-moz-transition-delay: 0ms;
 	transition-delay: 0ms;

@@ -22,6 +22,9 @@ body .page code img {
     overflow: hidden;
     position: relative;
     box-shadow: 1px 4px 0 #E0E0E0;
+    -ms-transform: rotate(-20deg);
+    -o-transform: rotate(-20deg);
+    -moz-transform: rotate(-20deg);
     -webkit-transform: rotate(-20deg);
     transform: rotate(-20deg);
 }
@@ -95,8 +98,7 @@ body .page code img {
 /*************************************
 	Date badge
 **************************************/
-time.icon
-{
+time.icon {
   font-size: 1em; /* change icon size */
   display: block;
   position: relative;
@@ -108,8 +110,7 @@ time.icon
   overflow: hidden;
 }
 
-time.icon *
-{
+time.icon * {
   display: block;
   width: 100%;
   font-size: 1em;
@@ -118,8 +119,7 @@ time.icon *
   text-align: center;
 }
 
-time.icon strong
-{
+time.icon strong {
   position: absolute;
   top: 0;
   padding: 0.4em 0;
@@ -129,15 +129,13 @@ time.icon strong
   box-shadow: 0 2px 0 #EEE;
 }
 
-time.icon em
-{
+time.icon em {
   position: absolute;
   bottom: 0.3em;
   color: #97233f;
 }
 
-time.icon span
-{
+time.icon span {
   font-size: 2.8em;
   letter-spacing: -0.05em;
   padding-top: 1.2em;
