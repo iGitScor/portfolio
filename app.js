@@ -9,13 +9,17 @@
  ***                     Initialization 
  *****************************************************/
  // Module dependencies
-var express     = require('express')
-  , routes      = require('./routes')
-  , routing     = require('./routes/routing')
-  , http        = require('http')
-  , path        = require('path')
-  , swig        = require('swig');
-
+var express         = require('express')
+  , routes          = require('./routes')
+  , routing         = require('./routes/routing')
+  , http            = require('http')
+  , path            = require('path')
+  , swig            = require('swig')
+  , passport        = require('passport')
+  , LocalStrategy   = require('passport-local').Strategy
+  , flash           = require('connect-flash')
+  , auth            = require('./auth.js');;
+  
 var app = express();
 
 // Define SWIG as the default template rendering
@@ -32,8 +36,13 @@ app.configure(function(){
     app.set('view engine', 'html');
     app.use(express.favicon());
     app.use(express.logger('dev'));
+    app.use(express.cookieParser());
     app.use(express.bodyParser());
     app.use(express.methodOverride());
+    app.use(express.session({ secret: 'keyboard cat' }));
+    app.use(flash());
+    app.use(passport.initialize());
+    app.use(passport.session());
     app.use(app.router);
     app.use(express.static(path.join(__dirname, 'public')));
   
@@ -63,7 +72,7 @@ app.configure(function(){
     app.use(function(error, req, res, next){
       res.status(500);
 
-      // respond with html page
+      // Respond with html page
       if (req.accepts('html')) {
         res.render(
             'error/500.html', 
@@ -76,7 +85,7 @@ app.configure(function(){
         return;
       }
 
-      // default to plain-text. send()
+      // Default to plain-text. send()
       res.type('txt').send('Not found');
     });
   
@@ -90,11 +99,61 @@ app.configure('development', function(){
 });
 
 /***************************************************** 
+ ***                     Security 
+ *****************************************************/
+passport.use(new LocalStrategy(
+  function(username, password, done) {
+    process.nextTick(function () {
+      auth.findByUsername(username, function(err, user) {
+        if (err) {
+            return done(err);
+        }
+        
+        if (!user) { 
+            return done(null, false, { message: 'Utilisateur ' + username + ' inconnu' });
+        }
+        
+        if (user.password != password) { 
+            return done(null, false, { message: 'Mot de passe erroné' });
+        }
+        
+        return done(null, user);
+      })
+    });
+  }
+));
+
+
+/***************************************************** 
  ***                     Routing 
  *****************************************************/
 app.get('/', routes.index);
 app.get('/knov', routing.knov);
 app.get('/projects/:name', routing.project);
+
+app.get('/~scor', auth.ensureAuthenticated, function(req, res){
+  res.render('private/index', { user: req.user });
+});
+
+app.get('/~scor/:name', auth.ensureAuthenticated, function(req, res){
+  var name = req.params.name;
+  res.render('private/'+name, { user: req.user });
+});
+
+app.get('/auth', function(req, res){
+  res.render('auth', { user: req.user, message: req.flash('error') });
+});
+
+app.post('/auth', 
+  passport.authenticate('local', { failureRedirect: '/auth', failureFlash: true }),
+  function(req, res) {
+    res.redirect('/');
+  });
+
+app.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
 
 /***************************************************** 
  ***                     Server 

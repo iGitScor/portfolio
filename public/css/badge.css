@@ -1,20 +1,4 @@
- #logo {
- 	-webkit-filter: grayscale(20%) sepia(30%);
- }
- 
- #logo a {
-  	margin-left: 12px;
-}
-
-body .page code img {
-	padding-bottom: 0;
-}
-
-#main-header {
-    border-bottom: 1px dotted;
-}
-
- .badge {
+.badge {
  	width: 100px;
  	height: 100px;
  	background-color: #E4E4E4;
