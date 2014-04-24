@@ -1,0 +1,41 @@
+/*************************************
+	Common elements
+**************************************/
+
+body .page form .submit-red {
+    background-color: darkred;
+    color: white;
+    padding: 10px;
+    width: auto;
+    height: auto;
+    float: right;
+    cursor: pointer;
+}
+
+body div p.error {
+    border: 1px solid #ebccd1;
+    border-radius: 4px;
+    background-color: #f2dede;
+    color: #a94442;
+    padding: 15px;
+}
+
+
+body .page code img {
+	padding-bottom: 0;
+}
+
+/*************************************
+	Header elements
+**************************************/
+ #logo {
+ 	-webkit-filter: grayscale(20%) sepia(30%);
+ }
+ 
+ #logo a {
+  	margin-left: 12px;
+}
+
+#main-header {
+    border-bottom: 1px dotted;
+}

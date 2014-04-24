@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block head_style %}
+  {% parent %}
+{% endblock %}
+
+
+{% block content %}
+    <div class="container page no-fix">
+	    <article>
+    	    <div class="row" id="presentation" >
+    	        {% if message != '' %}
+                    <p class="error"><strong>Erreur :</strong> {{ message }}</p>
+                {% endif %}
+    	    
+              	<div class="nine columns">
+                    <form action="/auth" method="post" class="row ten">
+                    	<div>
+                        	<label for="username">Username:</label>
+                        	<input type="text" name="username"/>
+                        	<br/>
+                    	</div>
+                    	<div>
+                        	<label for="password">Password:</label>
+                        	<input type="password" name="password"/>
+                    	</div>
+                    	<div>
+                    	    <input type="submit" value="Connexion" class="submit-red"/>
+                    	</div>
+                    </form>
+                </div>
+            </div>
+        </article>
+    </div>
+{% endblock %}
