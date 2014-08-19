@@ -1,0 +1,90 @@
+{% extends '../../layout.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block header_content %}
+<nav id="primary">          
+	<ul class="tiny-hide">
+		<li id="products" class="topnav here">
+  			<a href="#" title="Products">{{ title }} en 5 points !</a>
+		</li>
+  	</ul>
+</nav>
+{% endblock %}
+
+{% block content %}
+<div class="container page no-fix">
+	<article>
+	    <div class="row" id="presentation" >
+          	<div class="divider twelve columns end">
+        		<p>Pr&eacute;sentation de l'&eacute;tude</p>
+          	</div>
+          	
+          	<div class="twelve columns">
+                <p>Nous sommes une &eacute;quipe de trois d&eacute;veloppeurs sp&eacute;cialis&eacute;s dans le d&eacute;veloppement Web.</p>
+                <ul>
+                    <li>Thibaud Colas (ThibWeb) : <a href="https://github.com/ThibWeb" class="external-link" target="_blank">GITHUB</a> | <a href="http://thibaudcolas.fr" class="external-link" target="_blank">Website</a></li>
+                    <li>Laurent Verg&eacute; (MonsieurLuge) : <a href="https://github.com/MonsieurLuge" class="external-link" target="_blank">GITHUB</a></li>
+                    <li>S&eacute;bastien Correaud (moi-m&ecirc;me - iGitScor) : <a href="https://github.com/iGitScor" class="external-link" target="_blank">GITHUB</a></li>
+                </ul>
+          	</div>
+        </div>
+        
+        <div class="row" id="communicate">
+          	<div class="divider twelve columns end">
+        		<p>Communiquer</p>
+          	</div>
+          	
+          	<div class="four columns">
+          	    <svg width="50%" height="50%" viewBox="0 0 110 110" preserveAspectRatio="xMinYMin">
+          	        <g transform="translate(55,55)">
+          	            <text text-anchor="middle" dy="9.166666666666666" dx="2" style="font-size: 27.5px; font-family: Roboto; font-weight: 100;">5.3</text>
+          	            <path d="M0,-55A55,55 0 1,1 -10.305972302214865,54.025798790077864L-8.244777841771892,43.220639032062294A44,44 0 1,0 0,-44Z" style="fill: rgb(241, 196, 15);"></path>
+          	        </g>
+          	    </svg>
+          	</div>
+          	
+          	<div class="eight pull-right columns">
+                <ul>
+                    <li>Vous êtes réservé(e), vous avez tendance à ne pas vous sentir à l'aise en public ou à l'abord de
+                    personnes que vous ne connaissez pas.</li>
+                    <li>Vous êtes ouvert(e) et prenez le temps d'écouter les autres. Vous êtes curieux(se) et vous
+                    intéressez aux idées nouvelles.</li>
+                    <li>Vous savez faire passer vos idées avec tact. Toutefois, les situations de conflit ne vous
+                    dérangent pas quand elles s'imposent.</li>
+                    <li>Vous n'éprouvez pas forcément de plaisir à argumenter, mais n'hésitez pas à défendre vos
+                    points de vue lorsque c'est important.</li>
+                </ul>
+          	</div>
+        </div>
+        
+        <div class="row" id="communicate">
+          	<div class="divider twelve columns end">
+        		<p>Manager</p>
+          	</div>
+          	
+          	<div class="four columns">
+          	    <svg width="50%" height="50%" viewBox="0 0 110 110" preserveAspectRatio="xMinYMin">
+          	        <g transform="translate(55,55)">
+          	            <text text-anchor="middle" dy="9.166666666666666" dx="2" style="font-size: 27.5px; font-family: Roboto; font-weight: 100;">3.8</text>
+          	            <path d="M0,-55A55,55 0 0,1 37.650090826077886,40.09327450817763L30.12007266086231,32.0746196065421A44,44 0 0,0 0,-44Z" style="fill: rgb(52, 152, 219);"></path>
+          	        </g>
+          	    </svg>
+          	</div>
+          	
+          	<div class="eight pull-right columns">
+                <ul>
+                    <li>Vous ne souhaitez pas vous imposer au sein d'un groupe et prendre un rôle de leader. Vous
+                    pouvez naturellement laisser les autres décider.</li>
+                    <li>Vous ne recherchez pas naturellement les responsabilités, vous pouvez avoir du mal à vous
+                    investir dans un projet auquel vous n'adhérez pas.</li>
+                    <li>Vous êtes flexible, vous comptez plus sur votre sens de l'adaptation que sur votre rigueur pour
+                    atteindre vos résultats.</li>
+                    <li>Vous avez le sens du détail et aimez vous atteler à des tâches précises, vous pouvez parfois
+                    manquer de recul.</li>
+                </ul>
+          	</div>
+        </div>
+	</article>
+</div>
+{% endblock %}

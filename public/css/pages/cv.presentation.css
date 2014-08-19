@@ -1,0 +1,24 @@
+.presentation-title {
+    font-weight: bolder;
+}
+
+.presentation-title.communicate {
+    color: #f1c40f;
+}
+
+.presentation-title.manage {
+    color: #3498db;
+}
+
+.presentation-title.dare {
+    color: #e74c3c;
+}
+
+.presentation-title.adapt {
+    color: #27ae60;
+}
+
+
+.presentation-title.excel {
+    color: #9b59b6;
+}

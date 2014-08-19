@@ -47,7 +47,7 @@ module.exports.ensureAuthenticated = function (req, res, next) {
   if (req.isAuthenticated()) { 
     return next(); 
   }
-  res.redirect('/auth');
+  res.redirect('/auth/google');
 }
 
 
@@ -55,11 +55,9 @@ module.exports.ensureAuthenticated = function (req, res, next) {
  ***        Dependance calls 
  *****************************************************/
 passport.serializeUser(function(user, done) {
-  done(null, user.id);
+  done(null, user);
 });
 
-passport.deserializeUser(function(id, done) {
-  findById(id, function (err, user) {
-    done(err, user);
-  });
+passport.deserializeUser(function(obj, done) {
+  done(null, obj);
 });

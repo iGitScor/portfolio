@@ -8,7 +8,7 @@
 /***************************************************** 
  ***                     Initialization 
  *****************************************************/
- // Module dependencies
+ // Module dependencies / imports
 var express         = require('express')
   , routes          = require('./routes')
   , routing         = require('./routes/routing')
@@ -16,10 +16,11 @@ var express         = require('express')
   , path            = require('path')
   , swig            = require('swig')
   , passport        = require('passport')
-  , LocalStrategy   = require('passport-local').Strategy
+  , GoogleStrategy  = require('passport-google').Strategy
   , flash           = require('connect-flash')
   , auth            = require('./auth.js');;
   
+// Instanciate express framework
 var app = express();
 
 // Define SWIG as the default template rendering
@@ -62,6 +63,7 @@ app.configure(function(){
                 subTitle: "Erreur 404 : non trouvé"
             }
         );
+        
         return;
       }
 
@@ -82,6 +84,7 @@ app.configure(function(){
                 subTitle: "Erreur 500 : problème interne"
             }
         );
+        
         return;
       }
 
@@ -101,24 +104,14 @@ app.configure('development', function(){
 /***************************************************** 
  ***                     Security 
  *****************************************************/
-passport.use(new LocalStrategy(
-  function(username, password, done) {
+passport.use(new GoogleStrategy({
+    returnURL: require('os').hostname()+'/auth/google/return',
+    realm: require('os').hostname()
+  },
+  function(identifier, profile, done) {
     process.nextTick(function () {
-      auth.findByUsername(username, function(err, user) {
-        if (err) {
-            return done(err);
-        }
-        
-        if (!user) { 
-            return done(null, false, { message: 'Utilisateur ' + username + ' inconnu' });
-        }
-        
-        if (user.password != password) { 
-            return done(null, false, { message: 'Mot de passe erroné' });
-        }
-        
-        return done(null, user);
-      })
+      profile.identifier = identifier;
+      return done(null, profile);
     });
   }
 ));
@@ -128,6 +121,7 @@ passport.use(new LocalStrategy(
  ***                     Routing 
  *****************************************************/
 app.get('/', routes.index);
+app.get('/ma-personnalite', routing.personnalite);
 app.get('/knov', routing.knov);
 app.get('/projects/:name', routing.project);
 
@@ -144,11 +138,19 @@ app.get('/auth', function(req, res){
   res.render('auth', { user: req.user, message: req.flash('error') });
 });
 
-app.post('/auth', 
-  passport.authenticate('local', { failureRedirect: '/auth', failureFlash: true }),
+app.get('/auth/google', 
+  passport.authenticate('google', { failureRedirect: '/login' }),
   function(req, res) {
     res.redirect('/');
-  });
+  }
+);
+  
+app.get('/auth/google/return', 
+  passport.authenticate('google', { failureRedirect: '/login' }),
+  function(req, res) {
+    res.redirect('/');
+  }
+);
 
 app.get('/logout', function(req, res){
   req.logout();

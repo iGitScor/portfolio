@@ -9,6 +9,10 @@ exports.knov = function(req, res){
   res.render('projects/knov', { title: 'Knov' });
 };
 
+exports.personnalite = function(req, res){
+  res.render('cv/extended/personnalite', { title: 'Ma personnalité' });
+};
+
 // Generic routing
 // URL [HOST]/projects/{name}
 exports.project = function(req, res) {
