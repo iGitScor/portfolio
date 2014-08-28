@@ -135,6 +135,6 @@ time.icon span {
     padding-top: 3px;
 }
 
-.external-link::after { 
+.external-link:after { 
     content: " ➚";
 }

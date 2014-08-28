@@ -11,16 +11,18 @@
  // Module dependencies
 var passport = require('passport');
 
+/*
 // Temporary plug.
 var users = [
     { id: 1, username: 'bob', password: 'secret', email: 'bob@example.com' }
   , { id: 2, username: 'joe', password: 'birthday', email: 'joe@example.com' }
 ];
-
+*/
 
 /***************************************************** 
  ***        Module public methods 
  *****************************************************/
+/*
 module.exports.findById = function (id, fn) {
   var idx = id - 1;
   if (users[idx]) {
@@ -42,13 +44,14 @@ module.exports.findByUsername = function (username, fn) {
   }
   return fn(null, null);
 }
+*/
 
 module.exports.ensureAuthenticated = function (req, res, next) {
   if (req.isAuthenticated()) { 
     return next(); 
   }
-  res.redirect('/auth/google');
-}
+  res.redirect('/login');
+};
 
 
 /***************************************************** 

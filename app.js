@@ -16,9 +16,9 @@ var express         = require('express')
   , path            = require('path')
   , swig            = require('swig')
   , passport        = require('passport')
-  , GoogleStrategy  = require('passport-google').Strategy
+  , GitHubStrategy  = require('passport-github').Strategy
   , flash           = require('connect-flash')
-  , auth            = require('./auth.js');;
+  , auth            = require('./auth.js');
   
 // Instanciate express framework
 var app = express();
@@ -60,7 +60,8 @@ app.configure(function(){
             {
                 title:'404: Resource not found', 
                 error: "La page " + req.url + " que vous avez demandé n'a pas été trouvée.", 
-                subTitle: "Erreur 404 : non trouvé"
+                subTitle: "Erreur 404 : non trouvé",
+                errorCode: '404'
             }
         );
         
@@ -81,7 +82,8 @@ app.configure(function(){
             {
                 title:'500: Internal problem', 
                 error: error, 
-                subTitle: "Erreur 500 : problème interne"
+                subTitle: "Erreur 500 : problème interne",
+                errorCode: '500'
             }
         );
         
@@ -104,13 +106,25 @@ app.configure('development', function(){
 /***************************************************** 
  ***                     Security 
  *****************************************************/
-passport.use(new GoogleStrategy({
-    returnURL: require('os').hostname()+'/auth/google/return',
-    realm: require('os').hostname()
+var GITHUB_CLIENT_ID      = "5c8e0612f515b1f08af8";
+var GITHUB_CLIENT_SECRET  = "4ea20927bf2e6db11f2a8a4c2f639d7068175df1";
+
+// Use the GitHubStrategy within Passport.
+// Strategies in Passport require a `verify` function, which accept
+// credentials (in this case, an accessToken, refreshToken, and GitHub
+// profile), and invoke a callback with a user object.
+passport.use(new GitHubStrategy({
+    clientID: GITHUB_CLIENT_ID,
+    clientSecret: GITHUB_CLIENT_SECRET,
+    callbackURL: "http://portfolio-c9-iscor.c9.io/auth/github/callback"
   },
-  function(identifier, profile, done) {
+  function(accessToken, refreshToken, profile, done) {
+    // asynchronous verification, for effect...
     process.nextTick(function () {
-      profile.identifier = identifier;
+      // To keep the example simple, the user's GitHub profile is returned to
+      // represent the logged-in user. In a typical application, you would want
+      // to associate the GitHub account with a user record in your database,
+      // and return that user instead.
       return done(null, profile);
     });
   }
@@ -131,22 +145,32 @@ app.get('/~scor', auth.ensureAuthenticated, function(req, res){
 
 app.get('/~scor/:name', auth.ensureAuthenticated, function(req, res){
   var name = req.params.name;
-  res.render('private/'+name, { user: req.user });
+  res.render('private/' + name, { user: req.user });
 });
 
-app.get('/auth', function(req, res){
+app.get('/login', function(req, res){
   res.render('auth', { user: req.user, message: req.flash('error') });
 });
 
-app.get('/auth/google', 
-  passport.authenticate('google', { failureRedirect: '/login' }),
-  function(req, res) {
-    res.redirect('/');
-  }
-);
-  
-app.get('/auth/google/return', 
-  passport.authenticate('google', { failureRedirect: '/login' }),
+// GET /auth/github
+// Use passport.authenticate() as route middleware to authenticate the
+// request. The first step in GitHub authentication will involve redirecting
+// the user to github.com. After authorization, GitHub will redirect the user
+// back to this application at /auth/github/callback
+app.get('/auth/github',
+  passport.authenticate('github'),
+  function(req, res){
+  // The request will be redirected to GitHub for authentication, so this
+  // function will not be called.
+});
+
+// GET /auth/github/callback
+// Use passport.authenticate() as route middleware to authenticate the
+// request. If authentication fails, the user will be redirected back to the
+// login page. Otherwise, the primary route function function will be called,
+// which, in this example, will redirect the user to the home page.
+app.get('/auth/github/callback',
+  passport.authenticate('github', { failureRedirect: '/login' }),
   function(req, res) {
     res.redirect('/');
   }

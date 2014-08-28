@@ -36,6 +36,11 @@ body .page code img {
   	margin-left: 12px;
 }
 
+#logo h6 {
+    padding-top: 5px;
+    text-transform: uppercase;
+}
+
 #main-header {
     border-bottom: 1px dotted;
 }

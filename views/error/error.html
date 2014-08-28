@@ -16,21 +16,26 @@
 <div class="container page no-fix">
     <article>
         <div class="row">
-    	    <h2>Oops, il semblerait que quelque chose soit cass&eacute; !</h2>
-    	    <h3>{{error|raw}}</h3>
-    	    {% if error.stack %}
-    	        <code>
-    	            {{error.stack}}
-    	        </code>
-    	    {% endif %}
-    	    <ul>
-<!--    	        <li>
-    	            Contactez-moi
-    	        </li>-->
-    	        <li>
-    	            Retour &agrave; la page d'accueil : <a href="/" title="Accueil">ici</a>
-    	        </li>
-    	    </ul>
+            <div class="two left">
+                <img src="/img/error/{{errorCode}}.png" />
+            </div>
+            <div class="ten left">
+                <h2>Oops, il semblerait que quelque chose soit cass&eacute; !</h2>
+        	    <h3>{{error|raw}}</h3>
+        	    {% if error.stack %}
+        	        <code>
+        	            {{error.stack}}
+        	        </code>
+        	    {% endif %}
+        	    <ul class="checks">
+    <!--    	        <li>
+        	            Contactez-moi
+        	        </li>-->
+        	        <li class="check">
+        	            Retour &agrave; la page d'accueil : <a href="/" title="Accueil">ici</a>
+        	        </li>
+        	    </ul>
+            </div>
         </div>
     </article>
 </div>

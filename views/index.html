@@ -7,15 +7,23 @@
   <link rel="stylesheet" href="css/hint.css">
   <link rel="stylesheet" href="css/badge.css">
   <link rel="stylesheet" href="css/pages/cv.presentation.css">
+  <link rel="stylesheet" href="/css/external/owl.carousel.css">
+  <link rel="stylesheet" href="/css/animation.css">
+{% endblock %}
+
+{% block head_script %}
+	{% parent %}
+	<script src="/js/external/owl.carousel.min.js"></script>
+	<script src="/js/animation.js"></script>
 {% endblock %}
 
 {% block header_content %}
 <nav id="primary">          
 	<ul class="tiny-hide">
 		<li id="products" class="topnav here">
-  			<a href="#" title="Products">Mon curriculum vit&#230;</a>
+  		<a href="#" title="Curriculum vitae">Mon curriculum vit&#230;</a>
 		</li>
-  	</ul>
+  </ul>
 </nav>
 {% endblock %}
 
@@ -23,13 +31,15 @@
 <div class="container page no-fix">
 	<article>
     	{% include 'cv/_navigation.html' %}
+    	
+			{% include 'elements/slideshow.html' %}			
 
-		{% include 'cv/presentation.html' %}
-        {% include 'cv/professional.html' %}
-        {% include 'cv/realisations.html' %}
-		{% include 'cv/etudes.html' %}
-		{% include 'cv/competences.html' %}
-		{% include 'cv/hobbies.html' %}
+			{% include 'cv/presentation.html' %}
+      {% include 'cv/professional.html' %}
+      {% include 'cv/realisations.html' %}
+			{% include 'cv/etudes.html' %}
+			{% include 'cv/competences.html' %}
+			{% include 'cv/hobbies.html' %}
 	</article>
 </div>
 {% endblock %}
@@ -66,6 +76,9 @@
 	    		</p>
 	    		<p class="tight">
 	    			<a href="http://github.com/iGitScor" class="button-box external-link">Projets open source (suite)</a>
+	    		</p>
+	    		<p class="tight hide hide-on-print">
+	    			<a href="http://github.com/FatBoyCrew" class="button-box external-link">Projets open source (BETA)</a>
 	    		</p>
   			</div>
 		</div>
