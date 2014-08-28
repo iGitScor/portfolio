@@ -6,6 +6,7 @@
     "start": "node app"
   },
   "dependencies": {
+    "connect-flash": "^0.1.1",
     "express": "~3.3.4",
     "jade": "~0.34.0",
     "passport": "^0.2.0",
