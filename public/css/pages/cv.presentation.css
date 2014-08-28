@@ -1,3 +1,40 @@
+.page svg {
+    height: 100px;
+    width: 100px;
+}
+
+.page .svg-container {
+    margin-top: 25px;
+    text-align: center;
+}
+
+.page svg text {
+    cursor: default;
+    font-weight: bold;
+    font-size: 27.5px;
+}
+
+.page .custom-feature {
+    padding: 0;
+}
+
+.page .custom-feature img {
+    max-width: 150px;
+    max-height: 150px;
+}
+
+.page .custom-feature img.talent-icon-big {
+    height: 150px;
+    width: 150px;
+    margin-top: -10px;
+}
+
+.presentation-image
+{
+    max-height: 150px;
+    margin-top: 10px;
+}
+
 .presentation-title {
     font-weight: bolder;
 }
@@ -21,4 +58,9 @@
 
 .presentation-title.excel {
     color: #9b59b6;
+}
+
+.talent-icon {
+    max-height: 64px;
+    max-width: 64px;
 }
