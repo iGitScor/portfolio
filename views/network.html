@@ -1,0 +1,88 @@
+{% extends 'layout.html' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block head_style %}
+  {% parent %}
+  <link rel="stylesheet" href="/css/infographie.css" />
+{% endblock %}
+
+{% block header_content %}
+<nav id="primary">          
+	<ul class="tiny-hide">
+		<li id="products" class="topnav here">
+  			<a href="#" title="Products">{{title}}</a>
+		</li>
+  	</ul>
+</nav>
+{% endblock %}
+
+
+{% block content %}
+    <section id="cd-timeline" class="cd-container">
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-linkedin">
+				<img src="/img/icons/linkedin-48-black.png" alt="Picture">
+			</div> <!-- cd-timeline-img -->
+
+			<div class="cd-timeline-content">
+				<h2>LinkedIn</h2>
+				<p>Si vous souhaitez intégrer mon réseau professionnel.</p>
+				<a href="http://www.linkedin.com/pub/s%C3%A9bastien-correaud/93/783/259" class="cd-read-more" target="_blank">Mon profil</a>
+				<span class="cd-date">Sébastien Correaud</span>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-viadeo">
+				<img src="/img/icons/viadeo-48-black.png" alt="Movie">
+			</div> <!-- cd-timeline-img -->
+
+			<div class="cd-timeline-content">
+				<h2>Viadeo</h2>
+				<p>Si vous souhaitez intégrer mon réseau professionnel.</p>
+				<a href="http://www.viadeo.com/profile/0022ez7mqob40b91" class="cd-read-more" target="_blank">Mon profil</a>
+				<span class="cd-date">Sébastien Correaud</span>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-facebook">
+				<img src="/img/icons/facebook-48-black.png" alt="Picture">
+			</div> <!-- cd-timeline-img -->
+
+			<div class="cd-timeline-content">
+				<h2>Facebook</h2>
+				<p>Si vous souhaitez rester en contact.</p>
+				<a href="http://www.facebook.com/sebastien.correaud" class="cd-read-more" target="_blank">Mon profil</a>
+				<span class="cd-date">Sébastien Correaud</span>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-twitter">
+				<img src="/img/icons/twitter-48-black.png" alt="Location">
+			</div> <!-- cd-timeline-img -->
+
+			<div class="cd-timeline-content">
+				<h2>Twitter</h2>
+				<p>Si vous souhaitez être informé de mon activité.</p>
+				<a href="http://www.twitter.com/iTweetScor" class="cd-read-more" target="_blank">Mon profil</a>
+				<span class="cd-date">@iTweetScor</span>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-instagram">
+				<img src="/img/icons/instagram-48-black.png" alt="Location">
+			</div> <!-- cd-timeline-img -->
+
+			<div class="cd-timeline-content">
+				<h2>Instagram</h2>
+				<p>Si vous souhaitez voir ma vision instagram.</p>
+				<a href="#0" class="cd-read-more">Mes photos</a>
+				<span class="cd-date">iNstaScor</span>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+	</section> <!-- cd-timeline -->
+{% endblock %}

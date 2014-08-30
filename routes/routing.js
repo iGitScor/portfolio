@@ -22,12 +22,16 @@ exports.project = function(req, res) {
     res.render('projects/'+name, {
         title: name
     })
-}
+};
 
 exports.private = function(req, res) {
     res.render('private/index', {title: 'Private'});
-}
+};
 
 exports.auth = function(req, res) {
     res.render('private/auth', {title: 'Private'});
-}
+};
+
+exports.style = function(req, res) {
+    res.render('network', {title: 'Mon réseau'});
+};
