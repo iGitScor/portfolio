@@ -137,7 +137,7 @@ passport.use(new GitHubStrategy({
 app.get('/', routes.index);
 app.get('/ma-personnalite', routing.personnalite);
 app.get('/knov', routing.knov);
-app.get('/projects/:name', routing.project);
+app.get('/projets/:name', routing.project);
 
 app.get('/~scor', auth.ensureAuthenticated, function(req, res){
   res.render('private/index', { user: req.user });
