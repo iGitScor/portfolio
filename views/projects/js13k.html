@@ -12,6 +12,11 @@
 </nav>
 {% endblock %}
 
+{% block head_style %}
+    {% parent %}
+    <link rel="stylesheet" href="/css/13k.css">
+{% endblock %}
+
 {% block content %}
 <div class="container page no-fix">
 	<article>
@@ -33,7 +38,12 @@
 	        <div class="divider twelve columns end">
         		<p>R&eacute;alisation</p>
           	</div>
+          	<canvas id="board"></canvas>
 	    </div>
 	</article>
 </div>
+{% endblock %}
+
+{% block footer_script %}
+    <script type="text/javascript" src="/js/13k.js"></script>
 {% endblock %}
