@@ -1335,6 +1335,10 @@ p.see-more a:hover {
     background:#51c4cc
 }
 
+p.location, span.location {
+    color: #97233f;
+}
+
 a {
     text-decoration:none;
     cursor:pointer
@@ -2121,15 +2125,19 @@ div.divider.columns {
 }
 
 .section-divider.blue h3,.section-divider.blue h4 {
-    background:url(./images/site/section-div-circle-white.png) center left no-repeat,url(./images/site/section-div-circle-white.png) center right no-repeat;background-color:inherit;color:#015172
+    background:url(./images/site/section-div-circle-white.png) center left no-repeat,url(./images/site/section-div-circle-white.png) center right no-repeat;
+    background-color:inherit;
+    color:#015172
 }
 
 .section-divider.beige1 h3,.section-divider.beige1 h4 {
-    background:url(./images/site/section-div-circle.png) center left no-repeat,url(./images/site/section-div-circle.png) center right no-repeat,url(./images/site/bg-light-noise.png) top right repeat;background-color:#f3f3ee
+    background:url(./images/site/section-div-circle.png) center left no-repeat,url(./images/site/section-div-circle.png) center right no-repeat,url(./images/site/bg-light-noise.png) top right repeat;
+    background-color:#f3f3ee
 }
 
 .section-divider.beige2 h3,.section-divider.beige2 h4 {
-    background:url(./images/site/section-div-circle.png) center left no-repeat,url(./images/site/section-div-circle.png) center right no-repeat,url(./images/site/bg-light-noise.png) top right repeat;background-color:#e9e9e3
+    background:url(./images/site/section-div-circle.png) center left no-repeat,url(./images/site/section-div-circle.png) center right no-repeat,url(./images/site/bg-light-noise.png) top right repeat;
+    background-color:#e9e9e3
 }
 
 .section-divider.beige3 {
