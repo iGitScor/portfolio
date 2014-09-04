@@ -18,6 +18,7 @@ var express         = require('express')
   , passport        = require('passport')
   , GitHubStrategy  = require('passport-github').Strategy
   , flash           = require('connect-flash')
+  , fileSystem      = require('fs')
   , auth            = require('./auth.js');
   
 // Instanciate express framework
@@ -50,6 +51,21 @@ app.configure(function(){
     /*
      * Errors
      */
+    app.use(function(req, res, next){
+      // Allowed image extension handler
+      var extensions = ["png", "jpg"];
+      
+      // If the requested url is an image url and the extension of the image allows the replacement
+      if (!!~extensions.indexOf(req.originalUrl.substr(req.originalUrl.length - 3))) {
+        var qcqImage = fileSystem.readFileSync('./public/img/error/404.png');
+        res.type('png');
+        res.end(qcqImage, 'binary');
+      } else {
+        // Continue to others error handling middlewares
+        next();
+      }
+    });
+     
     app.use(function(req, res, next){
       res.status(404);
     
