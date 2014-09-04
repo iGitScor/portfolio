@@ -116,7 +116,7 @@ var GITHUB_CLIENT_SECRET  = "4ea20927bf2e6db11f2a8a4c2f639d7068175df1";
 passport.use(new GitHubStrategy({
     clientID: GITHUB_CLIENT_ID,
     clientSecret: GITHUB_CLIENT_SECRET,
-    callbackURL: "http://portfolio-c9-iscor.c9.io/auth/github/callback"
+    callbackURL: "http://sebastien-correaud.herokuapp.com/auth/github/callback"
   },
   function(accessToken, refreshToken, profile, done) {
     // asynchronous verification, for effect...
@@ -136,6 +136,7 @@ passport.use(new GitHubStrategy({
  *****************************************************/
 app.get('/', routes.index);
 app.get('/ma-personnalite', routing.personnalite);
+app.get('/mon-reseau-social', routing.style);
 app.get('/knov', routing.knov);
 app.get('/projets/:name', routing.project);
 
@@ -151,8 +152,6 @@ app.get('/~scor/:name', auth.ensureAuthenticated, function(req, res){
 app.get('/login', function(req, res){
   res.render('auth', { user: req.user, message: req.flash('error') });
 });
-
-app.get('/mon-reseau-applicatif', routing.style);
 
 // GET /auth/github
 // Use passport.authenticate() as route middleware to authenticate the

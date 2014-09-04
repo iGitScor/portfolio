@@ -5,10 +5,20 @@
       <title>S&eacute;bastien Correaud - Portfolio - {% block title %}page.name{% endblock %}</title>
     
       {% block head_style %}
+        <!-- Website style -->
         <link rel="stylesheet" href="/css/style.css"/>
         <link rel="stylesheet" href="/css/layout.css"/>
         <link rel="stylesheet" href="/css/pages/cv.presentation.css"/>
         <link rel="stylesheet" href="/css/badge.css"/>
+      {% endblock %}
+      
+      {% block prefetch_resources %}
+        <!-- Prefetch resources -->
+        <link rel="prefetch" href="/css/images/background/logo_hover.png">
+      {% endblock %}
+      
+      {% block prefetch_content %}
+        <!-- Prefetch content -->
       {% endblock %}
       
       {% block head_script %}
@@ -47,14 +57,8 @@
                                     <a href="http://github.com/iGitScor" title="Ressources développement" target="_blank">Dev Resources</a>
                                 </li>
                                 <li class="last">
-                                    <a href="/mon-reseau-applicatif" title="Mes comptes">Mon r&eacute;seau</a>
+                                    <a href="/mon-reseau-social" title="Mes comptes">Mon r&eacute;seau</a>
                                 </li>
-                                <!--<li class="last">
-                                    <a href="#/documentation" title="Documentation" rel="nofollow">Docs</a>
-                                </li>
-                                <li class="search">
-                                    <a href="#search-button" title="Search">Recherche</a>
-                                </li>-->
                             </ul>
                         </nav>
                     </div>
@@ -70,7 +74,6 @@
          		<ul class="icons">
         			<li><a data-icon="B" href="http://www.facebook.com/sebastien.correaud" target="_blank"><span>Facebook</span></a></li>
         			<li><a data-icon="F" href="http://www.linkedin.com/pub/s%C3%A9bastien-correaud/93/783/259" target="_blank"><span>LinkedIn</span></a></li>
-          		    <!--<li><a data-icon="e" href="http://www.viadeo.com/profile/0022ez7mqob40b91" target="_blank"><span>Viadeo</span></a></li>-->
           		    <li><a data-icon="D" href="https://twitter.com/iTweetScor" target="_blank"><span>Twitter</span></a></li>
           		</ul>
         	</div>
@@ -103,9 +106,9 @@
         </footer>
         
         {% block footer_script %}
+            <!-- Site script loaded after the content -->
         {% endblock %}
     
     </body>
-
 
 </html>
