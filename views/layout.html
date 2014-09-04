@@ -1,7 +1,14 @@
 <!doctype html>
 <html class="js pinned">
     <head>
-      <meta charset="utf-8" />
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      
+      <meta name="author" content="Sebastien Correaud">
+      <meta name="twitter:site" content="@iTweetScor">
+      <meta name="keywords" content="portfolio, mobile, developpement, web, informatique">
+      <meta name="description" content="Le portfolio de Sébastien Correaud, développeur mobile et web. Présentation de son expérience et de ses projets.">
+      <meta name="viewport" content="width=device-width, initial-scale=.95, maximum-scale=.95">
+      
       <title>S&eacute;bastien Correaud - Portfolio - {% block title %}page.name{% endblock %}</title>
     
       {% block head_style %}
@@ -14,18 +21,26 @@
       
       {% block prefetch_resources %}
         <!-- Prefetch resources -->
-        <link rel="prefetch" href="/css/images/background/logo_hover.png">
+        <link rel="prefetch" href="/css/images/backgrounds/logo_hover.png">
       {% endblock %}
       
       {% block prefetch_content %}
-        <!-- Prefetch content -->
+        <!-- Prefetch internal content -->
+      {% endblock %}
+      
+      {% block prefetch_external %}
+        <!-- Prefetch DNS -->
       {% endblock %}
       
       {% block head_script %}
         <script src="/js/external/jquery-2.1.0.min.js"></script>
+        <!--[if lt IE 9]>
+            <script src="/js/external/html5.js"></script>
+        <![endif]-->
       {% endblock %}
       
-      <link rel="shortcut icon" href="/img/favicon.ico"/>
+      <link rel="shortcut icon" href="/img/favicon.ico">
+      <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
     </head>
 
     <body>

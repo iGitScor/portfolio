@@ -1,12 +1,12 @@
 {% extends '../layout.html' %}
 
-{% block title %}JS13K Game{% endblock %}
+{% block title %}Js13k Game{% endblock %}
 
 {% block header_content %}
 <nav id="primary">          
 	<ul class="tiny-hide">
 		<li id="products" class="topnav here">
-  			<a href="#" title="Products">JS13K - Game</a>
+  			<a href="#" title="Products">Js13k - Game</a>
 		</li>
   	</ul>
 </nav>
@@ -15,6 +15,10 @@
 {% block head_style %}
     {% parent %}
     <link rel="stylesheet" href="/css/13k.css">
+{% endblock %}
+
+{% block prefetch_external %}
+    <link rel="dns-prefetch" href="//js13kgames.com">
 {% endblock %}
 
 {% block content %}
