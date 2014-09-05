@@ -229,6 +229,10 @@ sitemap({
     },
 }).XMLtoFile();
 
+app.get('/sitemap.xml',function(req,res) {
+    sitemap.XMLtoWeb(res);
+});
+
 /***************************************************** 
  ***                     Server 
  *****************************************************/
