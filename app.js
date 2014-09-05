@@ -239,7 +239,7 @@ app.get('/sitemap.xml',function(req,res) {
     res.end(content, 'text/xml');
 });
 
-app.get('/robot.txt',function(req,res) {
+app.get('/robots.txt',function(req,res) {
     var content = fileSystem.readFileSync('./robots.txt');
     res.type('txt').send(content);
 });
