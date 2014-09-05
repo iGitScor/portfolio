@@ -202,16 +202,32 @@ app.get('/logout', function(req, res){
 /***************************************************** 
  ***                     Sitemap 
  *****************************************************/
-// Generate the sitemap and robot authorization
-sitemap = sitemap({ generate: app });
-// Create a sitemap route
-app.get('/sitemap.xml',function(req,res) {
-    sitemap.XMLtoWeb(res);
-});
-// Create a robot route
-app.get('/robots.txt',function(req,res) {
-    sitemap.TXTtoWeb(res);
-});
+sitemap({
+    map: {
+        '/': ['get'],
+        '/ma-personnalite': ['get','post'],
+        '/mon-reseau-social': ['get'],
+        '/projets/knov': ['get'],
+        '/projets/js13k': ['get'],
+    },
+    route: {
+        '/': {
+            lastmod: '2014-09-05',
+            changefreq: 'always',
+            priority: 1.0,
+        },
+        '/ma-personnalite': {
+            lastmod: '2014-08-28',
+            changefreq: 'yearly',
+            priority: 0.5,
+        },
+        '/mon-reseau-social': {
+            lastmod: '2014-08-30',
+            changefreq: 'yearly',
+            priority: 0.9,
+        },
+    },
+}).XMLtoFile();
 
 /***************************************************** 
  ***                     Server 
