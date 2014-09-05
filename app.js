@@ -240,10 +240,8 @@ app.get('/sitemap.xml',function(req,res) {
 });
 
 app.get('/robot.txt',function(req,res) {
-    res.set('Content-Type', 'text/txt');
-    var content = fileSystem.readFileSync('./robot.txt');
-    res.type('txt');
-    res.end(content, 'text/txt');
+    var content = fileSystem.readFileSync('./robots.txt');
+    res.type('txt').send(content);
 });
 
 /***************************************************** 
