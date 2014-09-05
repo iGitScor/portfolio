@@ -230,7 +230,10 @@ sitemap({
 }).XMLtoFile();
 
 app.get('/sitemap.xml',function(req,res) {
-    sitemap.XMLtoWeb(res);
+    res.set('Content-Type', 'text/xml');
+    var content = fileSystem.readFileSync('./sitemap.xml');
+    res.type('xml');
+    res.end(content, 'text/xml');
 });
 
 /***************************************************** 
