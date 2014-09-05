@@ -230,13 +230,20 @@ sitemap({
             priority: 0.9,
         },
     },
-}).XMLtoFile();
+}).toFile();
 
 app.get('/sitemap.xml',function(req,res) {
     res.set('Content-Type', 'text/xml');
     var content = fileSystem.readFileSync('./sitemap.xml');
     res.type('xml');
     res.end(content, 'text/xml');
+});
+
+app.get('/robot.txt',function(req,res) {
+    res.set('Content-Type', 'text/txt');
+    var content = fileSystem.readFileSync('./robot.txt');
+    res.type('txt');
+    res.end(content, 'text/txt');
 });
 
 /***************************************************** 
