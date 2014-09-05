@@ -37,6 +37,7 @@ app.configure(function(){
     app.set('port', process.env.PORT || 80);
     app.set('views', __dirname + '/views');
     app.set('view engine', 'html');
+    app.set('websiteURL', "http://sebastien-correaud.herokuapp.com");
     app.use(express.favicon());
     app.use(express.logger('dev'));
     app.use(express.cookieParser());
@@ -133,7 +134,7 @@ var GITHUB_CLIENT_SECRET  = "4ea20927bf2e6db11f2a8a4c2f639d7068175df1";
 passport.use(new GitHubStrategy({
     clientID: GITHUB_CLIENT_ID,
     clientSecret: GITHUB_CLIENT_SECRET,
-    callbackURL: "http://sebastien-correaud.herokuapp.com/auth/github/callback"
+    callbackURL: app.get('websiteURL') + "/auth/github/callback"
   },
   function(accessToken, refreshToken, profile, done) {
     // asynchronous verification, for effect...
@@ -203,6 +204,7 @@ app.get('/logout', function(req, res){
  ***                     Sitemap 
  *****************************************************/
 sitemap({
+    url: app.get('websiteURL'),
     map: {
         '/': ['get'],
         '/ma-personnalite': ['get','post'],
