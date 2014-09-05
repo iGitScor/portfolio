@@ -12,6 +12,7 @@
 var express         = require('express')
   , routes          = require('./routes')
   , routing         = require('./routes/routing')
+  , sitemap         = require('express-sitemap') 
   , http            = require('http')
   , path            = require('path')
   , swig            = require('swig')
@@ -196,6 +197,20 @@ app.get('/auth/github/callback',
 app.get('/logout', function(req, res){
   req.logout();
   res.redirect('/');
+});
+
+/***************************************************** 
+ ***                     Sitemap 
+ *****************************************************/
+// Generate the sitemap and robot authorization
+sitemap = sitemap({ generate: app });
+// Create a sitemap route
+app.get('/sitemap.xml',function(req,res) {
+    sitemap.XMLtoWeb(res);
+});
+// Create a robot route
+app.get('/robots.txt',function(req,res) {
+    sitemap.TXTtoWeb(res);
 });
 
 /***************************************************** 
