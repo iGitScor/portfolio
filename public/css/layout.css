@@ -52,6 +52,7 @@ body .page code img {
     .print-clear {
         page-break-after: always;
         font-size: 0;
-        height: 0;
+        color: transparent;
+        height: 0.1;
     }
 }
