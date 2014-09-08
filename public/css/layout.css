@@ -51,8 +51,5 @@ body .page code img {
 @media print {
     .print-clear {
         page-break-after: always;
-        font-size: 0;
-        color: transparent;
-        height: 0.1;
     }
 }
