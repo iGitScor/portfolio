@@ -208,7 +208,7 @@ sitemap({
     url: app.get('_scorURL'),
     map: {
         '/': ['get'],
-        '/ma-personnalite': ['get','post'],
+        '/ma-personnalite': ['get'],
         '/mon-reseau-social': ['get'],
         '/projets/knov': ['get'],
         '/projets/js13k': ['get'],

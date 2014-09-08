@@ -44,3 +44,12 @@ body .page code img {
 #main-header {
     border-bottom: 1px dotted;
 }
+
+/*************************************
+	Print page
+**************************************/
+@media print {
+    .print-clear {
+        page-break-after: always;
+    }
+}
