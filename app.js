@@ -56,11 +56,12 @@ app.configure(function(){
      */
     app.use(function(req, res, next){
       // Allowed image extension handler
-      var extensions = ["png", "jpg"];
+      var extensions = ["png", "jpg", "gif"];
       
       // If the requested url is an image url and the extension of the image allows the replacement
       if (!!~extensions.indexOf(req.originalUrl.substr(req.originalUrl.length - 3))) {
-        var qcqImage = fileSystem.readFileSync('./public/img/error/404.png');
+        var qcqImage = fileSystem.readFileSync('./public/img/error/not_found.png');
+        res.status(404);
         res.type('png');
         res.end(qcqImage, 'binary');
       } else {
