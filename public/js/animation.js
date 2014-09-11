@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  if ( top !== self ) top.location.replace( self.location.href );
+  if ( top !== self && top.location.path != location.path ) location.replace( location + top.location.path );
 
   // Definition of the homepage carousel
   $('.owl-carousel').owlCarousel({
