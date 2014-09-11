@@ -6,6 +6,8 @@
             var parser = document.createElement('a');
             parser.href = document.referrer;
             if ( parser.pathname != location.pathname ) {
+                console.log(parser.pathname);
+                console.log(location.pathname);
                 location.replace( location.origin + parser.pathname );
             }
         }
