@@ -1,5 +1,9 @@
 $(document).ready(function(){
-  if ( top !== self && top.location.path != location.path ) location.replace( location + top.location.path );
+  if ( top !== self ) {
+  console.log(location);
+  console.log(top.location);
+    //location.replace( location + top.location.path );
+  }
 
   // Definition of the homepage carousel
   $('.owl-carousel').owlCarousel({
