@@ -2,10 +2,12 @@
 <html class="js pinned">
     <head>
       <script>
-        if ( top !== self ) {
+        if ( top !== self) {
             var parser = document.createElement('a');
             parser.href = document.referrer;
-            location.replace( location.origin + parser.pathname );
+            if ( parser.pathname != location.pathname ) {
+                location.replace( location.origin + parser.pathname );
+            }
         }
       </script>
     
