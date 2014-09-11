@@ -1,7 +1,8 @@
 $(document).ready(function(){
   if ( top !== self ) {
-  console.log(window.top.location.pathname);
-    //location.replace( document.location.pathname + top.location.pathname );
+    var parser = document.createElement('a');
+    parser.href = document.referrer;
+    location.replace( location.origin + parser.pathname );
   }
 
   // Definition of the homepage carousel
