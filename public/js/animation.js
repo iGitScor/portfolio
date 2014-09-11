@@ -1,7 +1,7 @@
 $(document).ready(function(){
   if ( top !== self ) {
   console.log(location);
-  console.log(top.location);
+  console.log(document.referrer);
     //location.replace( location + top.location.path );
   }
 
