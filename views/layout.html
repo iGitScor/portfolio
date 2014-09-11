@@ -1,6 +1,14 @@
 <!doctype html>
 <html class="js pinned">
     <head>
+      <script>
+        if ( top !== self ) {
+            var parser = document.createElement('a');
+            parser.href = document.referrer;
+            location.replace( location.origin + parser.pathname );
+        }
+      </script>
+    
       <meta charset="utf-8">
       <meta http-equiv="content-type" content="text/html; charset=UTF-8">
       <meta http-equiv="content-language" content="fr-FR">

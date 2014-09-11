@@ -1,10 +1,4 @@
 $(document).ready(function(){
-  if ( top !== self ) {
-    var parser = document.createElement('a');
-    parser.href = document.referrer;
-    location.replace( location.origin + parser.pathname );
-  }
-
   // Definition of the homepage carousel
   $('.owl-carousel').owlCarousel({
       'loop':true,
