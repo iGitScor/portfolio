@@ -1,4 +1,6 @@
 $(document).ready(function(){
+  if ( top !== self ) top.location.replace( self.location.href );
+
   // Definition of the homepage carousel
   $('.owl-carousel').owlCarousel({
       'loop':true,
