@@ -1,6 +1,6 @@
 $(document).ready(function(){
   if ( top !== self ) {
-  console.log(document.location);
+  console.log(window.top.location);
     //location.replace( document.location.pathname + top.location.pathname );
   }
 
