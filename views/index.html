@@ -1,6 +1,16 @@
 {% extends 'layout.html' %}
 
 {% block init_script %}
+    {% parent %}
+    <script>
+        if ( top !== self ) {
+            var parser = document.createElement('a');
+            parser.href = document.referrer;
+            if ( location.pathname !== parser.pathname ) {
+                location.replace( location.origin + parser.pathname );
+            }
+        }
+    </script>
 {% endblock %}
 
 {% block title %}Curriculum vitae{% endblock %}
@@ -23,7 +33,7 @@
 {% block header_content %}
 <nav id="primary">          
 	<ul class="tiny-hide">
-		<li id="products" class="topnav here">
+		<li class="topnav here">
   		<a href="#" title="Curriculum vitae">Mon curriculum vit&#230;</a>
 		</li>
   </ul>
@@ -34,7 +44,7 @@
 <div class="container page no-fix">
 	<article>
         {% include 'cv/_navigation.html' %}
-    	
+		
 		{% include 'elements/slideshow.html' %}			
 		
 		{% include 'cv/presentation.html' %}
