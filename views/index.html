@@ -1,16 +1,6 @@
 {% extends 'layout.html' %}
 
 {% block init_script %}
-    {% parent %}
-    <script>
-        if ( top !== self ) {
-            var parser = document.createElement('a');
-            parser.href = document.referrer;
-            if ( location.pathname !== parser.pathname ) {
-                location.replace( location.origin + parser.pathname );
-            }
-        }
-    </script>
 {% endblock %}
 
 {% block title %}Curriculum vitae{% endblock %}
