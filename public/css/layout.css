@@ -25,6 +25,31 @@ body .page code img {
 	padding-bottom: 0;
 }
 
+body form label {
+    height: 30px;
+    line-height: 30px;
+}
+
+body form input {
+    height: 30px;
+}
+
+body form button[type=submit] {
+    min-width:150px;
+    height:30px;
+    margin:0 5px 20px 0;
+    padding:0 10px;
+    background:#97233f;
+    font-family:"Museo Sans W01 500",arial,sans-serif;
+    font-weight:500;
+    font-size:11pt;
+    line-height:30px;
+    color:#fff;
+    text-transform:uppercase;
+    text-align:center;
+    float: right;
+}
+
 /*************************************
 	Header elements
 **************************************/
