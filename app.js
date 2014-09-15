@@ -19,6 +19,7 @@ var express         = require('express')
   , passport        = require('passport')
   , GitHubStrategy  = require('passport-github').Strategy
   , flash           = require('connect-flash')
+  , mailer          = require("mailer")
   , fileSystem      = require('fs')
   , auth            = require('./auth.js');
   
@@ -126,8 +127,8 @@ app.configure('development', function(){
 /***************************************************** 
  ***                     Security 
  *****************************************************/
-var GITHUB_CLIENT_ID      = "5c8e0612f515b1f08af8";
-var GITHUB_CLIENT_SECRET  = "4ea20927bf2e6db11f2a8a4c2f639d7068175df1";
+var GITHUB_CLIENT_ID      = process.env.GITHUB_CLIENT_ID;
+var GITHUB_CLIENT_SECRET  = process.env.GITHUB_CLIENT_SECRET;
 
 // Use the GitHubStrategy within Passport.
 // Strategies in Passport require a `verify` function, which accept
@@ -202,6 +203,37 @@ app.get('/logout', function(req, res){
   res.redirect('/');
 });
 
+
+/***************************************************** 
+ ***                     Contact 
+ *****************************************************/
+app.get('/contact', function(req, res) {
+    res.render('contact');
+});
+
+app.post('/contact', function(req, res) {
+    res.render('contact', { name: req.param('name') });
+    
+    mailer.send(
+      { host:           process.env.SMTP_HOST
+      , port:           process.env.SMTP_PORT
+      , to:             process.env.SMTP_ACCOUNT
+      , from:           process.env.SMTP_SENDER
+      , subject:        "Contact form"
+      , body:           req.param('msg')
+      , authentication: "login"
+      , username:       process.env.SMTP_ACCOUNT
+      , password:       process.env.SMTP_PASSWORD
+      }, function(error, result){
+        if (error) {
+          console.log(error);
+        }
+      }
+    );
+});
+
+
+
 /***************************************************** 
  ***                     Sitemap 
  *****************************************************/
@@ -211,25 +243,9 @@ sitemap({
         '/': ['get'],
         '/ma-personnalite': ['get'],
         '/mon-reseau-social': ['get'],
+        '/contact': ['get','post'],
         '/projets/knov': ['get'],
         '/projets/js13k': ['get'],
-    },
-    route: {
-        '/': {
-            lastmod: '2014-09-05',
-            changefreq: 'always',
-            priority: 1.0,
-        },
-        '/ma-personnalite': {
-            lastmod: '2014-08-28',
-            changefreq: 'yearly',
-            priority: 0.5,
-        },
-        '/mon-reseau-social': {
-            lastmod: '2014-08-30',
-            changefreq: 'yearly',
-            priority: 0.9,
-        },
     },
 }).toFile();
 
