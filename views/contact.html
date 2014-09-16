@@ -24,7 +24,7 @@
                 </div>
                 {% endif %}
             
-                <form role="form" action="/contact" method="post" class="big-box columns end six push-three">
+                <form role="form" action={{ '/contact/' }}{{ type }} method="post" class="big-box columns end six push-three">
                     <div class="form-group">
                         <label for="email" class="secondary">Email</label>
                         <input type="email" name="email" class="form-control primary" id="email" placeholder="Entrer votre email...">

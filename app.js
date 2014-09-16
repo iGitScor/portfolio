@@ -40,7 +40,6 @@ app.configure(function(){
     app.set('view engine', 'html');
     app.set('_scorProtocol', 'http');
     app.set('_scorURL', 'sebastien-correaud.herokuapp.com');
-    app.use(express.favicon());
     app.use(express.logger('dev'));
     app.use(express.cookieParser());
     app.use(express.bodyParser());
@@ -51,6 +50,7 @@ app.configure(function(){
     app.use(passport.session());
     app.use(app.router);
     app.use(express.static(path.join(__dirname, 'public')));
+    app.use(express.favicon(__dirname + '/public/img/favicon.ico')); 
   
     /*
      * Errors
@@ -157,7 +157,7 @@ passport.use(new GitHubStrategy({
  *****************************************************/
 app.get('/', routes.index);
 app.get('/ma-personnalite', routing.personnalite);
-app.get('/mon-reseau-social', routing.style);
+app.get('/mon-reseau-social', routing.network);
 app.get('/knov', routing.knov);
 app.get('/projets/:name', routing.project);
 
@@ -207,14 +207,26 @@ app.get('/logout', function(req, res){
 /***************************************************** 
  ***                     Contact 
  *****************************************************/
-app.get('/contact', function(req, res) {
-    res.render('contact');
+var allowedContactForms = ["formulaire-de-contact", "formulaire-embauche"];
+app.get('/contact/:type', function(req, res) {
+    // Filter allowed type
+    if (!!~allowedContactForms.indexOf(req.params.type)) {
+      res.render('contact', { type: req.params.type });
+    }
+    else {
+      // Redirect to the homepage
+      res.writeHead(302, { 'Location': '/' });
+      req.flash('information', "Vous avez été redirigé car la page demandée n'existe pas");
+      res.end();
+    }
 });
 
-app.post('/contact', function(req, res) {
-    res.render('contact', { name: req.param('name') });
+app.post('/contact/:type', function(req, res) {
+    // Filter allowed type to avoid bots attack
+    if (!!~allowedContactForms.indexOf(req.params.type)) {
+      res.render('contact', { name: req.param('name'), type: req.params.type });
     
-    mailer.send(
+/*    mailer.send(
       { host:           process.env.SMTP_HOST
       , port:           process.env.SMTP_PORT
       , to:             process.env.SMTP_ACCOUNT
@@ -229,7 +241,12 @@ app.post('/contact', function(req, res) {
           console.log(error);
         }
       }
-    );
+    );*/
+    }
+    else {
+      // Redirect to the homepage
+      res.status(403).send('403 - Forbidden');
+    }
 });
 
 
@@ -246,6 +263,8 @@ sitemap({
         '/contact': ['get','post'],
         '/projets/knov': ['get'],
         '/projets/js13k': ['get'],
+        '/contact/formulaire-de-contact': ['get','post'],
+        '/contact/formulaire-embauche': ['get','post'],
     },
 }).toFile();
 
