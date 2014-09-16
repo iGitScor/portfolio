@@ -35,6 +35,15 @@
 	<article>
     {% include 'cv/_navigation.html' %}
 		
+		{% if message.length > 0  %}
+			<div class="row notice_wrapper" data-attr-notice="homepage-top">
+				<div class="notice columns end twelve">
+					{{ message }} 
+					<a class="right notice_close_button" data-attr-notice="homepage-top">X</a>
+				</div>
+			</div>
+		{% endif %}
+		
 		{% include 'elements/slideshow.html' %}			
 		
 		{% include 'cv/presentation.html' %}
@@ -46,6 +55,8 @@
 	</article>
 </div>
 {% endblock %}
+
+
 
 {% block footer_content %}
 <div class="container small-cta-touts hide-on-print">
