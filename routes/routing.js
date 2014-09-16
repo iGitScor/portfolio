@@ -1,16 +1,22 @@
-
-/*
+/**
+ * routing.js
  * GET routing listing.
+ * SCOR (iGitScor : http://github.com/iGitScor)
+ *
  */
+
+exports.personnalite = function(req, res){
+  res.render('cv/extended/personnalite', { title: 'Ma personnalité' });
+};
+
+exports.network = function(req, res) {
+    res.render('network', {title: 'Mon réseau'});
+};
 
 // Shorten URLs
 // URL [HOST]/knov
 exports.knov = function(req, res){
   res.render('projects/knov', { title: 'Knov' });
-};
-
-exports.personnalite = function(req, res){
-  res.render('cv/extended/personnalite', { title: 'Ma personnalité' });
 };
 
 // Generic routing
@@ -21,17 +27,5 @@ exports.project = function(req, res) {
 
     res.render('projects/'+name, {
         title: name
-    })
-};
-
-exports.private = function(req, res) {
-    res.render('private/index', {title: 'Private'});
-};
-
-exports.auth = function(req, res) {
-    res.render('private/auth', {title: 'Private'});
-};
-
-exports.style = function(req, res) {
-    res.render('network', {title: 'Mon réseau'});
+    });
 };
