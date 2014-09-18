@@ -221,27 +221,32 @@ app.get('/contact/:type', function(req, res) {
     }
 });
 
+app.get('/contact/:type/email', function(req, res) {
+    res.render('emails/'+req.params.type);
+});
+
 app.post('/contact/:type', function(req, res) {
     // Filter allowed type to avoid bots attack
     if (!!~allowedContactForms.indexOf(req.params.type)) {
       res.render('contact', { name: req.param('name'), type: req.params.type });
     
-/*    mailer.send(
-      { host:           process.env.SMTP_HOST
-      , port:           process.env.SMTP_PORT
-      , to:             process.env.SMTP_ACCOUNT
-      , from:           process.env.SMTP_SENDER
-      , subject:        "Contact form"
-      , body:           req.param('msg')
-      , authentication: "login"
-      , username:       process.env.SMTP_ACCOUNT
-      , password:       process.env.SMTP_PASSWORD
-      }, function(error, result){
-        if (error) {
-          console.log(error);
+      mailer.send(
+        { host:           process.env.SMTP_HOST
+        , port:           process.env.SMTP_PORT
+        , to:             process.env.SMTP_ACCOUNT
+        , from:           process.env.SMTP_SENDER
+        , subject:        "Contact form"
+        , template:       "./views/emails/" + req.params.type + ".html"
+        , data:           { "message": req.param('msg'), "name": req.param('name') }
+        , authentication: "login"
+        , username:       process.env.SMTP_ACCOUNT
+        , password:       process.env.SMTP_PASSWORD
+        }, function(error, result){
+            if (error) {
+                // console.log(error);
+            }
         }
-      }
-    );*/
+      );
     }
     else {
       // Redirect to the homepage
