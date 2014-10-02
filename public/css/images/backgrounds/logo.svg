@@ -1,0 +1,37 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="svg-editor-canvas" class="canvas" width="100%" height="100%"><g data-item-type="text" data-item="Business" id="logo__item--business" class="logo__item">
+                <g class="logo__item__inner" transform="translate(564.5 270.00947960080396) scale(1.6105377269132555 1.6105377269132555) rotate(0 0 0)">
+                    <text data-part-id="logo__item--business__0" dominant-baseline="text-before-edge" alignment-baseline="text-before-edge" font-family="Montserrat" font-size="32px" fill="#00ADEE" letter-spacing="0" font-weight="bold" font-style="normal">SCOR</text>
+                </g>
+            </g><g data-item-type="image" data-item="Image" data-logo-item="" id="logo__item--logo_0" class="logo__item">
+    <g class="logo__item__inner" transform="translate(560.8493084126001 288.5) scale(1.537672970171942 1.537672970171942) rotate(0 0 0)">
+        
+<g>
+	<rect x="39.551" y="76.664" fill="#00ADEE" width="22.544" height="4.959" data-part-id="logo__item--logo_0__0"></rect>
+	<g>
+		<polygon fill="#231F20" points="82.749,70.316 18.9,70.316 18.9,59.146 21.256,59.146 16.53,50.961 11.804,59.146 14.158,59.146     14.158,75.053 87.489,75.053 87.489,50.961 82.749,50.961   " data-part-id="logo__item--logo_0__1"></polygon>
+		<polygon fill="#00ADEE" points="18.9,25.055 82.749,25.055 82.749,36.221 80.392,36.221 85.122,44.407 89.844,36.221     87.489,36.221 87.489,20.315 14.158,20.315 14.158,44.407 18.9,44.407   " data-part-id="logo__item--logo_0__2"></polygon>
+	</g>
+	<g>
+		<g>
+			<rect x="26.519" y="32.938" fill="#231F20" width="48.61" height="0.647" data-part-id="logo__item--logo_0__3"></rect>
+		</g>
+		<g>
+			<rect x="26.519" y="38.707" fill="#231F20" width="48.61" height="0.647" data-part-id="logo__item--logo_0__4"></rect>
+		</g>
+		<g>
+			<rect x="26.519" y="44.476" fill="#231F20" width="48.61" height="0.647" data-part-id="logo__item--logo_0__5"></rect>
+		</g>
+		<g>
+			<rect x="26.519" y="50.245" fill="#231F20" width="48.61" height="0.648" data-part-id="logo__item--logo_0__6"></rect>
+		</g>
+		<g>
+			<rect x="26.519" y="56.014" fill="#231F20" width="48.61" height="0.648" data-part-id="logo__item--logo_0__7"></rect>
+		</g>
+		<g>
+			<rect x="26.519" y="61.783" fill="#231F20" width="48.61" height="0.65" data-part-id="logo__item--logo_0__8"></rect>
+		</g>
+	</g>
+</g>
+
+    </g>
+</g></svg>
