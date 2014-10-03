@@ -52,11 +52,11 @@ app.configure(function() {
   app.use(passport.session());
   app.use(app.router);
   app.use(express.compress());
-  app.use(express.static(path.join(__dirname, 'public'),  { maxAge: 86400000 }));
+  app.use(express.static(path.join(__dirname, 'public'),  { maxAge: 604800000 }));
   app.use(express.favicon(__dirname + '/public/img/favicon.ico'));
   
   app.use(function(req, res, next) {
-    res.setHeader("Cache-Control", "max-age=" + 86400000);
+    res.setHeader("Cache-Control", "max-age=" + 604800000);
     return next();
   });
 
