@@ -55,6 +55,9 @@ app.configure(function() {
   app.use(express.static(path.join(__dirname, 'public'),  { maxAge: 604800000 }));
   app.use(express.favicon(__dirname + '/public/img/favicon.ico'));
   
+  /*
+   * Cache-control on all ressources
+   */
   app.use(function(req, res, next) {
     res.setHeader("Cache-Control", "max-age=" + 604800000);
     return next();
