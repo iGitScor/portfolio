@@ -40,11 +40,11 @@ exports.index = function(req, res){
         }
     });
     
-    if (!fs.existsSync('public/css/dist/index-min-yui.css')) {
-        fs.writeFileSync('public/css/dist/index-min-yui.css', '');
+    if (!fs.existsSync('public/css/index-min-yui.css')) {
+        fs.writeFileSync('public/css/index-min-yui.css', '');
     }
     
-    fs.stat('public/css/dist/index-min-yui.css', function(err, stats) {
+    fs.stat('public/css/index-min-yui.css', function(err, stats) {
         var dInterval;
         if (stats.size > 0) {
             var now = new Date();
