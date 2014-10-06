@@ -63,7 +63,7 @@ exports.index = function(req, res){
                 type: 'yui-css',
                 publicFolder: 'public/css/',
                 fileIn: ['style-1.0.min.css', 'layout-1.0.min.css', 'hint.css', 'badge-1.0.min.css', 'pages/cv.presentation.css', 'external/owl.carousel.css', 'animation-1.0.min.css', 'sprite.flags-1.0.min.css'],
-                fileOut: 'public/css/dist/index-min-yui.css',
+                fileOut: 'public/css/index-min-yui.css',
                 callback: function(err, min){
                     console.log(err);
                 }
