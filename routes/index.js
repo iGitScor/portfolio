@@ -14,14 +14,19 @@ exports.index = function(req, res){
     }
     
     fs.stat('public/js/dist/index-min-gcc.js', function(err, stats) {
-        var now = new Date();
-        var mTime = new Date(stats.mtime);
+        var dInterval;
+        if (stats.size > 0) {
+            var now = new Date();
+            var mTime = new Date(stats.mtime);
         
-        var interval = Math.abs(now.getTime() - mTime.getTime());
-        var dInterval = interval / (1000 * 3600 * 24); 
+            var interval = Math.abs(now.getTime() - mTime.getTime());
+            dInterval = interval / (1000 * 3600 * 24);
+        } else {
+            dInterval = -1;
+        }
         
         // One week cache
-        if (dInterval > 7) {
+        if (dInterval > 7 || dInterval == -1) {
             // Using Google Closure
             new compressor.minify({
                 type: 'gcc',
