@@ -2,6 +2,12 @@
 
 {% block title %}{{ title }}{% endblock %}
 
+{% block head_style %}
+  {% parent %}
+  <link rel="stylesheet" href="/css/badge.css">
+  <link rel="stylesheet" href="/css/pages/cv.presentation.css">
+{% endblock %}
+
 {% block header_content %}
 <nav id="primary">          
 	<ul class="tiny-hide">
