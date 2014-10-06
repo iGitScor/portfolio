@@ -74,6 +74,10 @@ figure {
 figure img {
 	width: 100%
 }
+figure.figure-with-caption {
+	width: 100%;
+	max-width: 255px
+}
 * {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
