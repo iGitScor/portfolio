@@ -233,7 +233,8 @@ app.get('/contact/:type', function(req, res) {
   // Filter allowed type
   if (!!~allowedContactForms.indexOf(req.params.type)) {
     res.render('contact', {
-      type: req.params.type
+      type: req.params.type,
+      title: 'Contact'
     });
   }
   else {
@@ -255,7 +256,8 @@ app.post('/contact/:type', function(req, res) {
   if (!!~allowedContactForms.indexOf(req.params.type)) {
     res.render('contact', {
       name: req.param('name'),
-      type: req.params.type
+      type: req.params.type,
+      title: 'Contact'
     });
 
     mailer.send({

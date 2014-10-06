@@ -9,7 +9,7 @@ exports.index = function(req, res){
     res.render(
         'index', 
         { 
-            title: 'Express', 
+            title: 'Curriculum vitae', 
             message: req.flash('information') 
         }
     );
