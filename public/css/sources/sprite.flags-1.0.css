@@ -1,0 +1,50 @@
+.flags-cat,.flags-cz,.flags-dk,.flags-fr,.flags-gb,.flags-hr,.flags-is,.flags-it,.flags-rs,.flags-si,.flags-us {
+    background: url(../img/flags/flags.png) no-repeat top left;
+    width: 16px;
+    height: 11px;
+    display: inline-block;
+}
+
+.flags-cat {
+    background-position: 0 0;
+}
+
+.flags-cz {
+    background-position: 0 -13px;
+}
+
+.flags-dk {
+    background-position: 0 -26px;
+}
+
+.flags-fr {
+    background-position: 0 -39px;
+}
+
+.flags-gb {
+    background-position: 0 -52px;
+}
+
+.flags-hr {
+    background-position: 0 -65px;
+}
+
+.flags-is {
+    background-position: 0 -78px;
+}
+
+.flags-it {
+    background-position: 0 -91px;
+}
+
+.flags-rs {
+    background-position: 0 -104px;
+}
+
+.flags-si {
+    background-position: 0 -117px;
+}
+
+.flags-us {
+    background-position: 0 -130px;
+}
