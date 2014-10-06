@@ -3,7 +3,7 @@
 .page svg text{cursor:default;font-weight:bold;font-size:27.5px;}
 .page .custom-feature{padding:0;}
 .page .custom-feature img{max-width:150px;max-height:150px;}
-.page .custom-feature img.talent-icon-big{height:150px;width:150px;margin-top:-10px;}
+.page .custom-feature img.talent-icon-big{height:78px;width:48px;margin-top:-10px;position:relative;padding-bottom:0;padding-top:38px;left:12px;}
 .presentation-image{max-height:150px;margin-top:10px;}
 .presentation-title{font-weight:bolder;}
 .presentation-title.communicate{color:#f1c40f;}
@@ -11,4 +11,9 @@
 .presentation-title.dare{color:#e74c3c;}
 .presentation-title.adapt{color:#27ae60;}
 .presentation-title.excel{color:#9b59b6;}
-.talent-icon{max-height:64px;max-width:64px;}
+.talent-icon{height:48px;width:48px;display:inline-block;background: url('../../img/talent/talent.png') no-repeat top left;}
+.talent-adapt{ background-position:0 0;} 
+.talent-communicate{ background-position:-50px 0;} 
+.talent-dare{ background-position:-100px 0;} 
+.talent-excel{ background-position:-150px 0;} 
+.talent-manage{ background-position:-200px 0;} 

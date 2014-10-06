@@ -295,7 +295,6 @@ sitemap({
     '/': ['get'],
     '/ma-personnalite': ['get'],
     '/mon-reseau-social': ['get'],
-    '/contact': ['get', 'post'],
     '/projets/knov': ['get'],
     '/projets/js13k': ['get'],
     '/contact/formulaire-de-contact': ['get', 'post'],
