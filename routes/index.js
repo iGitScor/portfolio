@@ -77,7 +77,7 @@ exports.index = function(req, res){
             title: 'Curriculum vitae', 
             message: req.flash('information'),
             scripts: '/js/dist/index-min-gcc.js',
-            styles: '/css/dist/index-min-yui.css'
+            styles: '/css/index-min-yui.css'
         }
     );
 };
