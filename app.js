@@ -13,6 +13,7 @@ var express = require('express'),
   routes = require('./routes'),
   routing = require('./routes/routing'),
   sitemap = require('express-sitemap'),
+  appSitemap = require('./scripts/sitemap.js'),
   http = require('http'),
   path = require('path'),
   swig = require('swig'),
@@ -21,7 +22,7 @@ var express = require('express'),
   flash = require('connect-flash'),
   mailer = require("mailer"),
   fileSystem = require('fs'),
-  auth = require('./auth.js');
+  auth = require('./scripts/auth.js');
 
 // Instanciate express framework
 var app = express();
@@ -162,7 +163,6 @@ passport.use(new GitHubStrategy({
     });
   }
 ));
-
 
 /***************************************************** 
  ***                     Routing
