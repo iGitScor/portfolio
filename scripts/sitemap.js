@@ -51,5 +51,5 @@ exports.generateSitemap = function(url) {
                 priority: 0.5,
             },
         },
-    }).toFile();
+    }).XMLtoFile();
 };
