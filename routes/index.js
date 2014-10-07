@@ -35,10 +35,12 @@ exports.index = function(req, res) {
             new compressor.minify({
                 type: 'gcc',
                 publicFolder: 'public/js/',
-                fileIn: ['external/jquery-2.1.0.min.js', 'session-1.0.min.js', 'external/owl.carousel.min.js', 'animation-1.0.min.js'],
+                fileIn: ['external/jquery-2.1.0.min.js', 'sources/menu-1.0.js', 'sources/session-1.0.js', 'external/owl.carousel.min.js', 'sources/animation-1.0.js'],
                 fileOut: 'public' + compiledJSPath,
                 callback: function(err, min) {
-                    console.log(err);
+                    if (err) {
+                        console.error(err);
+                    }
                 }
             });
         }
@@ -70,7 +72,9 @@ exports.index = function(req, res) {
                 fileIn: ['style-1.0.min.css', 'layout-1.0.min.css', 'hint.css', 'badge-1.0.min.css', 'pages/cv.presentation.css', 'external/owl.carousel.css', 'animation-1.0.min.css', 'sprite.flags-1.0.min.css'],
                 fileOut: 'public' + compiledCSSPath,
                 callback: function(err, min) {
-                    console.log(err);
+                    if (err) {
+                        console.error(err);
+                    }
                 }
             });
         }

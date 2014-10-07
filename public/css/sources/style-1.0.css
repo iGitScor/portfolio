@@ -2159,11 +2159,11 @@ body header#main-header nav#primary>ul:after {
 	clear: both;
 	display: block
 }
-body header#main-header nav#primary select#alt-nav {
+body header#main-header nav#primary select#mobile-navigation {
 	display: none
 }
 @media only screen and (max-width: 767px) {
-	body header#main-header nav#primary select#alt-nav {
+	body header#main-header nav#primary select#mobile-navigation {
 		display: inline-block;
 		float: right;
 		margin: 0 20px;
@@ -2184,7 +2184,7 @@ only screen and (max-width: 767px) and (-o-min-device-pixel-ratio: 2.6 / 2),
 only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.3),
 only screen and (max-width: 767px) and (min-device-pixel-ratio: 1.3),
 only screen and (max-width: 767px) and (min-resolution: 1.3dppx) {
-	body header#main-header nav#primary select#alt-nav {
+	body header#main-header nav#primary select#mobile-navigation {
 		background-image: url("./images/site/mobile-menu@2x.png");
 		background-size: 44px 31px!important
 	}
