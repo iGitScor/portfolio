@@ -12,7 +12,6 @@
 var express = require('express'),
   routes = require('./routes'),
   routing = require('./routes/routing'),
-  sitemap = require('express-sitemap'),
   appSitemap = require('./scripts/sitemap.js'),
   http = require('http'),
   path = require('path'),
@@ -20,7 +19,7 @@ var express = require('express'),
   passport = require('passport'),
   GitHubStrategy = require('passport-github').Strategy,
   flash = require('connect-flash'),
-  mailer = require("mailer"),
+  mailer = require("./scripts/mailer.js"),
   fileSystem = require('fs'),
   auth = require('./scripts/auth.js');
 
@@ -53,11 +52,13 @@ app.configure(function() {
   app.use(passport.session());
   app.use(app.router);
   app.use(express.compress());
-  app.use(express.static(path.join(__dirname, 'public'),  { maxAge: 604800000 }));
+  app.use(express.static(path.join(__dirname, 'public'), {
+    maxAge: 604800000
+  }));
   app.use(express.favicon(__dirname + '/public/img/favicon.ico'));
-  
+
   /*
-   * Cache-control on all ressources
+   * Cache-control on all resources
    */
   app.use(function(req, res, next) {
     res.setHeader("Cache-Control", "max-age=" + 604800000);
@@ -260,25 +261,12 @@ app.post('/contact/:type', function(req, res) {
       title: 'Contact'
     });
 
-    mailer.send({
-      host: process.env.SMTP_HOST,
-      port: process.env.SMTP_PORT,
-      to: process.env.SMTP_ACCOUNT,
-      from: process.env.SMTP_SENDER,
-      subject: "Contact form",
-      template: "./views/emails/" + req.params.type + ".html",
-      data: {
-        "message": req.param('msg'),
-        "name": req.param('name')
-      },
-      authentication: "login",
-      username: process.env.SMTP_ACCOUNT,
-      password: process.env.SMTP_PASSWORD
-    }, function(error, result) {
-      if (error) {
-        // console.log(error);
-      }
-    });
+    var options = {
+      type: req.params.type,
+      message: req.param('msg'),
+      name: req.param('name'),
+    };
+    mailer.sendMail(options);
   }
   else {
     // Redirect to the homepage
@@ -289,53 +277,7 @@ app.post('/contact/:type', function(req, res) {
 /***************************************************** 
  ***                     Sitemap
  *****************************************************/
-sitemap({
-  url: app.get('_scorURL'),
-  map: {
-    '/': ['get'],
-    '/ma-personnalite': ['get'],
-    '/mon-reseau-social': ['get'],
-    '/projets/knov': ['get'],
-    '/projets/js13k': ['get'],
-    '/contact/formulaire-de-contact': ['get', 'post'],
-    '/contact/formulaire-embauche': ['get', 'post'],
-    '/resources/CORREAUD-Curriculum_vitae.pdf': ['get'],
-  },
-  route: {
-    '/': {
-      changefreq: 'daily',
-      priority: 1.0,
-    },
-    '/ma-personnalite': {
-      changefreq: 'daily',
-      priority: 0.8,
-    },
-    '/mon-reseau-social': {
-      changefreq: 'daily',
-      priority: 0.9,
-    },
-    '/projets/knov': {
-      changefreq: 'daily',
-      priority: 0.7,
-    },
-    '/projets/js13k': {
-      changefreq: 'daily',
-      priority: 0.7,
-    },
-    '/contact/formulaire-de-contact': {
-      changefreq: 'daily',
-      priority: 0.5,
-    },
-    '/contact/formulaire-embauche': {
-      changefreq: 'daily',
-      priority: 0.5,
-    },
-    '/resources/CORREAUD-Curriculum_vitae.pdf': {
-      changefreq: 'daily',
-      priority: 0.5,
-    },
-  },
-}).toFile();
+appSitemap.generateSitemap(app.get('_scorURL'));
 
 app.get('/sitemap.xml', function(req, res) {
   res.set('Content-Type', 'text/xml');
