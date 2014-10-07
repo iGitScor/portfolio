@@ -85,7 +85,8 @@ exports.index = function(req, res) {
             title: 'Curriculum vitae',
             message: req.flash('information'),
             scripts: compiledJSPath,
-            styles: compiledCSSPath
+            styles: compiledCSSPath,
+            meta_description: "Porfolio Sébastien CORREAUD Ingénieur Informatique spécialisé dans le développement web et mobile"
         }
     );
 };

@@ -8,7 +8,7 @@
       <meta http-equiv="content-type" content="text/html; charset=UTF-8">
       <meta http-equiv="content-language" content="fr-FR">
       
-      <meta name="author" content="Sebastien Correaud">
+      <meta name="author" content="CORREAUD Sébastien">
       <meta name="twitter:card" content="summary">
       <meta name="twitter:site" content="@iTweetScor">
       <meta name="twitter:creator" content="@iTweetScor">
@@ -18,14 +18,19 @@
       <meta name="twitter:image:width" content="57">
       <meta name="twitter:image:height" content="57">
       <meta name="twitter:url" content="http://sebastien-correaud.herokuapp.com/">
-      <meta name="keywords" content="portfolio, mobile, developpement, web, informatique, professionnel, correaud">
-      <meta name="description" content="Le portfolio de Sébastien Correaud, développeur mobile et web. Présentation de son expérience et de ses projets.">
+      <meta name="keywords" content="Sébastien, CORREAUD, informatique, Portfolio, science computer, web, mobile, developpement, AngularJS, NodeJS, PHP, Javascript">
+      {% if meta_description %}
+        <meta name="description" content={{ meta_description }}>
+      {% else %}
+        <meta name="description" content="Portfolio de Sébastien Correaud, développeur mobile et web. Présentation de son expérience et de ses projets.">
+      {% endif %}
+      <meta name="copyright" content="© CORREAUD Sébastien">
       <meta name="robots" content="index,follow">
       <meta name="viewport" content="width=device-width, initial-scale=.95, maximum-scale=.95">
       
       <meta name="google-site-verification" content="z6uHhh4cKq8yJIjPOQBPTUaSwqB9JxQb82HnCqdo3m4" />
       
-      <title>S&eacute;bastien Correaud - Portfolio - {{ title }}</title>
+      <title>S&eacute;bastien Correaud - Ing&eacute;nieur informatique d&eacute;veloppement Web &amp; Mobile - {{ title }}</title>
     
       {% block head_style %}
         <!-- Website style -->
