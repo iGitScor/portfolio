@@ -12,7 +12,24 @@
 {% endblock %}
 
 {% block header_content %}
-<nav id="primary">          
+<nav id="primary">
+  <select id="mobile-navigation">
+    <option></option>
+    <optgroup label="Accès rapide">
+	    <option value="#presentation">Pr&eacute;sentation</option>
+	    <option value="#parcours-professionnel">Carri&egrave;re</option>
+	    <option value="#realisations">R&eacute;alisations</option>
+	    <option value="#competences">Comp&eacute;tences</option>
+	  </optgroup>
+    <optgroup label="Contenu">
+	    <option value="/mon-reseau-social">R&eacute;seaux sociaux</option>
+	  </optgroup>
+	  <optgroup label="Contact">
+	  	<option value="/contact/formulaire-de-contact">Vous souhaitez me contacter ?</option>
+	    <option value="/contact/formulaire-embauche">Vous souhaitez m'embaucher ?</option>
+	  </optgroup>
+  </select>
+
 	<ul class="tiny-hide">
 		<li class="topnav here">
   		<a href="#" title="Curriculum vitae">Mon curriculum vit&#230;</a>
