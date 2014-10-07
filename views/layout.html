@@ -20,7 +20,7 @@
       <meta name="twitter:url" content="http://sebastien-correaud.herokuapp.com/">
       <meta name="keywords" content="Sébastien, CORREAUD, informatique, Portfolio, science computer, web, mobile, developpement, AngularJS, NodeJS, PHP, Javascript">
       {% if meta_description %}
-        <meta name="description" content={{ meta_description }}>
+        <meta name="description" content="{{ meta_description }}">
       {% else %}
         <meta name="description" content="Portfolio de Sébastien Correaud, développeur mobile et web. Présentation de son expérience et de ses projets.">
       {% endif %}
@@ -30,7 +30,7 @@
       
       <meta name="google-site-verification" content="z6uHhh4cKq8yJIjPOQBPTUaSwqB9JxQb82HnCqdo3m4" />
       
-      <title>S&eacute;bastien Correaud - Ing&eacute;nieur informatique d&eacute;veloppement Web &amp; Mobile - {{ title }}</title>
+      <title>S&eacute;bastien Correaud - Ing&eacute;nieur informatique Web &amp; Mobile - {{ title }}</title>
     
       {% block head_style %}
         <!-- Website style -->
@@ -84,7 +84,8 @@
           			<div class="row">
           				<div id="logo">
             					<a href="/" title="Home">S&eacute;bastien Correaud</a>
-            					<h6>S&eacute;bastien Correaud</h6>
+            					<h1><small>S&eacute;bastien Correaud</small></h1>
+            					<h6>Ing&eacute;nieur d&eacute;veloppement Web &amp; Mobile</h6>
           				</div>
     
                   {% block header_content %}{% endblock %}

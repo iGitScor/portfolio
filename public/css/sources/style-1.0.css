@@ -2001,17 +2001,18 @@ body header#main-header.state-transitionless {
 }
 body header#main-header #logo {
 	float: left;
-	width: 308px;
+	width: 400px;
 	height: 83px;
 	margin: 15px 0 0 19px
 }
 body header#main-header #logo a {
 	display: block;
-	width: 308px;
+	width: 80px;
 	height: 0;
 	overflow: hidden;
 	background: url("../img/apple/apple-touch-icon-76x76.png") 0 0 no-repeat;
 	padding-top: 83px;
+	float: left;
 }
 @media(min--moz-device-pixel-ratio:1.3),(-o-min-device-pixel-ratio:2.6 / 2),
 (-webkit-min-device-pixel-ratio:1.3),
