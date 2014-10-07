@@ -73,6 +73,10 @@ body form button[type=submit] {
     border-bottom: 1px dotted;
 }
 
+select#mobile-navigation:focus {
+  font-size: 16px;
+}
+
 /*************************************
 	Print page
 **************************************/
