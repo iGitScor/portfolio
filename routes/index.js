@@ -35,11 +35,13 @@ exports.index = function(req, res) {
             new compressor.minify({
                 type: 'gcc',
                 publicFolder: 'public/js/',
-                fileIn: ['external/jquery-2.1.0.min.js', 'sources/menu-1.0.js', 'sources/session-1.0.js', 'external/owl.carousel.min.js', 'sources/animation-1.0.js'],
+                fileIn: ['external/jquery-2.1.0.min.js', 'sources/share-1.0.js', 'sources/menu-1.0.js', 'sources/session-1.0.js', 'external/owl.carousel.min.js', 'sources/animation-1.0.js'],
                 fileOut: 'public' + compiledJSPath,
                 callback: function(err, min) {
                     if (err) {
                         console.error(err);
+                    } else {
+                        console.log("GO GO GO GO GO");
                     }
                 }
             });
