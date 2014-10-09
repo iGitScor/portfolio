@@ -1,4 +1,17 @@
 {
+  "common": {
+    "menu": {
+      "home": "Home",
+      "dev": "Development area",
+      "network": "My social network"
+    },
+    "footer": {
+      "about": "About me",
+      "phone": "Phone number",
+      "downloadcard": "Download my card",
+      "follow": "Follow me"
+    }
+  },
   "form": {
     "title": "Contact form",
     "common": {
@@ -14,6 +27,10 @@
             "label": "Message"
         },
         "send": "Send"
+    },
+    "success": {
+        "thankyou": "Thank you",
+        "message": "for your message"
     }
   },
   "error": {

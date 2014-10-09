@@ -1,4 +1,17 @@
 {
+  "common": {
+    "menu": {
+      "home": "Accueil",
+      "dev": "Zone développement",
+      "network": "Mon réseau"
+    },
+    "footer": {
+      "about": "A propos de moi",
+      "phone": "Téléphone",
+      "downloadcard": "Télécharger ma Carte de visite",
+      "follow": "Me suivre"
+    }
+  },
   "form": {
     "title": "Formulaire de contact",
     "common": {
