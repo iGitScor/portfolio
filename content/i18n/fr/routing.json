@@ -1,0 +1,18 @@
+{
+    "urls": {
+        "contact": {
+            "url": "formulaire-de-contact"
+        },
+        "hire": {
+            "url": "formulaire-embauche"
+        },
+        "network": {
+            "url": "mon-reseau-social",
+            "title": "Mon réseau"
+        },
+        "personality": {
+            "url": "ma-personnalite",
+            "title": "Ma personnalité"
+        }
+    }
+}

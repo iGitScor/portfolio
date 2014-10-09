@@ -1,0 +1,18 @@
+{
+    "urls": {
+        "contact": {
+            "url": "contact-form"
+        },
+        "hire": {
+            "url": "job-proposal-form"
+        },
+        "network": {
+            "url": "my-social-network",
+            "title": "My network"
+        },
+        "personality": {
+            "url": "my-personality",
+            "title": "My personality"
+        }
+    }
+}

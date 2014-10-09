@@ -4,16 +4,18 @@
  * SCOR (iGitScor : http://github.com/iGitScor)
  *
  */
+ 
+var i18n = require('i18next');
 
 exports.personnalite = function(req, res) {
     res.render('cv/extended/personnalite', {
-        title: 'Ma personnalité'
+        title: i18n.t('routing:urls.personality.title')
     });
 };
 
 exports.network = function(req, res) {
     res.render('network', {
-        title: 'Mon réseau'
+        title: i18n.t('routing:urls.network.title')
     });
 };
 
