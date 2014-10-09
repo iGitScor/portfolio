@@ -1,56 +1,67 @@
 {
     "technical": {
-        "lang": "en"
+        "lang": "fr"
+    },
+    "urls": {
+        "contact": {
+            "url": "formulaire-de-contact"
+        },
+        "hire": {
+            "url": "formulaire-embauche"
+        },
+        "network": {
+            "url": "mon-reseau-social"
+        }
     },
     "common": {
         "seo": {
-            "role": "Web IT & Mobile engineer"
+            "role": "Ingénieur informatique Web & Mobile"
         },
         "me": {
-            "role": "Web & Mobile Development Engineer"
+            "role": "Ingénieur développement Web & Mobile"
         },
         "menu": {
-            "home": "Home",
-            "dev": "Development area",
-            "network": "My social network"
+            "home": "Accueil",
+            "dev": "Zone développement",
+            "network": "Mon réseau"
         },
         "footer": {
-            "about": "About me",
-            "phone": "Phone number",
-            "downloadcard": "Download my card",
-            "follow": "Follow me"
+            "about": "A propos de moi",
+            "phone": "Téléphone",
+            "downloadcard": "Télécharger ma Carte de visite",
+            "follow": "Me suivre"
         }
     },
     "form": {
-        "title": "Contact form",
+        "title": "Formulaire de contact",
         "common": {
             "email": {
-                "placeholder": "Enter your email...",
+                "placeholder": "Entrer votre email...",
                 "label": "Email"
             },
             "name": {
-                "placeholder": "Enter your name...",
-                "label": "Name"
+                "placeholder": "Entrer votre nom...",
+                "label": "Nom"
             },
             "message": {
                 "label": "Message"
             },
-            "send": "Send"
+            "send": "Envoyer"
         },
         "success": {
-            "thankyou": "Thank you",
-            "message": "for your message"
+            "thankyou": "Merci",
+            "message": "pour votre message"
         }
     },
     "slideshow": {
-        "hire": "Hire me",
-        "contact": "Contact me",
-        "follow": "Follow me",
-        "projects": "My projects"
+        "hire": "Embauchez-moi",
+        "contact": "Contactez-moi",
+        "follow": "Suivez-moi",
+        "projects": "Mes projets"
     },
     "error": {
         "form": {
-            "404": "You have been redirected because the requested page does not exist"
+            "404": "Vous avez été redirigé car la page demandée n'existe pas"
         }
     }
 }

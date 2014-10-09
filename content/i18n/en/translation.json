@@ -8,6 +8,9 @@
         },
         "hire": {
             "url": "job-proposal-form"
+        },
+        "network": {
+            "url": "my-social-network"
         }
     },
     "common": {

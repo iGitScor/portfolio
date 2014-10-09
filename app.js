@@ -182,8 +182,8 @@ passport.use(new GitHubStrategy({
  ***                     Routing
  *****************************************************/
 app.get('/', routes.index);
-app.get('/ma-personnalite', routing.personnalite);
-app.get('/mon-reseau-social', routing.network);
+app.get('/ma-personnalite|/my-personality', routing.personnalite);
+app.get('/mon-reseau-social|/my-social-network', routing.network);
 app.get('/knov', routing.knov);
 app.get('/projets/:name', routing.project);
 

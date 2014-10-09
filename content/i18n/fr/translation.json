@@ -4,12 +4,13 @@
     },
     "urls": {
         "contact": {
-            "url": "formulaire-de-contact",
-            "name": "Formulaire de contact"
+            "url": "formulaire-de-contact"
         },
         "hire": {
-            "url": "formulaire-embauche",
-            "name": "Formulaire d'embauche"
+            "url": "formulaire-embauche"
+        },
+        "network": {
+            "url": "mon-reseau-social"
         }
     },
     "common": {
