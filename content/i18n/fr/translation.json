@@ -1,41 +1,56 @@
 {
-  "common": {
-    "menu": {
-      "home": "Accueil",
-      "dev": "Zone développement",
-      "network": "Mon réseau"
+    "technical": {
+        "lang": "fr"
     },
-    "footer": {
-      "about": "A propos de moi",
-      "phone": "Téléphone",
-      "downloadcard": "Télécharger ma Carte de visite",
-      "follow": "Me suivre"
-    }
-  },
-  "form": {
-    "title": "Formulaire de contact",
     "common": {
-        "email": {
-          "placeholder": "Entrer votre email...",
-          "label": "Email"
+        "seo": {
+            "role": "Ingénieur informatique Web & Mobile"
         },
-        "name": {
-            "placeholder": "Entrer votre nom...",
-            "label": "Nom"
+        "me": {
+            "role": "Ingénieur développement Web & Mobile"
         },
-        "message": {
-            "label": "Message"
+        "menu": {
+            "home": "Accueil",
+            "dev": "Zone développement",
+            "network": "Mon réseau"
         },
-        "send": "Envoyer"
+        "footer": {
+            "about": "A propos de moi",
+            "phone": "Téléphone",
+            "downloadcard": "Télécharger ma Carte de visite",
+            "follow": "Me suivre"
+        }
     },
-    "success": {
-        "thankyou": "Merci",
-        "message": "pour votre message"
-    }
-  },
-  "error": {
     "form": {
-      "404": "Vous avez été redirigé car la page demandée n'existe pas"
+        "title": "Formulaire de contact",
+        "common": {
+            "email": {
+                "placeholder": "Entrer votre email...",
+                "label": "Email"
+            },
+            "name": {
+                "placeholder": "Entrer votre nom...",
+                "label": "Nom"
+            },
+            "message": {
+                "label": "Message"
+            },
+            "send": "Envoyer"
+        },
+        "success": {
+            "thankyou": "Merci",
+            "message": "pour votre message"
+        }
+    },
+    "slideshow": {
+        "hire": "Embauchez-moi",
+        "contact": "Contactez-moi",
+        "follow": "Suivez-moi",
+        "projects": "Mes projets"
+    },
+    "error": {
+        "form": {
+            "404": "Vous avez été redirigé car la page demandée n'existe pas"
+        }
     }
-  }
 }

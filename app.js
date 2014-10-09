@@ -143,9 +143,11 @@ app.configure('development', function() {
 // Internationalization configuration.
 i18n.registerAppHelper(app);
 i18n.init({ 
+  lng: "fr",
   detectLngFromPath: 0,
   supportedLngs: ['fr', 'en'],
-  resGetPath: 'content/i18n/__lng__/__ns__.json'
+  resGetPath: 'content/i18n/__lng__/__ns__.json',
+  useCookie: false
 });
 
 
