@@ -242,7 +242,7 @@ app.get('/logout', function(req, res) {
 /***************************************************** 
  ***                     Contact
  *****************************************************/
-var allowedContactForms = ["formulaire-de-contact", "formulaire-embauche"];
+var allowedContactForms = ["formulaire-de-contact", "contact-form", "formulaire-embauche", "job-proposal-form"];
 app.get('/:lang/contact/:type', function(req, res) {
   // Filter allowed type
   if (!!~allowedContactForms.indexOf(req.params.type)) {

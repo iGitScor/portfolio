@@ -2,6 +2,14 @@
     "technical": {
         "lang": "en"
     },
+    "urls": {
+        "contact": {
+            "url": "contact-form"
+        },
+        "hire": {
+            "url": "job-proposal-form"
+        }
+    },
     "common": {
         "seo": {
             "role": "Web IT & Mobile engineer"

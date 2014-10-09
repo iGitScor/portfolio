@@ -2,6 +2,16 @@
     "technical": {
         "lang": "fr"
     },
+    "urls": {
+        "contact": {
+            "url": "formulaire-de-contact",
+            "name": "Formulaire de contact"
+        },
+        "hire": {
+            "url": "formulaire-embauche",
+            "name": "Formulaire d'embauche"
+        }
+    },
     "common": {
         "seo": {
             "role": "Ingénieur informatique Web & Mobile"
