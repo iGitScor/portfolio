@@ -6,7 +6,8 @@
  */
 
 var compressor = require('node-minify'),
-    fs = require("fs");
+    fs = require("fs"),
+    i18n = require("i18next");
 
 exports.index = function(req, res) {
     var compiledJSPath = '/js/dist-index-min-gcc.js',
@@ -88,7 +89,7 @@ exports.index = function(req, res) {
             message: req.flash('information'),
             scripts: compiledJSPath,
             styles: compiledCSSPath,
-            meta_description: "Porfolio Sébastien CORREAUD Ingénieur Informatique spécialisé dans le développement web et mobile"
+            meta_description: i18n.t("meta:description.home")
         }
     );
 };

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr" class="js pinned">
+<html lang="{{t('technical.lang')}}" class="js pinned">
     <head>
       {% block init_script %}
         <!-- Document initialization script -->
@@ -21,7 +21,7 @@
       {% if meta_description %}
         <meta name="description" content="{{ meta_description }}">
       {% else %}
-        <meta name="description" content="Portfolio de Sébastien Correaud, développeur mobile et web. Présentation de son expérience et de ses projets.">
+        <meta name="description" content="{{t('meta:description.default')}}">
       {% endif %}
       <meta name="robots" content="index,follow">
       <meta name="viewport" content="width=device-width, initial-scale=.95, maximum-scale=.95">

@@ -147,7 +147,11 @@ i18n.init({
   detectLngFromPath: 0,
   supportedLngs: ['fr', 'en'],
   resGetPath: 'content/i18n/__lng__/__ns__.json',
-  useCookie: false
+  useCookie: false,
+  ns: { 
+    namespaces: ['translation', 'meta'], 
+    defaultNs: 'translation'
+  } 
 });
 
 
