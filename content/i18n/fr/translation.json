@@ -1,0 +1,28 @@
+{
+  "form": {
+    "title": "Formulaire de contact",
+    "common": {
+        "email": {
+          "placeholder": "Entrer votre email...",
+          "label": "Email"
+        },
+        "name": {
+            "placeholder": "Entrer votre nom...",
+            "label": "Nom"
+        },
+        "message": {
+            "label": "Message"
+        },
+        "send": "Envoyer"
+    },
+    "success": {
+        "thankyou": "Merci",
+        "message": "pour votre message"
+    }
+  },
+  "error": {
+    "form": {
+      "404": "Vous avez été redirigé car la page demandée n'existe pas"
+    }
+  }
+}

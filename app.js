@@ -10,18 +10,19 @@
  *****************************************************/
 // Module dependencies / imports
 var express = require('express'),
-  routes = require('./routes'),
-  routing = require('./routes/routing'),
-  appSitemap = require('./scripts/sitemap.js'),
   http = require('http'),
   path = require('path'),
   swig = require('swig'),
+  fileSystem = require('fs'),
+  flash = require('connect-flash'),
   passport = require('passport'),
   GitHubStrategy = require('passport-github').Strategy,
-  flash = require('connect-flash'),
-  mailer = require("./scripts/mailer.js"),
-  fileSystem = require('fs'),
-  auth = require('./scripts/auth.js');
+  routes = require('./routes'),
+  routing = require('./routes/routing'),
+  appSitemap = require('./scripts/sitemap'),
+  mailer = require('./scripts/mailer'),
+  auth = require('./scripts/auth'),
+  i18n = require("i18next");
 
 // Instanciate express framework
 var app = express();
@@ -43,6 +44,7 @@ app.configure(function() {
   app.use(express.logger('dev'));
   app.use(express.cookieParser());
   app.use(express.bodyParser());
+  app.use(i18n.handle);
   app.use(express.methodOverride());
   app.use(express.session({
     secret: 'keyboard cat'
@@ -138,6 +140,15 @@ app.configure('development', function() {
   });
 });
 
+// Internationalization configuration.
+i18n.registerAppHelper(app);
+i18n.init({ 
+  detectLngFromPath: 0,
+  supportedLngs: ['fr', 'en'],
+  resGetPath: 'content/i18n/__lng__/__ns__.json'
+});
+
+
 /***************************************************** 
  ***                     Security
  *****************************************************/
@@ -230,7 +241,7 @@ app.get('/logout', function(req, res) {
  ***                     Contact
  *****************************************************/
 var allowedContactForms = ["formulaire-de-contact", "formulaire-embauche"];
-app.get('/contact/:type', function(req, res) {
+app.get('/:lang/contact/:type', function(req, res) {
   // Filter allowed type
   if (!!~allowedContactForms.indexOf(req.params.type)) {
     res.render('contact', {
@@ -243,16 +254,16 @@ app.get('/contact/:type', function(req, res) {
     res.writeHead(302, {
       'Location': '/'
     });
-    req.flash('information', "Vous avez été redirigé car la page demandée n'existe pas");
+    req.flash('information', i18n.t('error.form.404'));
     res.end();
   }
 });
 
-app.get('/contact/:type/email', function(req, res) {
+app.get('/:lang/contact/:type/email', function(req, res) {
   res.render('emails/' + req.params.type);
 });
 
-app.post('/contact/:type', function(req, res) {
+app.post('/:lang/contact/:type', function(req, res) {
   // Filter allowed type to avoid bots attack
   if (!!~allowedContactForms.indexOf(req.params.type)) {
     res.render('contact', {

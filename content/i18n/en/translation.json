@@ -1,0 +1,24 @@
+{
+  "form": {
+    "title": "Contact form",
+    "common": {
+        "email": {
+          "placeholder": "Enter your email...",
+          "label": "Email"
+        },
+        "name": {
+            "placeholder": "Enter your name...",
+            "label": "Name"
+        },
+        "message": {
+            "label": "Message"
+        },
+        "send": "Send"
+    }
+  },
+  "error": {
+    "form": {
+      "404": "You have been redirected because the requested page does not exist"
+    }
+  }
+}

@@ -4,7 +4,7 @@
 <nav id="primary">          
 	<ul class="tiny-hide">
 		<li class="topnav here">
-  		    <a href="#" title="Curriculum vitae">Formulaire de contact</a>
+  		    <a href="#" title="Curriculum vitae">{{t('form.title')}}</a>
 		</li>
   </ul>
 </nav>
@@ -18,24 +18,24 @@
                 {% if name %}
                 <div class="alert alert-success alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&#215;</button>
-                    <strong>Merci</strong> pour votre message <strong>{{name}}</strong>
+                    <strong>{{t('form.common.success.thankyou')}}</strong> {{t('form.common.success.message')}} <strong>{{name}}</strong>
                 </div>
                 {% endif %}
             
                 <form role="form" action={{ '/contact/' }}{{ type }} method="post" class="big-box columns end six push-three">
                     <div class="form-group">
-                        <label for="email" class="secondary">Email</label>
-                        <input type="email" name="email" class="form-control primary" id="email" placeholder="Entrer votre email...">
+                        <label for="email" class="secondary">{{t('form.common.email.label')}}</label>
+                        <input type="email" name="email" class="form-control primary" id="email" placeholder="{{t('form.common.email.placeholder')}}">
                     </div>
                     <div class="form-group">
-                        <label for="name" class="secondary">Nom</label>
-                        <input type="text" name="name" class="form-control primary" id="name" placeholder="Entrer votre nom...">
+                        <label for="name" class="secondary">{{t('form.common.name.label')}}</label>
+                        <input type="text" name="name" class="form-control primary" id="name" placeholder="{{t('form.common.name.placeholder')}}">
                     </div>
                     <div class="form-group">
-                        <label for="msg" class="secondary">Message</label>
+                        <label for="msg" class="secondary">{{t('form.common.message.label')}}</label>
                         <textarea name="msg" class="form-control primary" id="msg" rows="3"></textarea>
                     </div>
-                    <button type="submit" class="button-box blue">Envoyer</button>
+                    <button type="submit" class="button-box blue">{{t('form.common.send')}}</button>
                 </form>
             </section>
         </div>
