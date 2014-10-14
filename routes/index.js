@@ -89,7 +89,8 @@ exports.index = function(req, res) {
             message: req.flash('information'),
             scripts: compiledJSPath,
             styles: compiledCSSPath,
-            meta_description: i18n.t("meta:description.home")
+            meta_description: i18n.t("meta:description.home"),
+            query: req.query
         }
     );
 };
