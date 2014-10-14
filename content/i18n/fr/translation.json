@@ -90,6 +90,13 @@
     "error": {
         "form": {
             "404": "Vous avez été redirigé car la page demandée n'existe pas"
+        },
+        "page": {
+            "message": "Oops, il semblerait que quelque chose soit cassé !",
+            "backhome": {
+                "text": "Retour à la page d'accueil",
+                "here": "ici"
+            }
         }
     }
 }

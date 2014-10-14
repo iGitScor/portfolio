@@ -90,6 +90,13 @@
     "error": {
         "form": {
             "404": "You have been redirected because the requested page does not exist"
+        },
+        "page": {
+            "message": "Oops, it seems that something is broken !",
+            "backhome": {
+                "text": "Back to the homepage",
+                "here": "here"
+            }
         }
     }
 }

@@ -18,7 +18,7 @@
                 <img src="/img/error/{{errorCode}}.png" />
             </div>
             <div class="ten left">
-                <h2>Oops, il semblerait que quelque chose soit cass&eacute; !</h2>
+                <h2>{{t('error.page.message')}}</h2>
         	    <h3>{{error|raw}}</h3>
         	    {% if error.stack %}
         	        <code>
@@ -30,7 +30,7 @@
         	            Contactez-moi
         	        </li>-->
         	        <li class="check">
-        	            Retour &agrave; la page d'accueil : <a href="/" title="Accueil">ici</a>
+        	            {{t('error.page.backhome.text')}} : <a href="/{{t('technical.lang')}}/">{{t('error.page.backhome.here')}}</a>
         	        </li>
         	    </ul>
             </div>
