@@ -149,7 +149,7 @@ i18n.init({
   resGetPath: 'content/i18n/__lng__/__ns__.json',
   useCookie: false,
   ns: { 
-    namespaces: ['translation', 'meta', 'routing', 'cv'], 
+    namespaces: ['translation', 'meta', 'routing', 'cv', 'pages'], 
     defaultNs: 'translation'
   } 
 });
