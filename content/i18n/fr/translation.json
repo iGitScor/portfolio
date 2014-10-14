@@ -78,7 +78,8 @@
                 "title": "Loisirs"
             },
             "content" : "Contenu",
-            "contact": "Contact"
+            "contact": "Contact",
+            "quick": "Accès rapide"
         }
     },
     "slideshow": {

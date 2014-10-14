@@ -78,7 +78,8 @@
                 "title": "Hobbies"
             },
             "content" : "Content",
-            "contact": "Contact"
+            "contact": "Contact",
+            "quick": "Direct access"
         }
     },
     "slideshow": {
