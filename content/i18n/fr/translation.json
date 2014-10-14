@@ -2,17 +2,6 @@
     "technical": {
         "lang": "fr"
     },
-    "urls": {
-        "contact": {
-            "url": "formulaire-de-contact"
-        },
-        "hire": {
-            "url": "formulaire-embauche"
-        },
-        "network": {
-            "url": "mon-reseau-social"
-        }
-    },
     "common": {
         "seo": {
             "role": "Ingénieur informatique Web & Mobile"
@@ -30,6 +19,9 @@
             "phone": "Téléphone",
             "downloadcard": "Télécharger ma Carte de visite",
             "follow": "Me suivre"
+        },
+        "buttons": {
+            "project": "Voir la fiche du projet"
         }
     },
     "form": {
@@ -51,6 +43,42 @@
         "success": {
             "thankyou": "Merci",
             "message": "pour votre message"
+        }
+    },
+    "homepage": {
+        "navigation": {
+            "presentation": {
+                "anchor": "presentation",
+                "text": "Présentation",
+                "title": "Présentation"
+            },
+            "pro": {
+                "anchor": "parcours-professionnel",
+                "text": "Carrière",
+                "title": "Parcours professionnel"
+            },
+            "study": {
+                "anchor": "etudes",
+                "text": "Études",
+                "title": "Études"
+            },
+            "realisations": {
+                "anchor": "realisations",
+                "text": "Réalisations",
+                "title": "Réalisations"
+            },
+            "competences": {
+                "anchor": "competences",
+                "text": "Compétences",
+                "title": "Compétences"
+            },
+            "hobbies": {
+                "anchor": "loisirs",
+                "text": "Loisirs",
+                "title": "Loisirs"
+            },
+            "content" : "Contenu",
+            "contact": "Contact"
         }
     },
     "slideshow": {

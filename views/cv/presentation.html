@@ -1,20 +1,25 @@
-<div class="row" id="presentation" >
+<div class="row" id="{{t('homepage.navigation.presentation.anchor')}}" >
   	<div class="divider twelve columns end">
-		<p>Pr&eacute;sentation</p>
+		<p>{{t('homepage.navigation.presentation.title')}}</p>
   	</div>
   	
-  	<div class="three columns end">
+  	<div class="three columns end hide-on-print">
 		<img alt="Presentation" src="/img/content/visuel_presentation.png" class="presentation-image"/>
   	</div>
 
   	<div class="nine columns">
-		<p itemscope itemtype="http://data-vocabulary.org/Person">
-		Je m'appelle <span itemprop="name">S&eacute;bastien Correaud</span> et je suis <span itemprop="title">Ing&eacute;nieur d&eacute;veloppement Web</span> &agrave;  <span itemprop="address" itemscope itemtype="http://data-vocabulary.org/Address"><span itemprop="locality">Montpellier</span> (<span itemprop="region">H&eacute;rault</span>)</span> dans les domaines de l'open source et du cross-platform.
-		J'ai int&eacute;gr&eacute; l'&eacute;quipe de la WebFactory de la soci&eacute;t&eacute; CGI (anciennement Logica) pour des missions d'analyse et de d&eacute;veloppement au sein de divers projets Web, sur un socle technologique PHP (eZ Publish, Drupal, Symfony).<br />
-		Par la suite j'ai contribu&eacute; &agrave; la naissance et l'&eacute;volution d'un p&ocirc;le Mobilit&eacute; (iOS, HTML5 Cross-Platform, Android)<br />
-	    Je participe &eacute;galement &agrave; l'&eacute;volution du p&ocirc;le d&eacute;veloppement Web en r&eacute;alisant des missions diverses allant de formation de profils juniors &agrave; audit technique en passant par veille technologique.
-		</p>
+  		{% if query.cv !== 'print' %}
+			<p itemscope itemtype="http://data-vocabulary.org/Person">{{t('cv:presentation.intro')}}</p>
+		{% else %}
+			<ul class="bulletless" itemscope itemtype="http://data-vocabulary.org/Person">
+				<li itemprop="name">S&eacute;bastien Correaud</li>
+				<li>16, Rue Louis Braille, 34070 Montpellier</li>
+				<li>06 72 79 62 91</li>
+				<li>sebastien.correaud@gmail.com</li>
+			</ul>
+		{% endif %}
 		
+		{% if query.cv !== 'print' && t('technical.lang') == 'fr' %}
 		<div class="section-divider hide-on-print">
   			<h4>Moi</h4>
 		</div>
@@ -58,15 +63,21 @@
 			
         		<a href="/ma-personnalite" class="button-box" title="Ma personnalit&eacute;">D&eacute;tail de ma personnalit&eacute;</a>
 		</div>
+		
+		{% endif %}
+		
+		{% if query.cv !== 'print' %}
+		
 		<div class="section-divider hide-on-print">
-  			<h4>Mon projet</h4>
+  			<h4>{{t('cv:presentation.future.title')}}</h4>
 		</div>
 		
-		<h4 class="hide-on-print">Informatique</h4>
-		<p>
-		    Dans le milieu des <strong>nouvelles technologies</strong> depuis 4 ans, je souhaite poursuivre dans ce secteur et profiter de mon exp&eacute;rience Web dans l'encadrement pour viser une carri&egrave;re d'expert technique dans le monde du Web.<br />
-		    Principalement int&eacute;ress&eacute; par une &eacute;volution via une exp&eacute;rience de d&eacute;veloppeur Front-end Javascript (full stack Node.JS, AngularJS, Express), je souhaite progresser par &eacute;tape afin d'atteindre mon objectif.
-		</p>
+		<h4 class="hide-on-print">{{t('cv:presentation.future.computer.title')}}</h4>
+		<p>{{t('cv:presentation.future.computer.text')}}</p>
+		
+		{% endif %}
   	</div>
+  	{% if query.cv !== 'print' %}
   	<div class="print-clear">&nbsp;</div>
+  	{% endif %}
 </div>

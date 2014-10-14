@@ -1,0 +1,90 @@
+{
+    "presentation": {
+        "intro": "My name is <span itemprop='name'>Sebastien Correaud</span> and I'm an <span itemprop='title'>Web IT Engineer</span> in <span itemprop='address' itemscope itemtype='http://data-vocabulary.org/Address'><span itemprop='locality'>Montpellier</span> (<span itemprop='region'>Hérault</span>)</span> in the areas of open source and cross-platform. I joined the CGI's Webfactory Team (formerly Logica) for analysis and development tasks within various web projects, with a technologic LAMP platform (eZ Publish, Drupal, Symfony).<br />Subsequently I have contributed to the birth and evolution of a mobile development pole (iOS, HTML5 Cross-Platform, Android)<br />I also contribute to the evolution of the Webfactory team by achieving various missions like training junior staff, technical audits and technology watch.",
+        "me": {
+            "title": "Me",
+            "text": ""
+        },
+        "future": {
+            "title": "My project",
+            "computer": {
+                "title": "Computer science",
+                "text": "In the world of <strong>new technologies</strong> for 4 years, I wish to continue in this domain and use my web experience in management to target a technical expert career.<br />Mainly interested in evolution through a JavascriptFront-end Developer Front-end experience (full stack Node.JS, AngularJS, Express), I would improve myself by step to reach my goal."
+            }
+        }
+    },
+    "skills": {
+        "presentation": "Here is a syntactic presentation of my skills.",
+        "notes": {
+            "one": "Basics",
+            "two": "Familiar",
+            "three": "Competent",
+            "four": "Expert"
+        },
+        "degree": {
+            "low": "Low experience",
+            "secondary": "Secondary skills",
+            "primary": "Primary skills"
+        },
+        "technical": {
+            "title": "Technical skills"
+        },
+        "year": "year",
+        "years": "years",
+        "month": "month",
+        "months": "months",
+        "skill": "Skill level"
+    },
+    "realisations": {
+        "zori": "A musics sharing's website in real time.<br />Using Firebase as storage and server push, and AngularJS, RequireJS to the front-end site.",
+        "zorios": "iPhone version of Zori (for the front-end part).",
+        "knov": "A knowledge sharing's website in real time.<br />Using Firebase as storage and server push, and AngularJS, RequireJS to the front-end site.",
+        "js13k": "JS Game creation contest"
+    },
+    "study": {
+        "intro": "Following my degree, I opted for studies in the IT domain",
+        "bac" : {
+            "name": "Scientific BA levels",
+            "subname": "(Engineering science)",
+            "mention": "with honors",
+            "place": "\"Plaine de l'Ain\" high school at Ambérieu en Bugey"
+        },
+        "dut" : {
+            "name": "BTEC Higher National Diploma in computer",
+            "place": "at Montpellier"
+        },
+        "lp" : {
+            "name": "BSc",
+            "subname": "(e-business)",
+            "place": "at Montpellier"
+        }
+    },
+    "hobbies": {
+        "travel" :{
+            "title": "Traveling",
+            "google": "My Google maps",
+            "europe": {
+                "name": "Europe",
+                "one": {
+                    "title": "Train journey : euro trip",
+                    "presentation": "My trip to Europe is a train journey that lasted 16 days and has taken me to six different countries, with different cultures compared to what I'm used to rub in France."
+                },
+                "two": {
+                    "title": "Flight : Iceland",
+                    "presentation": "Volcano, glaciers, geysers and other northern lights, visit of the most westerly European country and one of the most underestimated, overlooked of the French."
+                },
+                "three": {
+                    "title": "Train journey : the big cities of Europe",
+                    "presentation": "Likely to appreciate big cities, it was completely logical that I venture into the visit of big cities, starting on the European continent.<br />Barcelona and Paris are both steps of this trip which will consider it others."
+                }
+            },
+            "america": {
+                "name": "America",
+                "one": {
+                    "title": "Flight : direction L.A.",
+                    "presentation": "California trip with a stopover in London on the way back and forth. Visit to London, Los Angeles and San Francisco for the first immersion in English-speaking countries."
+                }
+            }
+        }
+    }
+}

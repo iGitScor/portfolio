@@ -1,6 +1,6 @@
-<div class="row" id="parcours-professionnel">
+<div class="row" id="{{t('homepage.navigation.pro.anchor')}}">
   	<div class="divider twelve columns end">
-		<p>Parcours professionnel</p>
+		<p>{{t('homepage.navigation.pro.title')}}</p>
   	</div>
 
   	<div class="nine columns">
@@ -8,8 +8,10 @@
   	</div>
 
   	<div class="nine columns">
-		<p>J'ai rejoint l'agence CGI (ex Logica) de Montpellier en 2011. J'ai int&eacute;gr&eacute; la Web Factory, pour des missions d’analyse et de d&eacute;veloppement au sein de divers projets Web, sur un socle technologique PHP (eZ Publish, Drupal, Symfony) et Mobilit&eacute; (iOS, HTML5, Android).
-		</p>
+  		{% if query.cv !== 'print' %}
+			<p>J'ai rejoint l'agence CGI (ex Logica) de Montpellier en 2011. J'ai int&eacute;gr&eacute; la Web Factory, pour des missions d’analyse et de d&eacute;veloppement au sein de divers projets Web, sur un socle technologique PHP (eZ Publish, Drupal, Symfony) et Mobilit&eacute; (iOS, HTML5, Android).
+			</p>
+		{% endif %}
 		<p>En parall&egrave;le au d&eacute;veloppement je me suis orient&eacute; vers un poste plus technique, j'ai donc &eacute;t&eacute; amen&eacute; &agrave; r&eacute;aliser :</p>
 			<ul>
 				<li>Audits techniques PHP (eZPublish, CodeIgniter, Symfony)</li>

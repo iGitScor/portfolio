@@ -16,23 +16,23 @@
   <select id="mobile-navigation">
     <option>&nbsp;</option>
     <optgroup label="Accès rapide">
-	    <option value="#presentation">Pr&eacute;sentation</option>
-	    <option value="#parcours-professionnel">Carri&egrave;re</option>
-	    <option value="#realisations">R&eacute;alisations</option>
-	    <option value="#competences">Comp&eacute;tences</option>
+	    <option value="#{{t('homepage.navigation.presentation.anchor')}}">{{t('homepage.navigation.presentation.text')}}</option>
+	    <option value="#{{t('homepage.navigation.pro.anchor')}}">{{t('homepage.navigation.pro.text')}}</option>
+	    <option value="#{{t('homepage.navigation.realisations.anchor')}}">{{t('homepage.navigation.realisations.text')}}</option>
+	    <option value="#{{t('homepage.navigation.competences.anchor')}}">{{t('homepage.navigation.competences.text')}}</option>
 	  </optgroup>
-    <optgroup label="Contenu">
-	    <option value="/mon-reseau-social">R&eacute;seaux sociaux</option>
+    <optgroup label="{{t('homepage.navigation.content')}}">
+	    <option value="/{{t('technical.lang')}}/{{t('routing:urls.network.url')}}">{{t('routing:urls.network.text')}}</option>
 	  </optgroup>
-	  <optgroup label="Contact">
-	  	<option value="/contact/formulaire-de-contact">Contact</option>
-	    <option value="/contact/formulaire-embauche">Demande d'embauche</option>
+	  <optgroup label="{{t('homepage.navigation.contact')}}">
+	  	<option value="/{{t('technical.lang')}}/contact/{{t('routing:urls.contact.url')}}">{{t('routing:urls.contact.text')}}</option>
+	    <option value="/{{t('technical.lang')}}/contact/{{t('routing:urls.hire.url')}}">{{t('routing:urls.hire.text')}}</option>
 	  </optgroup>
   </select>
 
 	<ul class="tiny-hide">
 		<li class="topnav here">
-  		<a href="#" title="Curriculum vitae">Mon curriculum vit&#230;</a>
+  		<a href="#">{{t('routing:urls.home.title')}}</a>
 		</li>
   </ul>
 </nav>
@@ -52,10 +52,14 @@
 			</div>
 		{% endif %}
 		
-		{% include 'elements/slideshow.html' %}			
+		{% if query.cv !== 'print' %}
+				{% include 'elements/slideshow.html' %}		
+		{% endif %}
 		
 		{% include 'cv/presentation.html' %}
-    {% include 'cv/professional.html' %}
+		{% if t('technical.lang') == 'fr' %}
+    	{% include 'cv/professional.html' %}
+    {% endif %}
     {% include 'cv/realisations.html' %}
 		{% include 'cv/etudes.html' %}
 		{% include 'cv/competences.html' %}

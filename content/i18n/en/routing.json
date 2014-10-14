@@ -1,14 +1,20 @@
 {
     "urls": {
+        "home": {
+            "title": "My curriculum vitæ" 
+        },
         "contact": {
-            "url": "contact-form"
+            "url": "contact-form",
+            "text": "Contact"
         },
         "hire": {
-            "url": "job-proposal-form"
+            "url": "job-proposal-form",
+            "text": "Hire me"
         },
         "network": {
             "url": "my-social-network",
-            "title": "My network"
+            "title": "My network",
+            "text": "My social networks"
         },
         "personality": {
             "url": "my-personality",

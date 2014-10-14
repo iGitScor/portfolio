@@ -19,6 +19,9 @@
             "phone": "Phone number",
             "downloadcard": "Download my card",
             "follow": "Follow me"
+        },
+        "buttons": {
+            "project": "See the project page"
         }
     },
     "form": {
@@ -40,6 +43,42 @@
         "success": {
             "thankyou": "Thank you",
             "message": "for your message"
+        }
+    },
+    "homepage": {
+        "navigation": {
+            "presentation": {
+                "anchor": "presentation",
+                "text": "Presentation",
+                "title": "Presentation"
+            },
+            "pro": {
+                "anchor": "professional-cursus",
+                "text": "Career",
+                "title": "Professional cursus"
+            },
+            "study": {
+                "anchor": "university-studies",
+                "text": "Studies",
+                "title": "University"
+            },
+            "realisations": {
+                "anchor": "achievements",
+                "text": "Achievements",
+                "title": "Achievements"
+            },
+            "competences": {
+                "anchor": "skills",
+                "text": "Skills",
+                "title": "Skills"
+            },
+            "hobbies": {
+                "anchor": "hobbies",
+                "text": "Hobbies",
+                "title": "Hobbies"
+            },
+            "content" : "Content",
+            "contact": "Contact"
         }
     },
     "slideshow": {

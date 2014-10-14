@@ -1,27 +1,28 @@
-<div class="row" id="hobbies">
+<div class="row" id="{{t('homepage.navigation.hobbies.anchor')}}">
 	<div class="divider twelve columns end">
-		<p>Hobbies</p>
+		<p>{{t('homepage.navigation.hobbies.title')}}</p>
 	</div>
 
+	{% if query.cv !== 'print' %}
 	<div class="three columns caption end hide-on-print hide-mobile">
 		<figure class="figure-with-caption">
 			<img alt="Travel map" src="/img/content/visuel_hobbies_travel_map.png" />
-			<figcaption><a href="https://mapsengine.google.com/map/viewer?mid=zJbOY1XSMido.k5KGhF2HHf8Q"><strong>&#8677;&nbsp;</strong>&nbsp;Ma Google maps</a>
+			<figcaption><a href="https://mapsengine.google.com/map/viewer?mid=zJbOY1XSMido.k5KGhF2HHf8Q"><strong>&#8677;&nbsp;</strong>&nbsp;{{t('cv:hobbies.travel.google')}}</a>
 			</figcaption>
 		</figure>
 	</div>
 	
 	<div class="nine columns end">
 		<div class="twelve columns end">
-			<h3>Voyages</h3>
+			<h3>{{t('cv:hobbies.travel.title')}}</h3>
 			<span class="show-mobile">
-				<a href="https://mapsengine.google.com/map/viewer?mid=zJbOY1XSMido.k5KGhF2HHf8Q"><strong>&#8677;&nbsp;</strong>&nbsp;Ma Google maps</a>
+				<a href="https://mapsengine.google.com/map/viewer?mid=zJbOY1XSMido.k5KGhF2HHf8Q"><strong>&#8677;&nbsp;</strong>&nbsp;{{t('cv:hobbies.travel.google')}}</a>
 			</span>
 
 			<div class="section-divider">
-				<h4>Europe</h4>
+				<h4>{{t('cv:hobbies.travel.europe.name')}}</h4>
 			</div>
-			<code><u>Voyage en train : euro trip</u>&nbsp;|&nbsp; <div class="clearfix clear show-mobile"></div>
+			<code><u>{{t('cv:hobbies.travel.europe.one.title')}}</u>&nbsp;|&nbsp; <div class="clearfix clear show-mobile"></div>
 				<span class="flags-dk"></span>
 				<span class="flags-cz"></span>
 				<span class="flags-hr"></span>
@@ -29,34 +30,43 @@
 				<span class="flags-rs"></span>
 				<span class="flags-it"></span>
 			</code>
-			<p>Mon voyage en Europe est un voyage en train qui aura dur&eacute; 16 jours et m'aura conduit dans 6 pays diff&eacute;rents, aux cultures diverses et d&eacute;paysantes par rapport &agrave; celle que j'ai l'habitude de cotoyer en France.
-			</p>
+			<p>{{t('cv:hobbies.travel.europe.one.presentation')}}</p>
 			<div class="clear"></div>
 
-			<code><u>Voyage en avion : Islande</u>&nbsp;|&nbsp; <div class="clearfix clear show-mobile"></div>
+			<code><u>{{t('cv:hobbies.travel.europe.two.title')}}</u>&nbsp;|&nbsp; <div class="clearfix clear show-mobile"></div>
 				<span class="flags-is"></span>
 			</code>
-			<p>Volcan, glacier, geyser et autres aurores bor&eacute;ales, visite du pays europ&eacute;en le plus &agrave; l'Ouest et l'un des plus m&eacute;connus des français.</p>
+			<p>{{t('cv:hobbies.travel.europe.two.presentation')}}</p>
 			<div class="clear"></div>
 
-			<code><u>Voyage en train : les grandes villes d'Europe</u>&nbsp;|&nbsp; <div class="clearfix clear show-mobile"></div>
+			<code><u>{{t('cv:hobbies.travel.europe.three.title')}}</u>&nbsp;|&nbsp; <div class="clearfix clear show-mobile"></div>
 				<span class="flags-cat"></span>
 				<span class="flags-fr"></span>
 			</code>
-			<p>De nature &agrave; appr&eacute;cier les grandes villes, il &eacute;tait tout &agrave; fait logique que je m'aventure dans la visite de grandes villes, &agrave; commencer sur le continent europ&eacute;en.
-				<br />Barcelone et Paris sont les deux &eacute;tapes de ce p&eacute;riple qui en comptera d'autres.
-			</p>
+			<p>{{t('cv:hobbies.travel.europe.three.presentation')}}</p>
 			<div class="clear"></div>
 
 
 			<div class="section-divider">
-				<h4>Am&eacute;rique</h4>
+				<h4>{{t('cv:hobbies.travel.america.name')}}</h4>
 			</div>
-			<code><u>Voyage en avion : direction L.A.</u>&nbsp;|&nbsp; <div class="clearfix clear show-mobile"></div>
+			<code><u>{{t('cv:hobbies.travel.america.one.title')}}</u>&nbsp;|&nbsp; <div class="clearfix clear show-mobile"></div>
 				<span class="flags-us"></span>
 				<span class="flags-gb"></span>
 			</code>
-			<p>Voyage en Californie avec escale londonienne &agrave; l'aller et au retour. Visite de Londres, Los Angeles et San Francisco pour cette premi&egrave;re immersion dans des pays anglophones.</p>
+			<p>{{t('cv:hobbies.travel.america.one.presentation')}}</p>
 		</div>
 	</div>
+	
+	{% else %}
+	
+	<div class="nine columns end">
+		<ul>
+			<li>Voyages</li>
+			<li>Sport</li>
+			<li>Art</li>
+		</ul>
+	</div>
+	
+	{% endif %}
 </div>

@@ -3,33 +3,35 @@
   		<nav> 
 			<ul>
 				<li>
-					<a class="pinned" data-icon="u" href="#presentation">
-						<span>Pr&eacute;sentation</span>
+					<a class="pinned" data-icon="u" href="#{{t('homepage.navigation.presentation.anchor')}}">
+						<span>{{t('homepage.navigation.presentation.text')}}</span>
 					</a>
 				</li>
+				{% if t('technical.lang') == 'fr' %}
   				<li>
-					<a class="pinned" data-icon="i" href="#parcours-professionnel">
-  						<span>Carri&egrave;re</span>
+					<a class="pinned" data-icon="i" href="#{{t('homepage.navigation.pro.anchor')}}">
+  						<span>{{t('homepage.navigation.pro.text')}}</span>
 					</a>
   				</li>
+  				{% endif %}
    				<li>
-					<a class="pinned" data-icon="w" href="#etudes">
-  						<span>&Eacute;tudes</span>
+					<a class="pinned" data-icon="w" href="#{{t('homepage.navigation.study.anchor')}}">
+  						<span>{{t('homepage.navigation.study.text')}}</span>
 					</a>
   				</li>
   				<li>
-					<a class="pinned" data-icon="P" href="#realisations">
-  						<span>R&eacute;alisations</span>
+					<a class="pinned" data-icon="P" href="#{{t('homepage.navigation.realisations.anchor')}}">
+  						<span>{{t('homepage.navigation.realisations.text')}}</span>
 					</a>
-  				</li>	
+  				</li>
   				<li>
-					<a class="pinned" data-icon="Z" href="#competences">
-  						<span>Comp&eacute;tences</span>
+					<a class="pinned" data-icon="Z" href="#{{t('homepage.navigation.competences.anchor')}}">
+  						<span>{{t('homepage.navigation.competences.text')}}</span>
 					</a>
   				</li>
   				 <li>
-					<a class="pinned" data-icon="X" href="#hobbies">
-  						<span>Hobbies</span>
+					<a class="pinned" data-icon="X" href="#{{t('homepage.navigation.hobbies.anchor')}}">
+  						<span>{{t('homepage.navigation.hobbies.text')}}</span>
 					</a>
   				</li>
   				<li class="right back-to-top">

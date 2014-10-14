@@ -1,0 +1,90 @@
+{
+    "presentation": {
+        "intro": "Je m'appelle <span itemprop='name'>Sébastien Correaud</span> et je suis <span itemprop='title'>Ingénieur développement Web</span> à <span itemprop='address' itemscope itemtype='http://data-vocabulary.org/Address'><span itemprop='locality'>Montpellier</span> (<span itemprop='region'>Hérault</span>)</span> dans les domaines de l'open source et du cross-platform. J'ai intégré l'équipe de la WebFactory de la société CGI (anciennement Logica) pour des missions d'analyse et de développement au sein de divers projets Web, sur un socle technologique PHP (eZ Publish, Drupal, Symfony).<br />Par la suite j'ai contribué à la naissance et l'évolution d'un pôle Mobilité (iOS, HTML5 Cross-Platform, Android)<br />Je participe également à l'évolution du pôle développement Web en réalisant des missions diverses allant de formation de profils juniors à audit technique en passant par veille technologique.",
+        "me": {
+            "title": "Moi",
+            "text": ""
+        },
+        "future": {
+            "title": "Mon projet",
+            "computer": {
+                "title": "Informatique",
+                "text": "Dans le milieu des <strong>nouvelles technologies</strong> depuis 4 ans, je souhaite poursuivre dans ce secteur et profiter de mon expérience Web dans l'encadrement pour viser une carrière d'expert technique dans le monde du Web.<br />Principalement intéressé par une évolution via une expérience de développeur Front-end Javascript (full stack Node.JS, AngularJS, Express), je souhaite progresser par étape afin d'atteindre mon objectif."
+            }
+        }
+    },
+    "skills": {
+        "presentation": "Voici une présentation syntaxique de mes compétences.",
+        "notes": {
+            "one": "Bases",
+            "two": "Familier",
+            "three": "Compétent",
+            "four": "Expert"
+        },
+        "degree": {
+            "low": "Faible expérience",
+            "secondary": "Compétences secondaires",
+            "primary": "Compétences principales"
+        },
+        "technical": {
+            "title": "Compétences techniques"
+        },
+        "year": "an",
+        "years": "ans",
+        "month": "mois",
+        "months": "mois",
+        "skill": "Compétence"
+    },
+    "realisations": {
+        "zori": "Site de partage de liens musicaux en temps réel.<br />Utilisation de Firebase comme stockage et serveur push, et AngularJS, RequireJS pour la partie site.",
+        "zorios": "Version iPhone de Zori (pour la partie utilisateur).",
+        "knov": "Site de partage de culture en temps réel.<br />Utilisation de Firebase comme stockage et serveur push, et AngularJS, RequireJS pour la partie site.",
+        "js13k": "Concours de création de jeu en Javascript"
+    },
+    "study": {
+        "intro": "Suite à mon bac, j'ai opté pour des études dans le domaine de l'informatique",
+        "bac" : {
+            "name": "Baccalauréat Scientifique",
+            "subname": "(Science de l’ingénieur)",
+            "mention": "mention Bien",
+            "place": "au lycée de la Plaine de l'Ain à Ambérieu en Bugey"
+        },
+        "dut" : {
+            "name": "DUT informatique",
+            "place": "à l'IUT de Montpellier"
+        },
+        "lp" : {
+            "name": "Licence professionnelle",
+            "subname": "(e-business)",
+            "place": "à l'IUT de Montpellier"
+        }
+    },
+    "hobbies": {
+        "travel" :{
+            "title": "Voyages",
+            "google": "Ma Google maps",
+            "europe": {
+                "name": "Europe",
+                "one": {
+                    "title": "Voyage en train : euro trip",
+                    "presentation": "Mon voyage en Europe est un voyage en train qui aura duré 16 jours et m'aura conduit dans 6 pays différents, aux cultures diverses et dépaysantes par rapport à celle que j'ai l'habitude de cotoyer en France."
+                },
+                "two": {
+                    "title": "Voyage en avion : Islande",
+                    "presentation": "Volcan, glacier, geyser et autres aurores boréales, visite du pays européen le plus à l'Ouest et l'un des plus méconnus des français."
+                },
+                "three": {
+                    "title": "Voyage en train : les grandes villes d'Europe",
+                    "presentation": "De nature à apprécier les grandes villes, il était tout à fait logique que je m'aventure dans la visite de grandes villes, à commencer sur le continent européen.<br />Barcelone et Paris sont les deux étapes de ce périple qui en comptera d'autres."
+                }
+            },
+            "america": {
+                "name": "Amérique",
+                "one": {
+                    "title": "Voyage en avion : direction L.A.",
+                    "presentation": "Voyage en Californie avec escale londonienne à l'aller et au retour. Visite de Londres, Los Angeles et San Francisco pour cette première immersion dans des pays anglophones."
+                }
+            }
+        }
+    }
+}
