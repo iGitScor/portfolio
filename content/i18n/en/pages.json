@@ -1,4 +1,17 @@
 {
+    "home": {
+        "footer_content": {
+            "colone": "Download",
+            "resources": "Downloadable resources",
+            "coltwo": "Related links",
+            "links": "Related links to my CV",
+            "linkone": "Open source projects",
+            "linktwo": "Open source project (Crew)",
+            "linkthree": "Open source project (BETA)",
+            "colthree": "And also",
+            "map": "My traveler map"
+        }
+    },
     "network": {
         "pro": "If you want to integrate my professional network.",
         "profil": "My profile",

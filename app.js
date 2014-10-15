@@ -33,6 +33,20 @@ app.engine('html', swig.renderFile);
 /***************************************************** 
  ***                     Configuration
  *****************************************************/
+// Internationalization configuration.
+i18n.registerAppHelper(app);
+i18n.init({ 
+  lng: "fr",
+  detectLngFromPath: 0,
+  supportedLngs: ['fr', 'en'],
+  resGetPath: 'content/i18n/__lng__/__ns__.json',
+  useCookie: false,
+  ns: { 
+    namespaces: ['translation', 'meta', 'routing', 'cv', 'pages'], 
+    defaultNs: 'translation'
+  } 
+});
+ 
 // Default configuration.
 app.configure(function() {
   // Common application configuration 
@@ -94,9 +108,9 @@ app.configure(function() {
     if (req.accepts('html')) {
       res.render(
         'error/404.html', {
-          title: '404: Resource not found',
-          error: "La page " + req.url + " que vous avez demandé n'a pas été trouvée.",
-          subTitle: "Erreur 404 : non trouvé",
+          title: i18n.t('error.page.qcq.title'),
+          error: i18n.t('error.page.qcq.message', { url: req.url }),
+          subTitle: i18n.t('error.page.qcq.subtitle'),
           errorCode: '404'
         }
       );
@@ -115,9 +129,9 @@ app.configure(function() {
     if (req.accepts('html')) {
       res.render(
         'error/500.html', {
-          title: '500: Internal problem',
+          title: i18n.t('error.page.cc.title'),
           error: error,
-          subTitle: "Erreur 500 : problème interne",
+          subTitle: i18n.t('error.page.cc.subtitle'),
           errorCode: '500'
         }
       );
@@ -139,21 +153,6 @@ app.configure('development', function() {
     cache: false
   });
 });
-
-// Internationalization configuration.
-i18n.registerAppHelper(app);
-i18n.init({ 
-  lng: "fr",
-  detectLngFromPath: 0,
-  supportedLngs: ['fr', 'en'],
-  resGetPath: 'content/i18n/__lng__/__ns__.json',
-  useCookie: false,
-  ns: { 
-    namespaces: ['translation', 'meta', 'routing', 'cv', 'pages'], 
-    defaultNs: 'translation'
-  } 
-});
-
 
 /***************************************************** 
  ***                     Security

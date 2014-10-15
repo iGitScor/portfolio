@@ -97,6 +97,15 @@
             "backhome": {
                 "text": "Back to the homepage",
                 "here": "here"
+            },
+            "qcq": {
+                "title": "404: Resource not found",
+                "subtitle": "404 Error : not found",
+                "message": "The page __url__ you requested was not found."
+            },
+            "cc": {
+                "title": "500: Internal problem",
+                "subtitle": "500 Error : internal problem"
             }
         }
     }

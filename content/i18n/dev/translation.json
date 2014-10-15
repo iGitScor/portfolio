@@ -97,6 +97,15 @@
             "backhome": {
                 "text": "Retour à la page d'accueil",
                 "here": "ici"
+            },
+            "qcq": {
+                "title": "404: Ressource non trouvée",
+                "subtitle": "Erreur 404 : non trouvé",
+                "message": "La page __url__ que vous avez demandé n'a pas été trouvée.."
+            },
+            "cc": {
+                "title": "500: Problème interne",
+                "subtitle": "Erreur 500 : problème interne"
             }
         }
     }

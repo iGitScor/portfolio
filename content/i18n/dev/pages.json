@@ -1,4 +1,17 @@
 {
+    "home": {
+        "footer_content": {
+            "colone": "Téléchargement",
+            "resources": "Ressources à télécharger",
+            "coltwo": "Liens relatifs",
+            "links": "Liens relatifs à mon curriculum vitæ",
+            "linkone": "Projets open source",
+            "linktwo": "Projets open source (suite)",
+            "linkthree": "Projets open source (BETA)",
+            "colthree": "Et aussi",
+            "map": "Ma carte de voyageur"
+        }
+    },
     "network": {
         "pro": "Si vous souhaitez intégrer mon réseau professionnel.",
         "profil": "Mon profil",
