@@ -107,6 +107,16 @@
                 </header>
       	    </div>
           </div>
+          <div class="container page hide-on-print">
+	          <aside>
+              <div class="row lswi">
+      		      <ul class="bulletless">
+      		        <li><img id="imprimer" src="/img/printer.png" height="32" width="32"/></li>
+      		        <li><a href="/fr/" class="blue" style="opacity:{{ 0.5 + (t('technical.lang') !== 'fr') }}">FR</a> | <a href="/en/" class="blue" style="opacity:{{ 0.5 + (t('technical.lang') !== 'en') }}">EN</a></li>
+    		        </ul>
+      		    </div>
+      		  </aside>
+      		</div>
           
           {% block content %}{% endblock %}
           {% block footer_content %}{% endblock %}

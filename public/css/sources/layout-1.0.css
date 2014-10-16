@@ -134,3 +134,34 @@ body form button[type=submit] {
     border-radius: 50px;
     padding: 2px;
 }
+
+.lswi {
+    padding-top: 30px;
+}
+
+.lswi ul {
+    float: right; margin-bottom: 0;
+}
+
+.lswi ul li {
+    float: left;
+}
+
+.lswi ul li > a {
+    border-bottom: #015172 2px solid
+}
+
+.lswi ul li a {
+    font-weight: bold;
+}
+
+#imprimer {
+    cursor: pointer;
+    margin-right: 15px
+}
+
+body .page article .row:target .divider p:before {
+    content: "↳";
+    margin-right: 2px;
+    font-weight: bold;
+}
