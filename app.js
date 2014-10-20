@@ -46,7 +46,23 @@ i18n.init({
     defaultNs: 'translation'
   } 
 });
- 
+
+// simple logger
+app.use(function(req, res, next){
+  var urlParsed = req.url.split( '/' );
+  if (urlParsed[1] === 'fr' || urlParsed[1] === 'en') {
+    urlParsed.shift();
+    urlParsed.shift();
+    urlParsed = urlParsed.join('/');
+    urlParsed = '/' + urlParsed;
+    
+    res.locals.requestedURL = urlParsed;
+  }
+  
+  next();
+});
+
+
 // Default configuration.
 app.configure(function() {
   // Common application configuration 
@@ -78,9 +94,9 @@ app.configure(function() {
    */
   app.use(function(req, res, next) {
     res.setHeader("Cache-Control", "max-age=" + 604800000);
-    return next();
+    next();
   });
-
+  
   /*
    * Errors
    */
@@ -185,8 +201,8 @@ passport.use(new GitHubStrategy({
  ***                     Routing
  *****************************************************/
 app.get('/', routes.index);
-app.get('/ma-personnalite|/my-personality', routing.personnalite);
-app.get('/mon-reseau-social|/my-social-network', routing.network);
+app.get('/:lang/ma-personnalite|/:lang/my-personality', routing.personnalite);
+app.get('/:lang/mon-reseau-social|/:lang/my-social-network', routing.network);
 app.get('/knov', routing.knov);
 app.get('/projets/:name', routing.project);
 

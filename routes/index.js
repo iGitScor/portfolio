@@ -90,7 +90,7 @@ exports.index = function(req, res) {
             scripts: compiledJSPath,
             styles: compiledCSSPath,
             meta_description: i18n.t("meta:description.home"),
-            query: req.query
+            query: req.query,
         }
     );
 };
