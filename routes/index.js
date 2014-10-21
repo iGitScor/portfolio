@@ -91,6 +91,8 @@ exports.index = function(req, res) {
             styles: compiledCSSPath,
             meta_description: i18n.t("meta:description.home"),
             query: req.query,
+            english: '/en/',
+            french: '/fr/'
         }
     );
 };

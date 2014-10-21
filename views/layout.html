@@ -70,12 +70,7 @@
     </head>
 
     <body>
-        <div id="top" class="page cookie-banner button-box red4 hide-on-print">
-	        <!--<span class="twelve tri-prong-ctas">
-		        <a><small>En poursuivant votre navigation sur ce site, vous acceptez l’utilisation de Cookies pour vous proposer du contenu personnalisé.</small></a>
-          </span>-->
-        </div>
-          
+        <div id="top"></div>
         <div>
           	<div>
         		<header id="main-header" class="container state-open">
@@ -112,7 +107,9 @@
               <div class="row lswi">
       		      <ul class="bulletless">
       		        <li><img id="imprimer" src="/img/printer.png" height="32" width="32"/></li>
-      		        <li><a href="/fr{{ requestedURL }}" class="blue" style="opacity:{{0.5 + (t('technical.lang') !== 'fr') }}">FR</a> | <a href="/en{{ requestedURL }}" class="blue" style="opacity:{{ 0.5 + (t('technical.lang') !== 'en') }}">EN</a></li>
+      		        {% if french %}
+      		          <li><a href="{{ french }}" class="blue" style="opacity:{{0.5 + (t('technical.lang') !== 'fr') }}">FR</a> | <a href="{{ english }}" class="blue" style="opacity:{{ 0.5 + (t('technical.lang') !== 'en') }}">EN</a></li>
+    		          {% endif %}
     		        </ul>
       		    </div>
       		  </aside>

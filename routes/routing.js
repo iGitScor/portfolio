@@ -15,7 +15,9 @@ exports.personnalite = function(req, res) {
 
 exports.network = function(req, res) {
     res.render('network', {
-        title: i18n.t('routing:urls.network.title')
+        title: i18n.t('routing:urls.network.title'),
+        english: '/en/my-social-network',
+        french: '/fr/mon-reseau-social'
     });
 };
 
