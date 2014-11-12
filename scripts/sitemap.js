@@ -9,12 +9,13 @@ exports.generateSitemap = function(url) {
         url: url,
         map: {
             '/': ['get'],
-            '/ma-personnalite': ['get'],
-            '/mon-reseau-social': ['get'],
+            '/fr/': ['get'],
+            '/fr/ma-personnalite': ['get'],
+            '/fr/mon-reseau-social': ['get'],
             '/projets/knov': ['get'],
             '/projets/js13k': ['get'],
-            '/contact/formulaire-de-contact': ['get', 'post'],
-            '/contact/formulaire-embauche': ['get', 'post'],
+            '/fr/contact/formulaire-de-contact': ['get', 'post'],
+            '/fr/contact/formulaire-embauche': ['get', 'post'],
             '/resources/CORREAUD-Curriculum_vitae.pdf': ['get'],
         },
         route: {
@@ -22,11 +23,15 @@ exports.generateSitemap = function(url) {
                 changefreq: 'daily',
                 priority: 1.0,
             },
-            '/ma-personnalite': {
+            '/fr/': {
+                changefreq: 'daily',
+                priority: 1.0,
+            },
+            '/fr/ma-personnalite': {
                 changefreq: 'daily',
                 priority: 0.8,
             },
-            '/mon-reseau-social': {
+            '/fr/mon-reseau-social': {
                 changefreq: 'daily',
                 priority: 0.9,
             },
@@ -38,11 +43,11 @@ exports.generateSitemap = function(url) {
                 changefreq: 'daily',
                 priority: 0.7,
             },
-            '/contact/formulaire-de-contact': {
+            '/fr/contact/formulaire-de-contact': {
                 changefreq: 'daily',
                 priority: 0.5,
             },
-            '/contact/formulaire-embauche': {
+            '/fr/contact/formulaire-embauche': {
                 changefreq: 'daily',
                 priority: 0.5,
             },
