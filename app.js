@@ -201,8 +201,8 @@ passport.use(new GitHubStrategy({
  ***                     Routing
  *****************************************************/
 app.get('/', routes.index);
-app.get('/:lang/ma-personnalite|/:lang/my-personality', routing.personnalite);
-app.get('/:lang/mon-reseau-social|/:lang/my-social-network', routing.network);
+app.get('/fr/ma-personnalite|/en/my-personality', routing.personnalite);
+app.get('/fr/mon-reseau-social|/en/my-social-network', routing.network);
 app.get('/knov', routing.knov);
 app.get('/projets/:name', routing.project);
 
@@ -236,7 +236,8 @@ app.get('/auth/github',
   function(req, res) {
     // The request will be redirected to GitHub for authentication, so this
     // function will not be called.
-  });
+  }
+);
 
 // GET /auth/github/callback
 // Use passport.authenticate() as route middleware to authenticate the
