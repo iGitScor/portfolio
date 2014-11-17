@@ -166,6 +166,24 @@ div .identity {
     background: url('../img/mean_avatar.png') no-repeat bottom right;
 }
 
+@media only screen and (max-width: 767px) {
+    .mean-background {
+        background-size: 100px;
+    }
+}
+
+@media only screen and (min-width: 767px) and (max-width: 958px) {
+    .mean-background {
+        background-size: 150px;
+    }
+}
+
+@media only screen and (min-width: 959px) and (max-width: 1138px) {
+    .mean-background {
+        background-size: 170px;
+    }
+}
+
 #imprimer {
     cursor: pointer;
     margin-right: 15px
