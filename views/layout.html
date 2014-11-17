@@ -101,11 +101,12 @@
                 </header>
       	    </div>
           </div>
+          {% block toolbar %}
           <div class="container page hide-on-print">
 	          <aside>
               <div class="row lswi">
       		      <ul class="bulletless">
-      		        <li><img id="imprimer" src="/img/printer.png" height="32" width="32"/></li>
+      		        <li><img id="imprimer" alt="Imprimer" src="/img/printer.png" height="32" width="32"/></li>
       		        {% if french %}
       		          <li><a href="{{ french }}" class="blue" style="opacity:{{0.5 + (t('technical.lang') !== 'fr') }}">FR</a> | <a href="{{ english }}" class="blue" style="opacity:{{ 0.5 + (t('technical.lang') !== 'en') }}">EN</a></li>
     		          {% endif %}
@@ -113,6 +114,7 @@
       		    </div>
       		  </aside>
       		</div>
+      		{% endblock %}
           
           {% block content %}{% endblock %}
           {% block footer_content %}{% endblock %}
