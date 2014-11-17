@@ -163,7 +163,7 @@ div .identity {
 }
 
 .mean-background {
-    background: url(/img/mean_avatar.png) no-repeat bottom right;
+    background: url('../img/mean_avatar.png') no-repeat bottom right;
 }
 
 #imprimer {
