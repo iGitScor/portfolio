@@ -96,7 +96,7 @@ body form button[type=submit] {
 }
 
 /********************************/
-.notice{
+.notice {
     border:1px solid #015172;
     background:#2ba6cb;
     padding:10px 20px 10px 40px;
@@ -153,6 +153,17 @@ body form button[type=submit] {
 
 .lswi ul li a {
     font-weight: bold;
+}
+
+body footer .identity,
+body #main-footer .identity,
+li .identity,
+div .identity {
+    color: #51c4cc;
+}
+
+.mean-background {
+    background: url(/img/mean_avatar.png) no-repeat bottom right;
 }
 
 #imprimer {
