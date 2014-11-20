@@ -22,6 +22,11 @@
         },
         "buttons": {
             "project": "Voir la fiche du projet"
+        },
+        "cookie": {
+            "title": "Informations relatives aux cookies",
+            "more": "En savoir plus",
+            "text": "Nous utilisons les cookies pour améliorer votre expérience. En continuant à visiter ce site, vous acceptez notre utilisation des cookies."
         }
     },
     "form": {

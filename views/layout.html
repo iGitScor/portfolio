@@ -69,8 +69,8 @@
       
     </head>
 
-    <body>
-        <div id="top">
+    <body ng-app="sc">
+            <div id="top">
           	<div>
         		<header id="main-header" class="container state-open">
           			<div class="row">
@@ -114,6 +114,76 @@
       		    </div>
       		  </aside>
       		</div>
+      		          	  
+        	<div id="morphsearch" class="morphsearch" ng-controller="searchController">
+      				<form class="morphsearch-form" ng-submit="search()">
+      					<input class="morphsearch-input" type="search" placeholder="Rechercher..." ng-model="searchText"/>
+      					<button class="morphsearch-submit" type="submit">Valider</button>
+      				</form>
+      				<div class="morphsearch-content">
+      				  <div ng-if="searchResult">
+      						<h2>Résultats de recherche</h2>
+      						<ul class="icons checks" ng-if="!error">
+      						  <li ng-class="check">
+      						    <a class="dummy-media-object" 
+      						    href="http://google.fr" ng-bind="searchResult"></a>
+      						  </li>
+      						</ul>
+      						<ul class="icons" ng-if="error">
+      						  <li class="error">
+      						    <small ng-bind="searchResult"></small>
+      						  </li>
+      						</ul>
+      					</div>
+      				  <div ng-if="searchResult" class="clearfix"></div>
+      					<div class="dummy-column">
+      						<h2>People</h2>
+      						<a class="dummy-media-object" href="http://thib.me">
+      							<img class="round" src="https://avatars0.githubusercontent.com/u/877585?v=3&s=400" alt="Thibaud Colas"/>
+      							<h3>Thibaud Colas</h3>
+      						</a>
+      						<a class="dummy-media-object" href="https://github.com/MonsieurLuge">
+      							<img class="round" src="https://avatars2.githubusercontent.com/u/5494947?v=3&s=460" alt="Laurent Vergé"/>
+      							<h3>Laurent Vergé</h3>
+      						</a>
+      						<a class="dummy-media-object" href="http://nimaen.com/">
+      							<img class="round" src="https://avatars0.githubusercontent.com/u/2648851?v=3&s=400" alt="Arnaud Bosc"/>
+      							<h3>Arnaud Bosc</h3>
+      						</a>
+      					</div>
+      					<div class="dummy-column">
+      						<h2>Professionnel</h2>
+      						<a class="dummy-media-object" href="/resources/CORREAUD-Curriculum_vitae.pdf">
+      							<img src="/img/search/pdf-48.png" alt="PagePreloadingEffect"/>
+      							<h3>Curriculum vitae : PDF</h3>
+      						</a>
+      						<a class="dummy-media-object" href="http://gdfsuez-dolcevita.fr">
+      							<img src="/img/search/logo-dolcevita.png" alt="GDF SUEZ DolceVita"/>
+      							<h3>Dernière expérience : lead developper Front-end GDF SUEZ (Paris)</h3>
+      						</a>
+      						<a class="dummy-media-object" href="/fr/#competences">
+      							<img src="/img/search/toolkit-48.png" alt="HoverEffectsIdeasNew"/>
+      							<h3>Domaine de compétence : Web &amp; Mobile</h3>
+      						</a>
+      					</div>
+      					<div class="dummy-column">
+      						<h2>Populaire</h2>
+      						<a class="dummy-media-object" href="http://www.linkedin.com/pub/s%C3%A9bastien-correaud/93/783/259/">
+      							<img src="/img/search/linkedin-48.png" alt="Linkedin"/>
+      							<h3>Profil Linkedin</h3>
+      						</a>
+      						<a class="dummy-media-object" href="http://github.com/iGitScor">
+      							<img src="/img/search/github-48.png" alt="Github"/>
+      							<h3>Profil GitHub</h3>
+      						</a>
+      						<a class="dummy-media-object" href="/fr/#realisations">
+      							<img src="/img/search/mean.png" alt="MEAN"/>
+      							<h3>MongoDB + ExporessJS + AngularJS + Node.js</h3>
+      						</a>
+      					</div>
+      				</div><!-- /morphsearch-content -->
+      				<span class="morphsearch-close"></span>
+      			</div>
       		{% endblock %}
           
           {% block content %}{% endblock %}
@@ -154,21 +224,50 @@
           			<p>&copy; 2014&nbsp; S&eacute;bastien Correaud.&nbsp;</p>
         		</div>
           	</div>
+          	
+            <div ng-controller="cookieController">   
+                <div id="cookiebanner" class="standalone-tweet ltr cookiebanner" ng-if="!cookieAgree">
+                    <blockquote class="tweet subject expanded">
+                        <div class="header_box">
+                            <div class="h-card p-author">
+                                <a class="u-url profile" href="http://www.aboutcookies.org/">
+                                    <img class="u-photo avatar right" alt="info" src="/img/icons/picto-info-48.png">
+                                    <span class="full-name">
+                                        <span class="p-name customisable-highlight">{{t('common.cookie.title')}}</span>
+                                    </span>
+                                    <span class="p-nickname">&gt; {{t('common.cookie.more')}}</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="content e-entry-content">
+                            <p class="e-entry-title">
+                                {{t('common.cookie.text')}}
+                            </p>
+                        </div>
+                        <div class="footer customisable-border">
+                            <div id="cookiebanner-close" class="cookiebanner-close" ng-click="agree()">✖</div>
+                        </div>
+                    </blockquote>
+                </div>
+            </div>
         </footer>
         
         {% block footer_script %}
             <!-- Site script loaded after the content -->
             <script>
-              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-              })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-            
-              ga('create', 'UA-43265839-1', 'auto');
-              ga('send', 'pageview');
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m);
+                })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+              
+                ga('create', 'UA-43265839-1', 'auto');
+                ga('send', 'pageview');
             </script>
+            
+            <script src="/js/external/morphsearch.js"></script>
+            <script src="/js/angular/angular.js"></script>
+            <script src="/js/angular/angular-cookies.js"></script>
+            <script src="/js/angular/controller/layoutController.js"></script>
         {% endblock %}
-    
     </body>
-
 </html>

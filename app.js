@@ -22,7 +22,8 @@ var express = require('express'),
   appSitemap = require('./scripts/sitemap'),
   mailer = require('./scripts/mailer'),
   auth = require('./scripts/auth'),
-  i18n = require("i18next");
+  i18n = require("i18next"),
+  searchindex = require('search-index');
 
 // Instanciate express framework
 var app = express();
@@ -45,6 +46,21 @@ i18n.init({
     namespaces: ['translation', 'meta', 'routing', 'cv', 'pages'], 
     defaultNs: 'translation'
   } 
+});
+
+var batchName = 'main';
+var filters = ['metadata'];
+var batch = JSON.parse(fileSystem.readFileSync('./content/search/' + batchName + '/fr/search-index.json'));
+
+searchindex.add({'batchName': batchName, 'filters': filters}, batch, function(err) {
+  if (!err) {
+    // Generate a snapshot backup !
+    searchindex.snapShot(function(readStream) {
+      readStream.pipe(fileSystem.createWriteStream('./content/search/' + batchName + '/search-index.gz'))
+        .on('close', function() {
+      });
+    });
+  }
 });
 
 // simple logger
@@ -200,6 +216,37 @@ passport.use(new GitHubStrategy({
 /***************************************************** 
  ***                     Routing
  *****************************************************/
+/*** REST Routing ***/
+app.get('/api/s/:searchText/:searchType', function(req, res){
+    searchindex.match(decodeURIComponent(req.params.searchText.toLowerCase()), function(err, matches) {
+       if (!err) {
+         console.log(matches);
+         console.log(decodeURIComponent(req.params.searchText.toLowerCase()));
+         var query = {
+            "query": {
+              "*": matches
+          }};
+          searchindex.search(query, function(err, results) {
+            //check for errors and do something with search results, for example this:
+            if (!err) {
+              console.log(results);
+              if (results.totalHits) {
+                return res.json(results.hits[0].document.body);
+              } else {
+                return res.json({
+                  error: {
+                    code: '__',
+                    message: 'Aucun résultat'
+                  }
+                });
+              }
+            }
+          }); 
+       }
+    });
+});
+
+/*** HTTP Routing ***/
 app.get('/', routes.index);
 app.get('/fr/ma-personnalite|/en/my-personality', routing.personnalite);
 app.get('/fr/mon-reseau-social|/en/my-social-network', routing.network);

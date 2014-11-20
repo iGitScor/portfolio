@@ -5,9 +5,11 @@
 
 {% block head_style %}
   <link rel="stylesheet" href={{ styles }}>
+  <link rel="stylesheet" href="/css/external/component.css">
 {% endblock %}
 
 {% block head_script %}
+	<script src="/classie.js"></script>
 	<script defer src={{ scripts }}></script>
 {% endblock %}
 
