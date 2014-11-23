@@ -119,7 +119,7 @@
       		  </aside>
       		</div>
       		          	  
-        	<div id="morphsearch" class="morphsearch" ng-controller="searchController">
+        	<div id="morphsearch" class="morphsearch hide-on-print" ng-controller="searchController">
       				<form class="morphsearch-form" ng-submit="search()">
       					<input class="morphsearch-input" type="search" placeholder="{{t('common.buttons.search')}}..." ng-model="searchText"/>
       					<button class="morphsearch-submit" type="submit">{{t('common.buttons.validate')}}</button>
@@ -211,7 +211,7 @@
             			</h4>
             			<ul>
           				  <li><b class="identity">{{t('meta:author')}}</b></li>
-          				  <li><b>Ingénieur informatique</b> : <b><acronym title="MongoDB - Express - Angular - Node">MEAN stack</acronym> (<a href="http://mean.io" target="_blank" class="external-link">en savoir +</a>)</li>
+          				  <li class="hide-on-print"><b>Ingénieur informatique</b> : <b><acronym title="MongoDB - Express - Angular - Node">MEAN stack</acronym> (<a href="http://mean.io" target="_blank" class="external-link">en savoir +</a>)</li>
           				  <li>{{t('common.footer.phone')}} : 07 83 01 41 51</li>
              				<li>Email : <a href="mailto:sebastien.correaud@gmail.com">sebastien.correaud@gmail.com</a></li>
             			</ul>
