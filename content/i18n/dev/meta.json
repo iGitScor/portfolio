@@ -2,5 +2,6 @@
     "description": {
         "default": "Portfolio de Sébastien Correaud, développeur mobile et web. Présentation de son expérience et de ses projets.",
         "home": "Porfolio Sébastien CORREAUD Ingénieur Informatique spécialisé dans le développement web et mobile"
-    }
+    },
+    "author": "Sébastien Correaud"
 }

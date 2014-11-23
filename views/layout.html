@@ -7,7 +7,7 @@
       <meta charset="utf-8">
       <meta http-equiv="content-type" content="text/html; charset=UTF-8">
       
-      <meta name="author" content="CORREAUD Sébastien">
+      <meta name="author" content="{{t('meta:author')}}">
       <meta name="twitter:card" content="summary">
       <meta name="twitter:site" content="@iTweetScor">
       <meta name="twitter:creator" content="@iTweetScor">
@@ -17,7 +17,7 @@
       <meta name="twitter:image:width" content="57">
       <meta name="twitter:image:height" content="57">
       <meta name="twitter:url" content="http://sebastien-correaud.herokuapp.com/">
-      <meta name="keywords" content="Sébastien, CORREAUD, informatique, Portfolio, science computer, web, mobile, developpement, AngularJS, NodeJS, PHP, Javascript">
+      <meta name="keywords" content="Sebastien, CORREAUD, informatique, Portfolio, science computer, web, mobile, developpement, AngularJS, NodeJS, PHP, Javascript">
       {% if meta_description %}
         <meta name="description" content="{{ meta_description }}">
       {% else %}
@@ -28,12 +28,13 @@
       
       <meta name="google-site-verification" content="z6uHhh4cKq8yJIjPOQBPTUaSwqB9JxQb82HnCqdo3m4">
       
-      <title>S&eacute;bastien Correaud - {{t('common.seo.role')}} - {{ title }}</title>
+      <title>{{t('meta:author')}} - {{t('common.seo.role')}} - {{ title }}</title>
     
       {% block head_style %}
         <!-- Website style -->
         <link rel="stylesheet" href="/css/style-1.0.min.css">
         <link rel="stylesheet" href="/css/layout-1.0.min.css">
+        <link rel="stylesheet" href="/css/external/component.css">
       {% endblock %}
       
       {% block prefetch_resources %}
@@ -51,6 +52,7 @@
       {% block head_script %}
         <script src="/js/external/jquery-2.1.0.min.js"></script>
         <script src="/js/session-1.0.min.js"></script>
+        <script src="/js/external/morphsearch.js"></script>
         <!--[if lt IE 9]>
             <script src="/js/external/html5.js"></script>
         <![endif]-->
@@ -75,9 +77,9 @@
         		<header id="main-header" class="container state-open">
           			<div class="row">
           				<div id="logo">
-            					<a href="/{{t('technical.lang')}}/">S&eacute;bastien Correaud</a>
-            					<h1><small>S&eacute;bastien Correaud</small></h1>
-            					<h6>{{t('common.me.role')}}</h6>
+            				<a href="/{{t('technical.lang')}}/"></a>
+            				<h1><small>{{t('meta:author')}}</small></h1>
+            				<h6>{{t('common.me.role')}}</h6>
           				</div>
     
                   {% block header_content %}{% endblock %}
@@ -106,25 +108,27 @@
 	          <aside>
               <div class="row lswi">
       		      <ul class="bulletless">
-      		        <li><img id="imprimer" alt="Imprimer" src="/img/printer.png" height="32" width="32"/></li>
+      		        {% if !error %}
+                    <li><img id="imprimer" alt="Imprimer" src="/img/printer.png" height="32" width="32"/></li>
+                    {% endif %}
       		        {% if french %}
       		          <li><a href="{{ french }}" class="blue" style="opacity:{{0.5 + (t('technical.lang') !== 'fr') }}">FR</a> | <a href="{{ english }}" class="blue" style="opacity:{{ 0.5 + (t('technical.lang') !== 'en') }}">EN</a></li>
-    		          {% endif %}
-    		        </ul>
+    		        {% endif %}
+    		      </ul>
       		    </div>
       		  </aside>
       		</div>
       		          	  
         	<div id="morphsearch" class="morphsearch" ng-controller="searchController">
       				<form class="morphsearch-form" ng-submit="search()">
-      					<input class="morphsearch-input" type="search" placeholder="Rechercher..." ng-model="searchText"/>
-      					<button class="morphsearch-submit" type="submit">Valider</button>
+      					<input class="morphsearch-input" type="search" placeholder="{{t('common.buttons.search')}}..." ng-model="searchText"/>
+      					<button class="morphsearch-submit" type="submit">{{t('common.buttons.validate')}}</button>
       				</form>
       				<div class="morphsearch-content">
       				  <div ng-if="searchResult">
-      						<h2>Résultats de recherche</h2>
+      						<h2>{{t('search.results')}}</h2>
       						<ul class="icons checks" ng-if="!error">
-      						  <li ng-class="check">
+      						  <li class="check">
       						    <a class="dummy-media-object" 
       						    href="http://google.fr" ng-bind="searchResult"></a>
       						  </li>
@@ -137,7 +141,7 @@
       					</div>
       				  <div ng-if="searchResult" class="clearfix"></div>
       					<div class="dummy-column">
-      						<h2>People</h2>
+      						<h2>{{t('search.category.people')}}</h2>
       						<a class="dummy-media-object" href="http://thib.me">
       							<img class="round" src="https://avatars0.githubusercontent.com/u/877585?v=3&s=400" alt="Thibaud Colas"/>
       							<h3>Thibaud Colas</h3>
@@ -152,7 +156,7 @@
       						</a>
       					</div>
       					<div class="dummy-column">
-      						<h2>Professionnel</h2>
+      						<h2>{{t('search.category.pro')}}</h2>
       						<a class="dummy-media-object" href="/resources/CORREAUD-Curriculum_vitae.pdf">
       							<img src="/img/search/pdf-48.png" alt="PagePreloadingEffect"/>
       							<h3>Curriculum vitae : PDF</h3>
@@ -167,7 +171,7 @@
       						</a>
       					</div>
       					<div class="dummy-column">
-      						<h2>Populaire</h2>
+      						<h2>{{t('search.category.most')}}</h2>
       						<a class="dummy-media-object" href="http://www.linkedin.com/pub/s%C3%A9bastien-correaud/93/783/259/">
       							<img src="/img/search/linkedin-48.png" alt="Linkedin"/>
       							<h3>Profil Linkedin</h3>
@@ -206,10 +210,10 @@
             			    </span>
             			</h4>
             			<ul>
-          				  <li><b class="identity">S&eacute;bastien Correaud</b></li>
+          				  <li><b class="identity">{{t('meta:author')}}</b></li>
           				  <li><b>Ingénieur informatique</b> : <b><acronym title="MongoDB - Express - Angular - Node">MEAN stack</acronym> (<a href="http://mean.io" target="_blank" class="external-link">en savoir +</a>)</li>
           				  <li>{{t('common.footer.phone')}} : 06 72 79 62 91</li>
-             				<li>Email : sebastien.correaud@gmail.com</li>
+             				<li>Email : <a href="mailto:sebastien.correaud@gmail.com">sebastien.correaud@gmail.com</a></li>
             			</ul>
           		</div>
            		<div class="twelve">
@@ -221,7 +225,7 @@
           	</nav>
           	<div class="row util hide-on-print">
         		<div class="six columns">
-          			<p>&copy; 2014&nbsp; S&eacute;bastien Correaud.&nbsp;</p>
+          			<p>&copy; 2014&nbsp; {{t('meta:author')}}.&nbsp;</p>
         		</div>
           	</div>
           	

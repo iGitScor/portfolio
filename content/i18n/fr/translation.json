@@ -21,7 +21,12 @@
             "follow": "Me suivre"
         },
         "buttons": {
-            "project": "Voir la fiche du projet"
+            "project": "Voir la fiche du projet",
+            "search": "Rechercher",
+            "print": "Imprimer",
+            "validate": "Valider",
+            "download": "Télécharger",
+            "show": "Visualiser"
         },
         "cookie": {
             "title": "Informations relatives aux cookies",
@@ -112,6 +117,14 @@
                 "title": "500: Problème interne",
                 "subtitle": "Erreur 500 : problème interne"
             }
+        }
+    },
+    "search": {
+        "results": "Résultats de recherche",
+        "category": {
+            "people": "People",
+            "pro": "Professionel",
+            "most": "Populaire"
         }
     }
 }

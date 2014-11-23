@@ -217,7 +217,7 @@ passport.use(new GitHubStrategy({
  ***                     Routing
  *****************************************************/
 /*** REST Routing ***/
-app.get('/api/s/:searchText/:searchType', function(req, res){
+app.get('/api/s/:searchText/:searchType/:lang', function(req, res){
     searchindex.match(decodeURIComponent(req.params.searchText.toLowerCase()), function(err, matches) {
        if (!err) {
          console.log(matches);
@@ -306,7 +306,7 @@ app.get('/logout', function(req, res) {
 });
 
 // Default route, homepage for all languages
-app.get('/fr/|/en/', routes.index);
+app.get('/fr|/en', routes.index);
 
 /***************************************************** 
  ***                     Contact
