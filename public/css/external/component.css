@@ -156,13 +156,13 @@ input[type="search"] { /* reset normalize */
 }
 
 .morphsearch-close {
-	width: 36px;
+	line-height: 36px;
+	width: 175px;
 	height: 36px;
 	position: absolute;
 	right: 1em;
 	top: 1em;
 	overflow: hidden;
-	text-indent: 100%;
 	cursor: pointer;
 	pointer-events: none;
 	opacity: 0;

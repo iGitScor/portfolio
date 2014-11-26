@@ -128,9 +128,9 @@
       				  <div ng-if="searchResult">
       						<h2>{{t('search.results')}}</h2>
       						<ul class="icons checks" ng-if="!error">
-      						  <li class="check">
+      						  <li class="check" ng-repeat="result in searchResult">
       						    <a class="dummy-media-object" 
-      						    href="http://google.fr" ng-bind="searchResult"></a>
+      						    href="http://google.fr" ng-bind="result"></a>
       						  </li>
       						</ul>
       						<ul class="icons" ng-if="error">
@@ -186,7 +186,7 @@
       						</a>
       					</div>
       				</div><!-- /morphsearch-content -->
-      				<span class="morphsearch-close"></span>
+      				<span class="morphsearch-close">Fermer</span>
       			</div>
       		{% endblock %}
           
@@ -217,15 +217,15 @@
             			</ul>
           		</div>
            		<div class="twelve">
-            			<h4><strong>{{t('common.footer.follow')}}</strong></h4>
-            			<ul>
+            		<h4><strong>{{t('common.footer.follow')}}</strong></h4>
+            		<ul>
           				<li><a href="http://github.com/iGitScor" class="external-link">Github : iGitScor</a></li>
-            			</ul>
+            		</ul>
           		</div>
           	</nav>
           	<div class="row util hide-on-print">
         		<div class="six columns">
-          			<p>&copy; 2014&nbsp; {{t('meta:author')}}.&nbsp;</p>
+          			<p>&copy; <a href="https://github.com/iGitScor/portfolio/">{{t('meta:author')}}</a> - 2014</p>
         		</div>
           	</div>
           	
@@ -235,7 +235,7 @@
                         <div class="header_box">
                             <div class="h-card p-author">
                                 <a class="u-url profile" href="http://www.aboutcookies.org/">
-                                    <img class="u-photo avatar right" alt="info" src="/img/icons/picto-info-48.png">
+                                    <img class="u-photo avatar right" alt="info" src="/img/icons/picto-info-32.png" width="32" height="32">
                                     <span class="full-name">
                                         <span class="p-name customisable-highlight">{{t('common.cookie.title')}}</span>
                                     </span>
@@ -258,7 +258,7 @@
         
         {% block footer_script %}
             <!-- Site script loaded after the content -->
-            <script>
+           <!-- <script>
                 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
                 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m);
@@ -266,7 +266,7 @@
               
                 ga('create', 'UA-43265839-1', 'auto');
                 ga('send', 'pageview');
-            </script>
+            </script>-->
             
             <script src="/js/external/morphsearch.js"></script>
             <script src="/js/angular/angular.js"></script>

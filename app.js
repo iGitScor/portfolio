@@ -23,7 +23,8 @@ var express = require('express'),
   mailer = require('./scripts/mailer'),
   auth = require('./scripts/auth'),
   i18n = require("i18next"),
-  searchindex = require('search-index');
+  searchindex = require('search-index'),
+  glossary = require("glossary");;
 
 // Instanciate express framework
 var app = express();
@@ -218,32 +219,69 @@ passport.use(new GitHubStrategy({
  *****************************************************/
 /*** REST Routing ***/
 app.get('/api/s/:searchText/:searchType/:lang', function(req, res){
-    searchindex.match(decodeURIComponent(req.params.searchText.toLowerCase()), function(err, matches) {
-       if (!err) {
-         console.log(matches);
-         console.log(decodeURIComponent(req.params.searchText.toLowerCase()));
-         var query = {
-            "query": {
-              "*": matches
-          }};
-          searchindex.search(query, function(err, results) {
-            //check for errors and do something with search results, for example this:
-            if (!err) {
-              console.log(results);
-              if (results.totalHits) {
-                return res.json(results.hits[0].document.body);
-              } else {
-                return res.json({
-                  error: {
+    var apiResults = {};
+    var search = decodeURIComponent(req.params.searchText.toLowerCase()); 
+    var keywords = glossary.extract(search);
+    if (keywords.length === 0) {
+       keywords = search.split(' ');
+    }
+    var indexor = 0;
+    
+    keywords.forEach(function(entry) {
+        searchindex.match(entry, function(err, matches) {
+            if (!err && matches.length > 0) {
+                var query = {
+                    "query": {
+                        "*": matches
+                    }
+                };
+                searchindex.search(query, function(err, results) {
+                    if (!err) {
+                        if (results.totalHits) {
+                            results.hits.forEach(function(hit) {
+                                //if (!apiResults.contains(hit)) {
+                                  apiResults[hit.document.id] = hit.document.body;
+                                  indexor++;
+                                  
+                                  if (indexor == keywords.length) {
+                                      if (Object.keys(apiResults).length) {
+                                          return res.json(apiResults);
+                                      } else {
+                                          return res.json({
+                                              error: {
+                                                  code: '__',
+                                                  message: 'Aucun résultat'
+                                              }
+                                          });
+                                      }
+                                  }
+                               // }
+                            });
+                        } else {
+                          indexor++;
+                        }
+                    } else {
+                        indexor++;
+                    }
+                }); 
+            } else {
+                indexor++;
+            }
+        });
+    });
+    
+    if (indexor == keywords.length) {
+        if (Object.keys(apiResults).length) {
+            return res.json(apiResults);
+        } else {
+            return res.json({
+                error: {
                     code: '__',
                     message: 'Aucun résultat'
-                  }
-                });
-              }
-            }
-          }); 
-       }
-    });
+                }
+            });
+        }
+    }
 });
 
 /*** HTTP Routing ***/
