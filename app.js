@@ -200,7 +200,7 @@ var GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
 passport.use(new GitHubStrategy({
     clientID: GITHUB_CLIENT_ID,
     clientSecret: GITHUB_CLIENT_SECRET,
-    callbackURL: app.get('_scorProtocol') + "//" + app.get('_scorURL') + "/auth/github/callback"
+    callbackURL: app.get('_scorProtocol') + "://" + app.get('_scorURL') + "/auth/github/callback"
   },
   function(accessToken, refreshToken, profile, done) {
     // asynchronous verification, for effect...
@@ -316,13 +316,7 @@ app.get('/login', function(req, res) {
 // request. The first step in GitHub authentication will involve redirecting
 // the user to github.com. After authorization, GitHub will redirect the user
 // back to this application at /auth/github/callback
-app.get('/auth/github',
-  passport.authenticate('github'),
-  function(req, res) {
-    // The request will be redirected to GitHub for authentication, so this
-    // function will not be called.
-  }
-);
+app.get('/auth/github', passport.authenticate('github'));
 
 // GET /auth/github/callback
 // Use passport.authenticate() as route middleware to authenticate the
@@ -342,9 +336,6 @@ app.get('/logout', function(req, res) {
   req.logout();
   res.redirect('/');
 });
-
-// Default route, homepage for all languages
-app.get('/fr|/en', routes.index);
 
 /***************************************************** 
  ***                     Contact
@@ -414,6 +405,9 @@ app.get('/robots.txt', function(req, res) {
 /***************************************************** 
  ***                     Server
  *****************************************************/
+// Default route, homepage for all languages
+app.get('/fr|/en', routes.index);
+
 // Create NodeJS server instance.
 http.createServer(app).listen(app.get('port'), function() {
   console.log("Express server listening on port " + app.get('port'));

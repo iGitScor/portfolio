@@ -12,6 +12,8 @@
     	        {% if message != '' %}
                     <p class="error"><strong>Erreur :</strong> {{ message }}</p>
                 {% endif %}
+                
+                {{ user }}
     	    
               	<div class="nine columns">
                     <form action="/auth" method="post" class="row ten">
