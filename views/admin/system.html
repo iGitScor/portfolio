@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+{% block page_header %}    
+<h1 class="page-header">
+    Gestion fichiers <small>Système</small>
+</h1>
+{% endblock %}
+
+{% block page_alert %}  
+<div class="row">
+    <div class="col-lg-12">
+        <div class="alert alert-danger">
+            <i class="fa fa-exclamation-circle"></i>  <strong> Attention aux manipulations </strong> 
+        </div>
+    </div>
+</div>
+<!-- /.row -->
+{% endblock %}
+
+{% block page_content %}
+<div class="col-lg-6">
+    <h2>Moteur de recherche</h2>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Fichier</th>
+                    <th>Supprimer</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="danger text-center" ng-repeat="x in sys">
+                    <td ng-bind="x"></td>
+                    <td><button type="button" class="btn btn-sm btn-danger" ng-click="delete(x)">&cross;</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
