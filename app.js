@@ -24,7 +24,7 @@ var express = require('express'),
   auth = require('./scripts/auth'),
   i18n = require("i18next"),
   searchindex = require('search-index'),
-  glossary = require("glossary");;
+  glossary = require("glossary");
 
 // Instanciate express framework
 var app = express();
@@ -87,14 +87,15 @@ app.configure(function() {
   app.set('views', __dirname + '/views');
   app.set('view engine', 'html');
   app.set('_scorProtocol', 'http');
-  app.set('_scorURL', 'sebastien-correaud.herokuapp.com');
+  app.set('_scorURL', process.env.SITE || 'sebastien-correaud.herokuapp.com');
   app.use(express.logger('dev'));
   app.use(express.cookieParser());
   app.use(express.bodyParser());
   app.use(i18n.handle);
   app.use(express.methodOverride());
   app.use(express.session({
-    secret: 'keyboard cat'
+    secret: 'keyboard cat', 
+    cookie: { maxAge: 60000 }
   }));
   app.use(flash());
   app.use(passport.initialize());
@@ -284,6 +285,39 @@ app.get('/api/s/:searchText/:searchType/:lang', function(req, res){
     }
 });
 
+app.post('/api/a/engine/:context', auth.ensureAuthenticated, function(req, res){
+    searchindex.empty(function(err) {
+        if (!err) {
+            var batchName = req.params.context;
+            var filters = ['metadata'];
+            var batch = JSON.parse(fileSystem.readFileSync('./content/search/' + batchName + '/fr/search-index.json'));
+            
+            searchindex.add({'batchName': batchName, 'filters': filters}, batch, function(err) {
+                if (err) {
+                    return res.json({error : 1});
+                }
+                return res.json({success : 1});
+            });
+        } else {
+            return res.json({error : 1});
+        }
+    });
+});
+
+app.get('/api/a/system', auth.ensureAuthenticated, function(req, res){
+    var engineFiles = fileSystem.readdirSync('./si');
+    return res.json(engineFiles);
+});
+
+app.del('/api/a/system/:path', auth.ensureAuthenticated, function(req, res){
+    fileSystem.unlink('./si/' + req.params.path, function (err) {
+        if (err) {
+            return res.json({error : 1});
+        }
+        return res.json({success : 1});
+    });
+});
+
 /*** HTTP Routing ***/
 app.get('/', routes.index);
 app.get('/fr/ma-personnalite|/en/my-personality', routing.personnalite);
@@ -292,14 +326,14 @@ app.get('/knov', routing.knov);
 app.get('/projets/:name', routing.project);
 
 app.get('/~scor', auth.ensureAuthenticated, function(req, res) {
-  res.render('private/index', {
+  res.render('admin/index', {
     user: req.user
   });
 });
 
 app.get('/~scor/:name', auth.ensureAuthenticated, function(req, res) {
   var name = req.params.name;
-  res.render('private/' + name, {
+  res.render('admin/' + name, {
     user: req.user
   });
 });
@@ -328,13 +362,20 @@ app.get('/auth/github/callback',
     failureRedirect: '/login'
   }),
   function(req, res) {
-    res.redirect('/');
+    if (req.user.username !== process.env.ADMIN_USERNAME) {
+        req.logout();
+        res.redirect('/fr');
+    } else {
+        var redirectingURL = req.session.privateURL ? req.session.privateURL : '/fr';
+        delete req.session.privateURL;
+        res.redirect(redirectingURL);
+    }
   }
 );
 
 app.get('/logout', function(req, res) {
   req.logout();
-  res.redirect('/');
+  res.redirect('/fr');
 });
 
 /***************************************************** 
@@ -359,7 +400,7 @@ app.get('/:lang/contact/:type', function(req, res) {
   }
 });
 
-app.get('/:lang/contact/:type/email', function(req, res) {
+app.get('/:lang/contact/:type/email', auth.ensureAuthenticated, function(req, res) {
   res.render('emails/' + req.params.type);
 });
 
