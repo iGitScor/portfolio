@@ -130,7 +130,7 @@ app.configure(function() {
       res.end(qcqImage, 'binary');
     }
     else {
-      // Continue to others error handling middlewares
+      // Continue to other errors handling middlewares
       next();
     }
   });
