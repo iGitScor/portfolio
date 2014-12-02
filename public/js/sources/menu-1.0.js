@@ -19,3 +19,15 @@ $('a[href*=#]:not([href=#])').click(function() {
         }
     }
 });
+
+$(document).ready(function() {
+    try {
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 300) {
+                $("#back-to-top").addClass("active");
+            } else {
+                $("#back-to-top").removeClass("active");
+            }
+        });
+    } catch (e) {}
+});

@@ -108,15 +108,15 @@ time.icon strong {
     top: 0;
     padding: 0.4em 0;
     color: #fff;
-    background-color: #97233f;
-    border-bottom: 1px dashed #f37302;
+    background-color: #96C241;
+    border-bottom: 1px dashed #BED88C;
     box-shadow: 0 2px 0 #EEE;
 }
 
 time.icon em {
     position: absolute;
     bottom: 0.3em;
-    color: #97233f;
+    color: #708B45;
 }
 
 time.icon span {

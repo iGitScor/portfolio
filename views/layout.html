@@ -1,125 +1,117 @@
 <!doctype html>
 <html lang="{{t('technical.lang')}}" class="js pinned">
     <head>
-      {% block init_script %}
-        <!-- Document initialization script -->
-      {% endblock %}
-      <meta charset="utf-8">
-      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        {% block init_script %}
+            <!-- Document initialization script -->
+        {% endblock %}
+        <meta charset="utf-8">
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        
+        <meta name="author" content="{{t('meta:author')}}">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="@iTweetScor">
+        <meta name="twitter:creator" content="@iTweetScor">
+        <meta name="twitter:title" content="Sébastien Correaud | Portfolio">
+        <meta name="twitter:description" content="Le portfolio de Sébastien Correaud, développeur mobile et web. Présentation de son expérience et de ses projets.">
+        <meta name="twitter:image:src" content="http://sebastien-correaud.herokuapp.com/img/apple/apple-touch-icon.png">
+        <meta name="twitter:image:width" content="57">
+        <meta name="twitter:image:height" content="57">
+        <meta name="twitter:url" content="http://sebastien-correaud.herokuapp.com/">
+        <meta name="keywords" content="Sebastien, CORREAUD, informatique, Portfolio, science computer, web, mobile, developpement, AngularJS, NodeJS, PHP, Javascript">
+        {% if meta_description %}
+            <meta name="description" content="{{ meta_description }}">
+        {% else %}
+            <meta name="description" content="{{t('meta:description.default')}}">
+        {% endif %}
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=.95, maximum-scale=.95">
+        
+        <meta name="google-site-verification" content="z6uHhh4cKq8yJIjPOQBPTUaSwqB9JxQb82HnCqdo3m4">
+        
+        <title>{{t('meta:author')}} - {{t('common.seo.role')}} - {{ title }}</title>
       
-      <meta name="author" content="{{t('meta:author')}}">
-      <meta name="twitter:card" content="summary">
-      <meta name="twitter:site" content="@iTweetScor">
-      <meta name="twitter:creator" content="@iTweetScor">
-      <meta name="twitter:title" content="Sébastien Correaud | Portfolio">
-      <meta name="twitter:description" content="Le portfolio de Sébastien Correaud, développeur mobile et web. Présentation de son expérience et de ses projets.">
-      <meta name="twitter:image:src" content="http://sebastien-correaud.herokuapp.com/img/apple/apple-touch-icon.png">
-      <meta name="twitter:image:width" content="57">
-      <meta name="twitter:image:height" content="57">
-      <meta name="twitter:url" content="http://sebastien-correaud.herokuapp.com/">
-      <meta name="keywords" content="Sebastien, CORREAUD, informatique, Portfolio, science computer, web, mobile, developpement, AngularJS, NodeJS, PHP, Javascript">
-      {% if meta_description %}
-        <meta name="description" content="{{ meta_description }}">
-      {% else %}
-        <meta name="description" content="{{t('meta:description.default')}}">
-      {% endif %}
-      <meta name="robots" content="index,follow">
-      <meta name="viewport" content="width=device-width, initial-scale=.95, maximum-scale=.95">
-      
-      <meta name="google-site-verification" content="z6uHhh4cKq8yJIjPOQBPTUaSwqB9JxQb82HnCqdo3m4">
-      
-      <title>{{t('meta:author')}} - {{t('common.seo.role')}} - {{ title }}</title>
-    
-      {% block head_style %}
-        <!-- Website style -->
-        <link rel="stylesheet" href="/css/style-1.0.min.css">
-        <link rel="stylesheet" href="/css/layout-1.0.min.css">
-        <link rel="stylesheet" href="/css/external/component.css">
-      {% endblock %}
-      
-      {% block prefetch_resources %}
-        <!-- Prefetch resources -->
-      {% endblock %}
-      
-      {% block prefetch_content %}
-        <!-- Prefetch internal content -->
-      {% endblock %}
-      
-      {% block prefetch_external %}
-        <!-- Prefetch DNS -->
-      {% endblock %}
-      
-      {% block head_script %}
-        <script src="/js/external/jquery-2.1.0.min.js"></script>
-        <script src="/js/session-1.0.min.js"></script>
-        <script src="/js/external/morphsearch.js"></script>
-        <!--[if lt IE 9]>
-            <script src="/js/external/html5.js"></script>
-        <![endif]-->
-      {% endblock %}
-      
-      <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
-      <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
-      <link rel="apple-touch-icon" href="/img/apple/apple-touch-icon.png" />
-      <link rel="apple-touch-icon" sizes="57x57" href="/img/apple/apple-touch-icon-57x57.png" />
-      <link rel="apple-touch-icon" sizes="72x72" href="/img/apple/apple-touch-icon-72x72.png" />
-      <link rel="apple-touch-icon" sizes="76x76" href="/img/apple/apple-touch-icon-76x76.png" />
-      <link rel="apple-touch-icon" sizes="114x114" href="/img/apple/apple-touch-icon-114x114.png" />
-      <link rel="apple-touch-icon" sizes="120x120" href="/img/apple/apple-touch-icon-120x120.png" />
-      <link rel="apple-touch-icon" sizes="144x144" href="/img/apple/apple-touch-icon-144x144.png" />
-      <link rel="apple-touch-icon" sizes="152x152" href="/img/apple/apple-touch-icon-152x152.png" />
-      
+        {% block head_style %}
+            <!-- Website style -->
+            <link rel="stylesheet" href="/css/style-1.0.min.css">
+            <link rel="stylesheet" href="/css/layout-1.0.min.css">
+            <link rel="stylesheet" href="/css/external/component.css">
+        {% endblock %}
+        <link rel="stylesheet" href="/style3.css">
+        <link rel="stylesheet" href="/icons.css">
+        
+        {% block prefetch_resources %}
+            <!-- Prefetch resources -->
+        {% endblock %}
+        
+        {% block prefetch_content %}
+            <!-- Prefetch internal content -->
+        {% endblock %}
+        
+        {% block prefetch_external %}
+            <!-- Prefetch DNS -->
+        {% endblock %}
+        
+        {% block head_script %}
+            <script src="/js/external/jquery-2.1.0.min.js"></script>
+            <script src="/js/session-1.0.min.js"></script>
+            <script src="/js/external/morphsearch.js"></script>
+            <!--[if lt IE 9]>
+                <script src="/js/external/html5.js"></script>
+            <![endif]-->
+        {% endblock %}
+        
+        <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+        <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="/img/apple/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="/img/apple/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="/img/apple/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="76x76" href="/img/apple/apple-touch-icon-76x76.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="/img/apple/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="120x120" href="/img/apple/apple-touch-icon-120x120.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="/img/apple/apple-touch-icon-144x144.png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="/img/apple/apple-touch-icon-152x152.png" />
     </head>
 
     <body ng-app="sc">
-            <div id="top">
+        <div id="top">
           	<div>
-        		<header id="main-header" class="container state-open">
-          			<div class="row">
-          				<div id="logo">
-            				<a href="/{{t('technical.lang')}}/"></a>
-            				<h1><small>{{t('meta:author')}}</small></h1>
-            				<h6>{{t('common.me.role')}}</h6>
-          				</div>
-    
-                  {% block header_content %}{% endblock %}
-                </div>
-    		 
-    		        <div class="row hide-on-print">
-    		            <nav id="utility">
-                            <ul>
-                                <li>
-                                    <a href="/{{t('technical.lang')}}/">{{t('common.menu.home')}}</a>
-                                </li>
-                                <li>
-                                    <a href="http://github.com/iGitScor" target="_blank">{{t('common.menu.dev')}}</a>
-                                </li>
-                                <li class="last">
-                                    <a href="/{{t('technical.lang')}}/{{t('routing:urls.network.url')}}">{{t('common.menu.network')}}</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </header>
-      	    </div>
-          </div>
-          {% block toolbar %}
+        		    <header id="main-header" class="container">
+          			    <div class="row">
+          				    <div id="logo">
+            				      <a href="/{{t('technical.lang')}}/"></a>
+            				      <h1><small>{{t('meta:author')}}</small></h1>
+            				      <h6>{{t('common.me.role')}}</h6>
+          				    </div>
+                      {% block header_content %}{% endblock %}
+                      <nav id="bt-menu" class="bt-menu bt-menu-close hide-mobile">
+            				      <a href="#" class="bt-menu-trigger"><span>Menu</span></a>
+            				          <ul>
+                        					<li><a href="/fr" class="bt-icon icon-home">Accueil</a></li>
+                        					<li><a href="#competences" class="bt-icon icon-star">Compétences</a></li>
+                        					<li><a href="https://github.com/FlipFlopWeekly/zori" class="bt-icon icon-volume">Zori</a></li>
+                        					<li><a href="https://github.com/iGitScor" class="bt-icon icon-github">GitHub</a></li>
+                        					<li><a href="/fr/mon-reseau-social" class="bt-icon icon-bubble">Réseau</a></li>
+                        					<li><a href="/fr/contact/formulaire-de-contact" class="bt-icon icon-email">Contact</a></li>
+                        			</ul>
+            			    </nav>
+                  </div>
+              </header>
+      	  </div>
+      </div>
+      {% block toolbar %}
           <div class="container page hide-on-print">
-	          <aside>
-              <div class="row lswi">
-      		      <ul class="bulletless">
-      		        {% if !error %}
-                    <li><img id="imprimer" alt="Imprimer" src="/img/printer.png" height="32" width="32"/></li>
-                    {% endif %}
-      		        {% if french %}
-      		          <li><a href="{{ french }}" class="blue" style="opacity:{{0.5 + (t('technical.lang') !== 'fr') }}">FR</a> | <a href="{{ english }}" class="blue" style="opacity:{{ 0.5 + (t('technical.lang') !== 'en') }}">EN</a></li>
-    		        {% endif %}
-    		      </ul>
-      		    </div>
-      		  </aside>
+	            <aside class="aside-lswi">
+                  <div class="row lswi">
+      		            <ul class="bulletless">
+      		            {% if french %}
+      		                <li><a href="{{ french }}" hreflang="fr" class="blue" style="opacity:{{0.5 + (t('technical.lang') !== 'fr') }}">FR</a> | <a href="{{ english }}" hreflang="en" class="blue" style="opacity:{{ 0.5 + (t('technical.lang') !== 'en') }}">EN</a></li>
+                        {% endif %}
+    		            </ul>
+      		        </div>
+      		    </aside>
       		</div>
       		          	  
-        	<div id="morphsearch" class="morphsearch hide-on-print" ng-controller="searchController">
+        	<div id="morphsearch" class="morphsearch hide-on-print hide-mobile" ng-controller="searchController">
       				<form class="morphsearch-form" ng-submit="search()">
       					<input class="morphsearch-input" type="search" placeholder="{{t('common.buttons.search')}}..." ng-model="searchText"/>
       					<button class="morphsearch-submit" type="submit">{{t('common.buttons.validate')}}</button>
@@ -128,10 +120,9 @@
       				  <div ng-if="searchResult">
       						<h2>{{t('search.results')}}</h2>
       						<ul class="icons checks" ng-if="!error">
-      						  <li class="check" ng-repeat="result in searchResult">
-      						    <a class="dummy-media-object" 
-      						    href="http://google.fr" ng-bind="result"></a>
-      						  </li>
+      					        <li class="check" ng-repeat="result in searchResult">
+      						       <search-result></search-result>
+      						    </li>
       						</ul>
       						<ul class="icons" ng-if="error">
       						  <li class="error">
@@ -193,38 +184,35 @@
           {% block content %}{% endblock %}
           {% block footer_content %}{% endblock %}
           
-          <footer id="main-footer" class="container">
-        	<div class="row hide-on-print">
-         		<ul class="icons">
-        			<li><a data-icon="B" href="http://www.facebook.com/sebastien.correaud" target="_blank"><span>Facebook</span></a></li>
-        			<li><a data-icon="F" href="http://www.linkedin.com/pub/s%C3%A9bastien-correaud/93/783/259" target="_blank"><span>LinkedIn</span></a></li>
-          		<li><a data-icon="D" href="https://twitter.com/iTweetScor" target="_blank"><span>Twitter</span></a></li>
-          	</ul>
-        	</div>
-          	<nav class="row">
+            <footer id="main-footer" class="container">
+                <br /><br />
+                <nav class="row">
           		<div class="twelve mean-background">
             			<h4>
             			    <strong>{{t('common.footer.about')}}</strong>
-            			    <span class="right hide-on-print">
+            			    <span class="right hide-on-print hide-mobile">
             			        <a href="/resources/sebastien_correaud.vcf" download="sebastien_correaud.vcf">&#8594; <small><b>{{t('common.footer.downloadcard')}}</b></small></a>
             			    </span>
             			</h4>
-            			<ul>
-          				  <li><b class="identity">{{t('meta:author')}}</b></li>
-          				  <li class="hide-on-print"><b>Ingénieur informatique</b> : <b><acronym title="MongoDB - Express - Angular - Node">MEAN stack</acronym> (<a href="http://mean.io" target="_blank" class="external-link">en savoir +</a>)</li>
-          				  <li>{{t('common.footer.phone')}} : 07 83 01 41 51</li>
-             				<li>Email : <a href="mailto:sebastien.correaud@gmail.com">sebastien.correaud@gmail.com</a></li>
-            			</ul>
-          		</div>
-           		<div class="twelve">
-            		<h4><strong>{{t('common.footer.follow')}}</strong></h4>
-            		<ul>
-          				<li><a href="http://github.com/iGitScor" class="external-link">Github : iGitScor</a></li>
-            		</ul>
+            			<div class="row">
+            			    <ul class="columns four">
+              				    <li><b class="identity">{{t('meta:author')}}</b></li>
+              				    <li class="hide-on-print"><b>Ingénieur informatique</b></li>
+              				    <li>{{t('common.footer.phone')}} : 07 83 01 41 51</li>
+                 			    <li>Email : <a href="mailto:sebastien.correaud@gmail.com">sebastien.correaud@gmail.com</a></li>
+                			</ul>
+                			<div class="columns four end">
+                        		<ul class="icons">
+                            			<li><a data-icon="B" href="http://www.facebook.com/sebastien.correaud" target="_blank"><span>Facebook</span></a></li>
+                            			<li><a data-icon="F" href="http://www.linkedin.com/pub/s%C3%A9bastien-correaud/93/783/259" target="_blank"><span>LinkedIn</span></a></li>
+                              		<li><a data-icon="D" href="https://twitter.com/iTweetScor" target="_blank"><span>Twitter</span></a></li>
+                              	</ul>
+                      		</div>
+            			</div>
           		</div>
           	</nav>
           	<div class="row util hide-on-print">
-        		<div class="six columns">
+        		<div class="right">
           			<p>&copy; <a href="https://github.com/iGitScor/portfolio/">{{t('meta:author')}}</a> - 2014</p>
         		</div>
           	</div>
@@ -255,6 +243,8 @@
                 </div>
             </div>
         </footer>
+        
+        <a href="#top" id="back-to-top" data-icon="t"></a>
         
         {% block footer_script %}
             <!-- Site script loaded after the content -->

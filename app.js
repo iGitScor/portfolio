@@ -241,7 +241,7 @@ app.get('/api/s/:searchText/:searchType/:lang', function(req, res){
                         if (results.totalHits) {
                             results.hits.forEach(function(hit) {
                                 //if (!apiResults.contains(hit)) {
-                                  apiResults[hit.document.id] = hit.document.body;
+                                  apiResults[hit.document.id] = {body:hit.document.body, link:hit.document.link };
                                   indexor++;
                                   
                                   if (indexor == keywords.length) {

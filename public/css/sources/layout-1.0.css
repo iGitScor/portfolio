@@ -121,8 +121,12 @@ body form button[type=submit] {
     border-radius: 50px;
     padding: 2px;
 }
+.aside-lswi {
+    float: right;
+    background: url('/css/images/site/bg-light-noise.png') top left #fbfbfa!important
+}
 .lswi {
-    padding-top: 30px;
+    display: inline;
 }
 .lswi ul {
     float: right;
@@ -131,9 +135,6 @@ body form button[type=submit] {
 .lswi ul li {
     float: left;
 }
-.lswi ul li > a {
-    border-bottom: #015172 2px solid
-}
 .lswi ul li a {
     font-weight: bold;
 }
@@ -141,7 +142,7 @@ body footer .identity,
 body #main-footer .identity,
 li .identity,
 div .identity {
-    color: #51c4cc;
+    color: white;
 }
 .mean-background {
     background: url('../img/mean_avatar.png') no-repeat bottom right;
@@ -161,9 +162,21 @@ div .identity {
         background-size: 170px;
     }
 }
+.sub-footer {
+    background-color: #F5F5F5;
+    border-top: 1px dotted;
+}
+.sub-footer a.pinned {
+    color: #414338;
+}
+.sub-footer a.pinned:hover,
+.sub-footer a.pinned:selected{
+    color: #708B45;
+}
 #imprimer {
     cursor: pointer;
-    margin-right: 15px
+    margin-right: 15px;
+    padding-bottom: 5px;
 }
 body .page article .row:target .divider p:before {
     content: "↳";
@@ -245,4 +258,38 @@ body .page article .row:target .divider p:before {
 .p-author a,
 .e-entry-title {
     line-height: 18px;
+}
+
+#back-to-top.active {
+    opacity: 1;
+    z-index: 10;
+}
+
+#back-to-top {
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 50px;
+    color: #ffffff;
+    background-color: #000000;
+    background-color: rgba(0,0,0,0.4);
+    border-radius: 0;
+    opacity: 0;
+    -webkit-transition: all 0.28s ease;
+    -moz-transition: all 0.28s ease;
+    -o-transition: all 0.28s ease;
+    -ms-transition: all 0.28s ease;
+    transition: all 0.28s ease;
+}
+
+#back-to-top:hover,
+#back-to-top:focus,
+#back-to-top:active {
+    color: #fff;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.7);
 }
