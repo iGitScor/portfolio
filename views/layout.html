@@ -115,68 +115,80 @@
       				<form class="morphsearch-form" ng-submit="search()">
       					<input class="morphsearch-input" type="search" placeholder="{{t('common.buttons.search')}}..." ng-model="searchText"/>
       					<button class="morphsearch-submit" type="submit">{{t('common.buttons.validate')}}</button>
+          				<div class="morphsearch-content">
+          				  <div ng-if="searchResult">
+          						<h2>{{t('search.results')}}</h2>
+          						<ul class="icons checks" ng-if="!error">
+          					        <li class="check" ng-repeat="result in searchResult">
+          						       <search-result></search-result>
+          						    </li>
+          						</ul>
+          						<ul class="icons" ng-if="error">
+          						  <li class="error">
+          						    <small ng-bind="searchResult"></small>
+          						  </li>
+          						</ul>
+          				    </div>
+          				    <div ng-if="searchResult" class="clear"></div>
+          				    <div class="four column">
+          						<h3 class="left">{{t('search.category.most')}}</h3>
+          						<span class="right radio-element">
+          						    <input id="radio-search-main" type="radio" name="search_type" class="css-checkbox" checked="checked" value="main" ng-model="searchType"/><label for="radio-search-main" class="css-label">recherche</label>
+          						</span>
+          						<div class="clear"></div>
+          						<a class="dummy-media-object" href="http://www.linkedin.com/pub/s%C3%A9bastien-correaud/93/783/259/">
+          							<img src="/img/search/linkedin-48.png" alt="Linkedin"/>
+          							Profil Linkedin
+          						</a>
+          						<a class="dummy-media-object" href="http://github.com/iGitScor">
+          							<img src="/img/search/github-48.png" alt="Github"/>
+          						    Profil GitHub
+          						</a>
+          						<a class="dummy-media-object" href="/fr/#realisations">
+          							<img src="/img/search/mean.png" alt="MEAN"/>
+          				            MongoDB + ExporessJS + AngularJS + Node.js
+          						</a>
+          					</div>
+          					<div class="four column">
+          						<h3 class="left">{{t('search.category.pro')}}</h3>
+          						<span class="right radio-element">
+          						    <input id="radio-search-pro" type="radio" name="search_type" class="css-checkbox" value="professional" ng-model="searchType"/><label for="radio-search-pro" class="css-label">recherche</label>
+          						</span>
+          						<div class="clear"></div>
+          						<a class="dummy-media-object" href="/resources/CORREAUD-Curriculum_vitae.pdf">
+          							<img src="/img/search/pdf-48.png" alt="PagePreloadingEffect"/>
+          							Curriculum vitae : PDF
+          						</a>
+          						<a class="dummy-media-object" href="http://gdfsuez-dolcevita.fr">
+          							<img src="/img/search/logo-dolcevita.png" alt="GDF SUEZ DolceVita"/>
+          							Dernière expérience : lead developer Front-end GDF SUEZ (Paris)
+          						</a>
+          						<a class="dummy-media-object" href="/fr/#competences">
+          							<img src="/img/search/toolkit-48.png" alt="HoverEffectsIdeasNew"/>
+          							Domaine de compétence : Web &amp; Mobile
+          						</a>
+          					</div>
+          					<div class="four column end">
+          						<h3 class="left">{{t('search.category.people')}}</h3>
+          						<span class="right radio-element">
+          						    <input id="radio-search-people" type="radio" name="search_type" class="css-checkbox" value="people" ng-model="searchType"/><label for="radio-search-people" class="css-label">recherche</label>
+          						</span>
+          						<div class="clear"></div>
+          						<a class="dummy-media-object" href="http://thib.me">
+          							<img class="round" src="https://avatars0.githubusercontent.com/u/877585?v=3&s=400" alt="Thibaud Colas"/>
+          							Thibaud Colas
+          						</a>
+          						<a class="dummy-media-object" href="https://github.com/MonsieurLuge">
+          							<img class="round" src="https://avatars2.githubusercontent.com/u/5494947?v=3&s=460" alt="Laurent Vergé"/>
+          							Laurent Vergé
+          						</a>
+          						<a class="dummy-media-object" href="http://nimaen.com/">
+          							<img class="round" src="https://avatars0.githubusercontent.com/u/2648851?v=3&s=400" alt="Arnaud Bosc"/>
+          							Arnaud Bosc
+          						</a>
+          					</div>
+          				</div><!-- /morphsearch-content -->
       				</form>
-      				<div class="morphsearch-content">
-      				  <div ng-if="searchResult">
-      						<h2>{{t('search.results')}}</h2>
-      						<ul class="icons checks" ng-if="!error">
-      					        <li class="check" ng-repeat="result in searchResult">
-      						       <search-result></search-result>
-      						    </li>
-      						</ul>
-      						<ul class="icons" ng-if="error">
-      						  <li class="error">
-      						    <small ng-bind="searchResult"></small>
-      						  </li>
-      						</ul>
-      					</div>
-      				  <div ng-if="searchResult" class="clearfix"></div>
-      					<div class="dummy-column">
-      						<h2>{{t('search.category.people')}}</h2>
-      						<a class="dummy-media-object" href="http://thib.me">
-      							<img class="round" src="https://avatars0.githubusercontent.com/u/877585?v=3&s=400" alt="Thibaud Colas"/>
-      							<h3>Thibaud Colas</h3>
-      						</a>
-      						<a class="dummy-media-object" href="https://github.com/MonsieurLuge">
-      							<img class="round" src="https://avatars2.githubusercontent.com/u/5494947?v=3&s=460" alt="Laurent Vergé"/>
-      							<h3>Laurent Vergé</h3>
-      						</a>
-      						<a class="dummy-media-object" href="http://nimaen.com/">
-      							<img class="round" src="https://avatars0.githubusercontent.com/u/2648851?v=3&s=400" alt="Arnaud Bosc"/>
-      							<h3>Arnaud Bosc</h3>
-      						</a>
-      					</div>
-      					<div class="dummy-column">
-      						<h2>{{t('search.category.pro')}}</h2>
-      						<a class="dummy-media-object" href="/resources/CORREAUD-Curriculum_vitae.pdf">
-      							<img src="/img/search/pdf-48.png" alt="PagePreloadingEffect"/>
-      							<h3>Curriculum vitae : PDF</h3>
-      						</a>
-      						<a class="dummy-media-object" href="http://gdfsuez-dolcevita.fr">
-      							<img src="/img/search/logo-dolcevita.png" alt="GDF SUEZ DolceVita"/>
-      							<h3>Dernière expérience : lead developer Front-end GDF SUEZ (Paris)</h3>
-      						</a>
-      						<a class="dummy-media-object" href="/fr/#competences">
-      							<img src="/img/search/toolkit-48.png" alt="HoverEffectsIdeasNew"/>
-      							<h3>Domaine de compétence : Web &amp; Mobile</h3>
-      						</a>
-      					</div>
-      					<div class="dummy-column">
-      						<h2>{{t('search.category.most')}}</h2>
-      						<a class="dummy-media-object" href="http://www.linkedin.com/pub/s%C3%A9bastien-correaud/93/783/259/">
-      							<img src="/img/search/linkedin-48.png" alt="Linkedin"/>
-      							<h3>Profil Linkedin</h3>
-      						</a>
-      						<a class="dummy-media-object" href="http://github.com/iGitScor">
-      							<img src="/img/search/github-48.png" alt="Github"/>
-      							<h3>Profil GitHub</h3>
-      						</a>
-      						<a class="dummy-media-object" href="/fr/#realisations">
-      							<img src="/img/search/mean.png" alt="MEAN"/>
-      							<h3>MongoDB + ExporessJS + AngularJS + Node.js</h3>
-      						</a>
-      					</div>
-      				</div><!-- /morphsearch-content -->
       				<span class="morphsearch-close">Fermer</span>
       			</div>
       		{% endblock %}

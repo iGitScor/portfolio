@@ -49,21 +49,6 @@ i18n.init({
   } 
 });
 
-var batchName = 'main';
-var filters = ['metadata'];
-var batch = JSON.parse(fileSystem.readFileSync('./content/search/' + batchName + '/fr/search-index.json'));
-
-searchindex.add({'batchName': batchName, 'filters': filters}, batch, function(err) {
-  if (!err) {
-    // Generate a snapshot backup !
-    searchindex.snapShot(function(readStream) {
-      readStream.pipe(fileSystem.createWriteStream('./content/search/' + batchName + '/search-index.gz'))
-        .on('close', function() {
-      });
-    });
-  }
-});
-
 // simple logger
 app.use(function(req, res, next){
   var urlParsed = req.url.split( '/' );
@@ -218,64 +203,12 @@ passport.use(new GitHubStrategy({
 /***************************************************** 
  ***                     Routing
  *****************************************************/
-/*** REST Routing ***/
-app.get('/api/s/:searchText/:searchType/:lang', function(req, res){
-    var apiResults = {};
-    var search = decodeURIComponent(req.params.searchText.toLowerCase()); 
-    var keywords = glossary.extract(search);
-    if (keywords.length === 0) {
-       keywords = search.split(' ');
-    }
-    var indexor = 0;
-    
-    keywords.forEach(function(entry) {
-        searchindex.match(entry, function(err, matches) {
-            if (!err && matches.length > 0) {
-                var query = {
-                    "query": {
-                        "*": matches
-                    }
-                };
-                searchindex.search(query, function(err, results) {
-                    if (!err) {
-                        if (results.totalHits) {
-                            results.hits.forEach(function(hit) {
-                                //if (!apiResults.contains(hit)) {
-                                  apiResults[hit.document.id] = {body:hit.document.body, link:hit.document.link };
-                                  indexor++;
-                                  
-                                  if (indexor == keywords.length) {
-                                      if (Object.keys(apiResults).length) {
-                                          return res.json(apiResults);
-                                      } else {
-                                          return res.json({
-                                              error: {
-                                                  code: '__',
-                                                  message: 'Aucun résultat'
-                                              }
-                                          });
-                                      }
-                                  }
-                               // }
-                            });
-                        } else {
-                          indexor++;
-                        }
-                    } else {
-                        indexor++;
-                    }
-                }); 
-            } else {
-                indexor++;
-            }
-        });
-    });
-    
-    if (indexor == keywords.length) {
-        if (Object.keys(apiResults).length) {
-            return res.json(apiResults);
+var searchEngine = function(index, keywords, results, response) {
+    if (index == keywords.length) {
+        if (Object.keys(results).length) {
+            return response.json(results);
         } else {
-            return res.json({
+            return response.json({
                 error: {
                     code: '__',
                     message: 'Aucun résultat'
@@ -283,6 +216,69 @@ app.get('/api/s/:searchText/:searchType/:lang', function(req, res){
             });
         }
     }
+};
+ 
+/*** REST Routing ***/
+app.get('/api/s/:searchText/:searchType/:lang', function(req, res){
+    var searchType = (req.params.searchType == 'undefined') ? 'main' : req.params.searchType;
+    var filters = ['metadata'];
+    var batch = JSON.parse(fileSystem.readFileSync('./content/search/' + searchType + '/fr/search-index.json'));
+    
+    searchindex.empty(function(erreur) {
+        if (!erreur) {
+            searchindex.add({'batchName': searchType, 'filters': filters}, batch, function(error) {
+                if(!error) {
+                    var apiResults = {};
+                    var search = decodeURIComponent(req.params.searchText.toLowerCase()); 
+                    var keywords = glossary.extract(search);
+                    if (keywords.length === 0) {
+                       keywords = search.split(' ');
+                    }
+                    var indexor = 0;
+                    
+                    keywords.forEach(function(entry) {
+                        searchindex.match(entry, function(err, matches) {
+                            if (!err && matches.length > 0) {
+                                var query = {
+                                    "query": {
+                                        "*": matches
+                                    }
+                                };
+                                searchindex.search(query, function(err, results) {
+                                    if (!err) {
+                                        if (results.totalHits) {
+                                            results.hits.forEach(function(hit) {
+                                                //if (!apiResults.contains(hit)) {
+                                                  apiResults[hit.document.id] = {body:hit.document.body, link:hit.document.link };
+                                                  indexor++;
+                                                  searchEngine(indexor, keywords, apiResults, res);
+                                               // }
+                                            });
+                                        } else {
+                                          indexor++;
+                                          searchEngine(indexor, keywords, apiResults, res);
+                                        }
+                                    } else {
+                                      indexor++;
+                                      searchEngine(indexor, keywords, apiResults, res);
+                                    }
+                                }); 
+                            } else {
+                              indexor++;
+                              searchEngine(indexor, keywords, apiResults, res);
+                            }
+                        });
+                    });
+                    // Case no keyword
+                    searchEngine(indexor, keywords, apiResults, res);
+                } else {
+                    console.log(error);
+                }
+            });
+        } else {
+            console.log(erreur);
+        }
+    });
 });
 
 app.post('/api/a/engine/:context', auth.ensureAuthenticated, function(req, res){

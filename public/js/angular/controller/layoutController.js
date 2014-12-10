@@ -7,12 +7,14 @@ app.controller("searchController", ["$scope", "$http",
         $scope.search = function() {
             var $localST = encodeURIComponent($scope.searchText);
             if ($localST.length > 0) {
-                $http.get( "/api/s/" + $localST + "/main/fr" ).success(function( data ) {
+                $http.get( "/api/s/" + $localST + "/" + $scope.searchType + "/fr" ).success(function( data ) {
                     if (data.error) {
                         $scope.searchResult = data.error.message;
                         $scope.error = true;
+                        
+                        // Search in other context
                     } else {
-                        // Display all the results -- change app.js & template
+                        // Display all the results -- change template
                         $scope.searchResult = data;
                         $scope.error = false;
                     }

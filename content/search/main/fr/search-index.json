@@ -1,6 +1,5 @@
 [
     {
-        "id": "1",
         "title": "Curriculum vitae",
         "body": "Ce site est un portfolio présentant mon curriculum vitae",
         "link": "http://correaud.tk",
@@ -12,7 +11,6 @@
         ]
     },
     {
-        "id": "2",
         "title": "github",
         "body": "Mon compte github est iGitScor",
         "link": "http://github.com/iGitScor",

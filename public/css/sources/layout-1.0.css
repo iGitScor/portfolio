@@ -293,3 +293,43 @@ body .page article .row:target .divider p:before {
     background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.7);
 }
+.radio-element {
+    padding: 0.5em 0;
+}
+input[type=radio].css-checkbox {
+    height: 0;
+    width: 0;
+    border: 0;
+    opacity: 0;
+}
+
+input[type=radio].css-checkbox:focus {
+    outline: none;
+}
+
+input[type=radio].css-checkbox + label.css-label {
+    padding-right: 21px;
+    height: 16px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: right 0;
+    line-height: 16px;
+    font-size: 13px;
+    vertical-align: middle;
+    cursor: pointer;
+    color: #708B45
+}
+
+input[type=radio].css-checkbox:checked + label.css-label {
+    background-position: right -16px;
+}
+
+label.css-label {
+    background-image: url('/css/images/form/input-radio-green.png');
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
