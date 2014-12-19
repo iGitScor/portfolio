@@ -4,10 +4,10 @@
         "body": "Ce site est un portfolio présentant mon curriculum vitae",
         "link": "http://correaud.tk",
         "metadata": [
-            "cv",
             "curriculum",
             "vitae",
-            "portfolio"
+            "portfolio",
+            "experience",
         ]
     },
     {
@@ -16,7 +16,12 @@
         "link": "http://github.com/iGitScor",
         "metadata": [
             "github",
-            "igitscor"
+            "igitscor",
+            "developpement",
+            "javascript",
+            "nodejs",
+            "node.js",
+            "bootstrap"
         ]
     }
 ]
