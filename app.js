@@ -5,7 +5,7 @@
  */
 
 
-/***************************************************** 
+/*****************************************************
  ***                     Initialization
  *****************************************************/
 // Module dependencies / imports
@@ -23,7 +23,7 @@ var express = require('express'),
   mailer = require('./scripts/mailer'),
   auth = require('./scripts/auth'),
   i18n = require("i18next"),
-  searchindex = require('search-index'),
+  searchindex = require('search-index')({ logLevel: 'debug' }),
   glossary = require("glossary");
 
 // Instanciate express framework
@@ -32,21 +32,21 @@ var app = express();
 // Define SWIG as the default template rendering
 app.engine('html', swig.renderFile);
 
-/***************************************************** 
+/*****************************************************
  ***                     Configuration
  *****************************************************/
 // Internationalization configuration.
 i18n.registerAppHelper(app);
-i18n.init({ 
+i18n.init({
   lng: "fr",
   detectLngFromPath: 0,
   supportedLngs: ['fr', 'en'],
   resGetPath: 'content/i18n/__lng__/__ns__.json',
   useCookie: false,
-  ns: { 
-    namespaces: ['translation', 'meta', 'routing', 'cv', 'pages'], 
+  ns: {
+    namespaces: ['translation', 'meta', 'routing', 'cv', 'pages'],
     defaultNs: 'translation'
-  } 
+  }
 });
 
 // simple logger
@@ -57,17 +57,17 @@ app.use(function(req, res, next){
     urlParsed.shift();
     urlParsed = urlParsed.join('/');
     urlParsed = '/' + urlParsed;
-    
+
     res.locals.requestedURL = urlParsed;
   }
-  
+
   next();
 });
 
 
 // Default configuration.
 app.configure(function() {
-  // Common application configuration 
+  // Common application configuration
   app.set('port', process.env.PORT || 80);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'html');
@@ -79,7 +79,7 @@ app.configure(function() {
   app.use(i18n.handle);
   app.use(express.methodOverride());
   app.use(express.session({
-    secret: 'keyboard cat', 
+    secret: 'keyboard cat',
     cookie: { maxAge: 60000 }
   }));
   app.use(flash());
@@ -99,7 +99,7 @@ app.configure(function() {
     res.setHeader("Cache-Control", "max-age=" + 604800000);
     next();
   });
-  
+
   /*
    * Errors
    */
@@ -173,7 +173,7 @@ app.configure('development', function() {
   });
 });
 
-/***************************************************** 
+/*****************************************************
  ***                     Security
  *****************************************************/
 var GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID;
@@ -200,7 +200,7 @@ passport.use(new GitHubStrategy({
   }
 ));
 
-/***************************************************** 
+/*****************************************************
  ***                     Routing
  *****************************************************/
 var searchEngine = function(index, keywords, results, response) {
@@ -217,43 +217,44 @@ var searchEngine = function(index, keywords, results, response) {
         }
     }
 };
- 
+
 /*** REST Routing ***/
 app.get('/api/s/:searchText/:searchType/:lang', function(req, res){
     var searchType = (req.params.searchType == 'undefined') ? 'main' : req.params.searchType;
     var filters = ['metadata'];
+
     var batch = JSON.parse(fileSystem.readFileSync('./content/search/' + searchType + '/fr/search-index.json'));
-    
-    searchindex.empty(function(erreur) {
-        if (!erreur) {
-            searchindex.add({'batchName': searchType, 'filters': filters}, batch, function(error) {
-                if(!error) {
+
+    searchindex.empty(function(emptyError) {
+        if (!emptyError) {
+            searchindex.add({'batchName': searchType, 'filters': filters}, batch, function(addError) {
+                if(!addError) {
                     var apiResults = {};
-                    var search = decodeURIComponent(req.params.searchText.toLowerCase()); 
+                    var search = decodeURIComponent(req.params.searchText.toLowerCase());
                     var keywords = glossary.extract(search);
+
                     if (keywords.length === 0) {
                        keywords = search.split(' ');
                     }
                     var indexor = 0;
-                    
+
                     keywords.forEach(function(entry) {
-                        searchindex.match(entry, function(err, matches) {
-                            if (!err && matches.length > 0) {
+                        searchindex.match(entry, function(matchError, matches) {
+                            if (!matchError && matches.length > 0) {
                                 var query = {
                                     "query": {
-                                        "*": matches
+                                        "metadata": matches
                                     }
                                 };
-                                searchindex.search(query, function(err, results) {
-                                    if (!err) {
+                                searchindex.search(query, function(searchError, results) {
+                                    if (!searchError) {
                                         if (results.totalHits) {
                                             results.hits.forEach(function(hit) {
-                                                //if (!apiResults.contains(hit)) {
-                                                  apiResults[hit.document.id] = {body:hit.document.body, link:hit.document.link };
-                                                  indexor++;
-                                                  searchEngine(indexor, keywords, apiResults, res);
-                                               // }
+                                                var resultIndex = new Buffer(JSON.stringify(hit.document)).toString('base64');
+                                                apiResults[resultIndex] = {body:hit.document.body, link:hit.document.link };
                                             });
+                                            indexor++;
+                                            searchEngine(indexor, keywords, apiResults, res);
                                         } else {
                                           indexor++;
                                           searchEngine(indexor, keywords, apiResults, res);
@@ -262,7 +263,7 @@ app.get('/api/s/:searchText/:searchType/:lang', function(req, res){
                                       indexor++;
                                       searchEngine(indexor, keywords, apiResults, res);
                                     }
-                                }); 
+                                });
                             } else {
                               indexor++;
                               searchEngine(indexor, keywords, apiResults, res);
@@ -272,12 +273,60 @@ app.get('/api/s/:searchText/:searchType/:lang', function(req, res){
                     // Case no keyword
                     searchEngine(indexor, keywords, apiResults, res);
                 } else {
-                    console.log(error);
+                    console.log(addError);
                 }
             });
         } else {
-            console.log(erreur);
+            console.log(emptyError);
         }
+    });
+});
+
+app.get('/api/f/red', function (req, res) {
+
+    var FeedParser = require('feedparser')
+      , request = require('request')
+      , tplObj = Array();
+
+    var atom = request('http://www.redbubble.com/people/iscor/portfolio/recent.atom')
+      , feedparser = new FeedParser();
+
+    atom.on('error', function (error) {
+      // handle any request errors
+    });
+
+    atom.on('response', function (res) {
+        var stream = this;
+
+        if (res.statusCode != 200) {
+            return this.emit('error', new Error('Bad status code'));
+        }
+
+        stream.pipe(feedparser);
+    });
+
+    feedparser.on('error', function (error) {
+      // always handle errors
+    });
+
+    feedparser.on('readable', function () {
+      // This is where the action is!
+      var stream = this
+        , item;
+
+      while (item = stream.read()) {
+        if (item.title && item.description && item.link) {
+            tplObj.push({
+                title: item.title,
+                description: item.description,
+                link: item.link
+            });
+        }
+      }
+    });
+
+    feedparser.on('end', function () {
+        return  res.json(tplObj);
     });
 });
 
@@ -287,7 +336,7 @@ app.post('/api/a/engine/:context', auth.ensureAuthenticated, function(req, res){
             var batchName = req.params.context;
             var filters = ['metadata'];
             var batch = JSON.parse(fileSystem.readFileSync('./content/search/' + batchName + '/fr/search-index.json'));
-            
+
             searchindex.add({'batchName': batchName, 'filters': filters}, batch, function(err) {
                 if (err) {
                     return res.json({error : 1});
@@ -318,6 +367,7 @@ app.del('/api/a/system/:path', auth.ensureAuthenticated, function(req, res){
 app.get('/', routes.index);
 app.get('/fr/ma-personnalite|/en/my-personality', routing.personnalite);
 app.get('/fr/mon-reseau-social|/en/my-social-network', routing.network);
+app.get('/redbubble', routing.redbubble);
 app.get('/knov', routing.knov);
 app.get('/projets/:name', routing.project);
 
@@ -374,7 +424,7 @@ app.get('/logout', function(req, res) {
   res.redirect('/fr');
 });
 
-/***************************************************** 
+/*****************************************************
  ***                     Contact
  *****************************************************/
 var allowedContactForms = ["formulaire-de-contact", "contact-form", "formulaire-embauche", "job-proposal-form"];
@@ -422,7 +472,7 @@ app.post('/:lang/contact/:type', function(req, res) {
   }
 });
 
-/***************************************************** 
+/*****************************************************
  ***                     Sitemap
  *****************************************************/
 appSitemap.generateSitemap(app.get('_scorURL'));
@@ -439,7 +489,7 @@ app.get('/robots.txt', function(req, res) {
   res.type('txt').send(content);
 });
 
-/***************************************************** 
+/*****************************************************
  ***                     Server
  *****************************************************/
 // Default route, homepage for all languages

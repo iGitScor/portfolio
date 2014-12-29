@@ -149,7 +149,7 @@ p a:visited {
 	.hide-mobile {
 		display: none;
 	}
-	
+
 	.show-mobile {
 		display: block;
 	}
@@ -1950,4 +1950,17 @@ body .page div.feature dl div.row {
 	.pinned-nav ul li a span {
 		font-size: 12px
 	}
+}
+md-tabs.md-default-theme .md-header {
+	margin-bottom: 10px;
+	background-color: #96C241;
+}
+md-tabs.md-default-theme md-tab {
+	color: #F5F5F5;
+}
+md-tabs.md-default-theme md-tabs-ink-bar {
+	background: #414338;
+}
+md-tabs.md-default-theme md-tab:focus {
+	border: 0;
 }

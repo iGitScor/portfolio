@@ -70,7 +70,7 @@
 }
 
 .morphsearch-input::-webkit-search-cancel-button { /* remove cross in Chrome */
-	display: none; 
+	display: none;
 }
 
 .morphsearch.hideInput .morphsearch-input {
@@ -108,8 +108,8 @@
 }
 
 input[type="search"] { /* reset normalize */
-	-webkit-box-sizing: border-box; 
-	box-sizing: border-box;	
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .morphsearch-input:focus,
@@ -208,7 +208,7 @@ input[type="search"] { /* reset normalize */
 
 .morphsearch-content {
 	color: #333;
-	margin-top: 4.5em;
+	margin-top: 2em;
 	width: 100%;
 	height: 0;
 	overflow: hidden;
@@ -292,7 +292,7 @@ input[type="search"] { /* reset normalize */
 
 .dummy-media-object img {
 	display: inline-block;
-	width: 50px;	
+	width: 50px;
 	margin: 0 10px 0 0;
 	vertical-align: middle;
 }

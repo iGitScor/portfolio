@@ -1,27 +1,43 @@
 [
     {
-        "title": "Curriculum vitae",
+        "title": "cv",
         "body": "Ce site est un portfolio présentant mon curriculum vitae",
         "link": "http://correaud.tk",
         "metadata": [
             "curriculum",
             "vitae",
-            "portfolio",
-            "experience",
+            "portfolio"
         ]
     },
     {
-        "title": "github",
+        "title": "git",
         "body": "Mon compte github est iGitScor",
         "link": "http://github.com/iGitScor",
         "metadata": [
             "github",
-            "igitscor",
-            "developpement",
-            "javascript",
+            "igitscor"
+        ]
+    },
+    {
+        "title": "mean",
+        "body": "Je suis un développeur Front-End spécialisé dans le framework AngularJS. J'ai également une expérience dans la partie Backend avec NodeJS et ExpressJS",
+        "link": "http://mean.io",
+        "metadata": [
+            "angularjs",
             "nodejs",
-            "node.js",
-            "bootstrap"
+            "expressjs"
+        ]
+    },
+    {
+        "title": "job",
+        "body": "Mon poste actuel : FrontEnd developer dans la start-up 1001 Pharmacies à Montpellier",
+        "link": "http://1001pharmacies.com",
+        "metadata": [
+            "frontend",
+            "developer",
+            "startup",
+            "montpellier",
+            "pharmacies"
         ]
     }
 ]

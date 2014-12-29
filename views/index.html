@@ -4,13 +4,11 @@
 {% endblock %}
 
 {% block head_style %}
-  <link rel="stylesheet" href={{ styles }}>
-  <link rel="stylesheet" href="/css/external/component.css">
+  	<link rel="stylesheet" href={{ styles }}>
 {% endblock %}
 
 {% block head_script %}
-	<script src="/classie.js"></script>
-	<script defer src={{ scripts }}></script>
+		<script defer src={{ scripts }}></script>
 {% endblock %}
 
 {% block header_content %}
@@ -43,27 +41,44 @@
 {% block content %}
 <div class="container page">
 	<article>
-    {% include 'cv/_navigation.html' %}
-		
 		{% if message.length > 0  %}
 			<div class="row notice_wrapper" data-attr-notice="homepage-top">
 				<div class="notice columns end twelve">
-					{{ message }} 
+					{{ message }}
 					<a class="right notice_close_button" data-attr-notice="homepage-top">X</a>
 				</div>
 			</div>
 		{% endif %}
-		
-		{% include 'cv/presentation.html' %}
-		
-		{% if t('technical.lang') == 'fr' %}
-    	{% include 'cv/professional.html' %}
-    {% endif %}
-    
-    {% include 'cv/realisations.html' %}
-		{% include 'cv/etudes.html' %}
-		{% include 'cv/competences.html' %}
-		{% include 'cv/hobbies.html' %}
+
+		<div class="row hide-on-print">
+				<md-tabs md-selected="selectedIndex" class="twelve columns">
+						<md-tab label="{{t('homepage.navigation.presentation.title')}}" md-no-ink>
+						{% include 'cv/presentation.html' %}
+						</md-tab>
+
+						{% if t('technical.lang') == 'fr' %}
+							<md-tab label="{{t('homepage.navigation.pro.title')}}" md-no-ink>
+				    	{% include 'cv/professional.html' %}
+				    	</md-tab>
+				    {% endif %}
+
+						<md-tab label="{{t('homepage.navigation.realisations.title')}}" md-no-ink>
+		    		{% include 'cv/realisations.html' %}
+		    		</md-tab>
+
+		    		<md-tab label="{{t('homepage.navigation.study.title')}}" md-no-ink>
+						{% include 'cv/etudes.html' %}
+						</md-tab>
+
+						<md-tab label="{{t('homepage.navigation.competences.title')}}" md-no-ink>
+						{% include 'cv/competences.html' %}
+						</md-tab>
+
+						<md-tab label="{{t('homepage.navigation.hobbies.title')}}" md-no-ink>
+						{% include 'cv/hobbies.html' %}
+						</md-tab>
+				</md-tabs>
+		</div>
 	</article>
 </div>
 {% endblock %}
@@ -128,5 +143,4 @@
 	</div>
 </div>
 
-<script src="/borderMenu.js"></script>
 {% endblock %}

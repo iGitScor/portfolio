@@ -7,5 +7,32 @@
             "php",
             "symfony"
         ]
+    },
+    {
+        "title": "php",
+        "body": "5 ans d'expérience en développement backend PHP",
+        "metadata": [
+            "php",
+            "symfony",
+            "ezpublish",
+            "backend"
+        ]
+    },
+    {
+        "title": "js",
+        "body": "Emploi en cours : Frontend developer angularJS",
+        "metadata": [
+            "javascript",
+            "angularjs",
+            "frontend",
+            "emploi"
+        ]
+    },
+    {
+        "title": "ios",
+        "body": "3 ans d'expérience en développement iOS",
+        "metadata": [
+
+        ]
     }
 ]

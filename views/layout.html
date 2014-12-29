@@ -1,279 +1,288 @@
 <!doctype html>
 <html lang="{{t('technical.lang')}}" class="js pinned">
-    <head>
-        {% block init_script %}
-            <!-- Document initialization script -->
-        {% endblock %}
-        <meta charset="utf-8">
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-        
-        <meta name="author" content="{{t('meta:author')}}">
-        <meta name="twitter:card" content="summary">
-        <meta name="twitter:site" content="@iTweetScor">
-        <meta name="twitter:creator" content="@iTweetScor">
-        <meta name="twitter:title" content="Sébastien Correaud | Portfolio">
-        <meta name="twitter:description" content="Le portfolio de Sébastien Correaud, développeur mobile et web. Présentation de son expérience et de ses projets.">
-        <meta name="twitter:image:src" content="http://sebastien-correaud.herokuapp.com/img/apple/apple-touch-icon.png">
-        <meta name="twitter:image:width" content="57">
-        <meta name="twitter:image:height" content="57">
-        <meta name="twitter:url" content="http://sebastien-correaud.herokuapp.com/">
-        <meta name="keywords" content="Sebastien, CORREAUD, informatique, Portfolio, science computer, web, mobile, developpement, AngularJS, NodeJS, PHP, Javascript">
-        {% if meta_description %}
-            <meta name="description" content="{{ meta_description }}">
-        {% else %}
-            <meta name="description" content="{{t('meta:description.default')}}">
-        {% endif %}
-        <meta name="robots" content="index,follow">
-        <meta name="viewport" content="width=device-width, initial-scale=.95, maximum-scale=.95">
-        
-        <meta name="google-site-verification" content="z6uHhh4cKq8yJIjPOQBPTUaSwqB9JxQb82HnCqdo3m4">
-        
-        <title>{{t('meta:author')}} - {{t('common.seo.role')}} - {{ title }}</title>
-      
-        {% block head_style %}
-            <!-- Website style -->
-            <link rel="stylesheet" href="/css/style-1.0.min.css">
-            <link rel="stylesheet" href="/css/layout-1.0.min.css">
-            <link rel="stylesheet" href="/css/external/component.css">
-        {% endblock %}
-        <link rel="stylesheet" href="/style3.css">
-        <link rel="stylesheet" href="/icons.css">
-        
-        {% block prefetch_resources %}
-            <!-- Prefetch resources -->
-        {% endblock %}
-        
-        {% block prefetch_content %}
-            <!-- Prefetch internal content -->
-        {% endblock %}
-        
-        {% block prefetch_external %}
-            <!-- Prefetch DNS -->
-        {% endblock %}
-        
-        {% block head_script %}
-            <script src="/js/external/jquery-2.1.0.min.js"></script>
-            <script src="/js/session-1.0.min.js"></script>
-            <script src="/js/external/morphsearch.js"></script>
-            <!--[if lt IE 9]>
-                <script src="/js/external/html5.js"></script>
-            <![endif]-->
-        {% endblock %}
-        
-        <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
-        <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
-        <link rel="apple-touch-icon" href="/img/apple/apple-touch-icon.png" />
-        <link rel="apple-touch-icon" sizes="57x57" href="/img/apple/apple-touch-icon-57x57.png" />
-        <link rel="apple-touch-icon" sizes="72x72" href="/img/apple/apple-touch-icon-72x72.png" />
-        <link rel="apple-touch-icon" sizes="76x76" href="/img/apple/apple-touch-icon-76x76.png" />
-        <link rel="apple-touch-icon" sizes="114x114" href="/img/apple/apple-touch-icon-114x114.png" />
-        <link rel="apple-touch-icon" sizes="120x120" href="/img/apple/apple-touch-icon-120x120.png" />
-        <link rel="apple-touch-icon" sizes="144x144" href="/img/apple/apple-touch-icon-144x144.png" />
-        <link rel="apple-touch-icon" sizes="152x152" href="/img/apple/apple-touch-icon-152x152.png" />
-    </head>
 
-    <body ng-app="sc">
-        <div id="top">
-          	<div>
-        		    <header id="main-header" class="container">
-          			    <div class="row">
-          				    <div id="logo">
-            				      <a href="/{{t('technical.lang')}}/"></a>
-            				      <h1><small>{{t('meta:author')}}</small></h1>
-            				      <h6>{{t('common.me.role')}}</h6>
-          				    </div>
-                      {% block header_content %}{% endblock %}
-                      <nav id="bt-menu" class="bt-menu bt-menu-close hide-mobile">
-            				      <a href="#" class="bt-menu-trigger"><span>Menu</span></a>
-            				          <ul>
-                        					<li><a href="/fr" class="bt-icon icon-home">Accueil</a></li>
-                        					<li><a href="#competences" class="bt-icon icon-star">Compétences</a></li>
-                        					<li><a href="https://github.com/FlipFlopWeekly/zori" class="bt-icon icon-volume">Zori</a></li>
-                        					<li><a href="https://github.com/iGitScor" class="bt-icon icon-github">GitHub</a></li>
-                        					<li><a href="/fr/mon-reseau-social" class="bt-icon icon-bubble">Réseau</a></li>
-                        					<li><a href="/fr/contact/formulaire-de-contact" class="bt-icon icon-email">Contact</a></li>
-                        			</ul>
-            			    </nav>
-                  </div>
-              </header>
-      	  </div>
-      </div>
-      {% block toolbar %}
-          <div class="container page hide-on-print">
-	            <aside class="aside-lswi">
-                  <div class="row lswi">
-      		            <ul class="bulletless">
-      		            {% if french %}
-      		                <li><a href="{{ french }}" hreflang="fr" class="blue" style="opacity:{{0.5 + (t('technical.lang') !== 'fr') }}">FR</a> | <a href="{{ english }}" hreflang="en" class="blue" style="opacity:{{ 0.5 + (t('technical.lang') !== 'en') }}">EN</a></li>
-                        {% endif %}
-    		            </ul>
-      		        </div>
-      		    </aside>
-      		</div>
-      		          	  
-        	<div id="morphsearch" class="morphsearch hide-on-print hide-mobile" ng-controller="searchController">
-      				<form class="morphsearch-form" ng-submit="search()">
-      					<input class="morphsearch-input" type="search" placeholder="{{t('common.buttons.search')}}..." ng-model="searchText"/>
-      					<button class="morphsearch-submit" type="submit">{{t('common.buttons.validate')}}</button>
-          				<div class="morphsearch-content">
-          				  <div ng-if="searchResult">
-          						<h2>{{t('search.results')}}</h2>
-          						<ul class="icons checks" ng-if="!error">
-          					        <li class="check" ng-repeat="result in searchResult">
-          						       <search-result></search-result>
-          						    </li>
-          						</ul>
-          						<ul class="icons" ng-if="error">
-          						  <li class="error">
-          						    <small ng-bind="searchResult"></small>
-          						  </li>
-          						</ul>
-          				    </div>
-          				    <div ng-if="searchResult" class="clear"></div>
-          				    <div class="four column">
-          						<h3 class="left">{{t('search.category.most')}}</h3>
-          						<span class="right radio-element">
-          						    <input id="radio-search-main" type="radio" name="search_type" class="css-checkbox" checked="checked" value="main" ng-model="searchType"/><label for="radio-search-main" class="css-label">recherche</label>
-          						</span>
-          						<div class="clear"></div>
-          						<a class="dummy-media-object" href="http://www.linkedin.com/pub/s%C3%A9bastien-correaud/93/783/259/">
-          							<img src="/img/search/linkedin-48.png" alt="Linkedin"/>
-          							Profil Linkedin
-          						</a>
-          						<a class="dummy-media-object" href="http://github.com/iGitScor">
-          							<img src="/img/search/github-48.png" alt="Github"/>
-          						    Profil GitHub
-          						</a>
-          						<a class="dummy-media-object" href="/fr/#realisations">
-          							<img src="/img/search/mean.png" alt="MEAN"/>
-          				            MongoDB + ExporessJS + AngularJS + Node.js
-          						</a>
-          					</div>
-          					<div class="four column">
-          						<h3 class="left">{{t('search.category.pro')}}</h3>
-          						<span class="right radio-element">
-          						    <input id="radio-search-pro" type="radio" name="search_type" class="css-checkbox" value="professional" ng-model="searchType"/><label for="radio-search-pro" class="css-label">recherche</label>
-          						</span>
-          						<div class="clear"></div>
-          						<a class="dummy-media-object" href="/resources/CORREAUD-Curriculum_vitae.pdf">
-          							<img src="/img/search/pdf-48.png" alt="PagePreloadingEffect"/>
-          							Curriculum vitae : PDF
-          						</a>
-          						<a class="dummy-media-object" href="http://gdfsuez-dolcevita.fr">
-          							<img src="/img/search/logo-dolcevita.png" alt="GDF SUEZ DolceVita"/>
-          							Dernière expérience : lead developer Front-end GDF SUEZ (Paris)
-          						</a>
-          						<a class="dummy-media-object" href="/fr/#competences">
-          							<img src="/img/search/toolkit-48.png" alt="HoverEffectsIdeasNew"/>
-          							Domaine de compétence : Web &amp; Mobile
-          						</a>
-          					</div>
-          					<div class="four column end">
-          						<h3 class="left">{{t('search.category.people')}}</h3>
-          						<span class="right radio-element">
-          						    <input id="radio-search-people" type="radio" name="search_type" class="css-checkbox" value="people" ng-model="searchType"/><label for="radio-search-people" class="css-label">recherche</label>
-          						</span>
-          						<div class="clear"></div>
-          						<a class="dummy-media-object" href="http://thib.me">
-          							<img class="round" src="https://avatars0.githubusercontent.com/u/877585?v=3&s=400" alt="Thibaud Colas"/>
-          							Thibaud Colas
-          						</a>
-          						<a class="dummy-media-object" href="https://github.com/MonsieurLuge">
-          							<img class="round" src="https://avatars2.githubusercontent.com/u/5494947?v=3&s=460" alt="Laurent Vergé"/>
-          							Laurent Vergé
-          						</a>
-          						<a class="dummy-media-object" href="http://nimaen.com/">
-          							<img class="round" src="https://avatars0.githubusercontent.com/u/2648851?v=3&s=400" alt="Arnaud Bosc"/>
-          							Arnaud Bosc
-          						</a>
-          					</div>
-          				</div><!-- /morphsearch-content -->
-      				</form>
-      				<span class="morphsearch-close">Fermer</span>
-      			</div>
-      		{% endblock %}
-          
-          {% block content %}{% endblock %}
-          {% block footer_content %}{% endblock %}
-          
-            <footer id="main-footer" class="container">
-                <br /><br />
-                <nav class="row">
-          		<div class="twelve mean-background">
-            			<h4>
-            			    <strong>{{t('common.footer.about')}}</strong>
-            			    <span class="right hide-on-print hide-mobile">
-            			        <a href="/resources/sebastien_correaud.vcf" download="sebastien_correaud.vcf">&#8594; <small><b>{{t('common.footer.downloadcard')}}</b></small></a>
-            			    </span>
-            			</h4>
-            			<div class="row">
-            			    <ul class="columns four">
-              				    <li><b class="identity">{{t('meta:author')}}</b></li>
-              				    <li class="hide-on-print"><b>Ingénieur informatique</b></li>
-              				    <li>{{t('common.footer.phone')}} : 07 83 01 41 51</li>
-                 			    <li>Email : <a href="mailto:sebastien.correaud@gmail.com">sebastien.correaud@gmail.com</a></li>
-                			</ul>
-                			<div class="columns four end">
-                        		<ul class="icons">
-                            			<li><a data-icon="B" href="http://www.facebook.com/sebastien.correaud" target="_blank"><span>Facebook</span></a></li>
-                            			<li><a data-icon="F" href="http://www.linkedin.com/pub/s%C3%A9bastien-correaud/93/783/259" target="_blank"><span>LinkedIn</span></a></li>
-                              		<li><a data-icon="D" href="https://twitter.com/iTweetScor" target="_blank"><span>Twitter</span></a></li>
-                              	</ul>
-                      		</div>
-            			</div>
-          		</div>
-          	</nav>
-          	<div class="row util hide-on-print">
-        		<div class="right">
-          			<p>&copy; <a href="https://github.com/iGitScor/portfolio/">{{t('meta:author')}}</a> - 2014</p>
-        		</div>
-          	</div>
-          	
-            <div ng-controller="cookieController">   
-                <div id="cookiebanner" class="standalone-tweet ltr cookiebanner" ng-if="!cookieAgree">
-                    <blockquote class="tweet subject expanded">
-                        <div class="header_box">
-                            <div class="h-card p-author">
-                                <a class="u-url profile" href="http://www.aboutcookies.org/">
-                                    <img class="u-photo avatar right" alt="info" src="/img/icons/picto-info-32.png" width="32" height="32">
-                                    <span class="full-name">
-                                        <span class="p-name customisable-highlight">{{t('common.cookie.title')}}</span>
-                                    </span>
-                                    <span class="p-nickname">&gt; {{t('common.cookie.more')}}</span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="content e-entry-content">
-                            <p class="e-entry-title">
-                                {{t('common.cookie.text')}}
-                            </p>
-                        </div>
-                        <div class="footer customisable-border">
-                            <div id="cookiebanner-close" class="cookiebanner-close" ng-click="agree()">✖</div>
-                        </div>
-                    </blockquote>
+<head>
+    {% block init_script %}
+    <!-- Document initialization script -->
+    {% endblock %}
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+    <meta name="author" content="{{t('meta:author')}}">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@iTweetScor">
+    <meta name="twitter:creator" content="@iTweetScor">
+    <meta name="twitter:title" content="Sébastien Correaud | Portfolio">
+    <meta name="twitter:description" content="Le portfolio de Sébastien Correaud, développeur mobile et web. Présentation de son expérience et de ses projets.">
+    <meta name="twitter:image:src" content="http://sebastien-correaud.herokuapp.com/img/apple/apple-touch-icon.png">
+    <meta name="twitter:image:width" content="57">
+    <meta name="twitter:image:height" content="57">
+    <meta name="twitter:url" content="http://sebastien-correaud.herokuapp.com/">
+    <meta name="keywords" content="Sebastien, CORREAUD, informatique, Portfolio, science computer, web, mobile, developpement, AngularJS, NodeJS, PHP, Javascript"> {% if meta_description %}
+    <meta name="description" content="{{ meta_description }}"> {% else %}
+    <meta name="description" content="{{t('meta:description.default')}}"> {% endif %}
+    <meta name="robots" content="index,follow">
+    <meta name="viewport" content="width=device-width, initial-scale=.95, maximum-scale=.95">
+
+    <meta name="google-site-verification" content="z6uHhh4cKq8yJIjPOQBPTUaSwqB9JxQb82HnCqdo3m4">
+
+    <title>{{t('meta:author')}} - {{t('common.seo.role')}} - {{ title }}</title>
+
+    <link rel="stylesheet" href="/css/external/angular-material.css">
+    {% block head_style %}
+    <!-- Website style -->
+    <link rel="stylesheet" href="/css/style-1.0.min.css">
+    <link rel="stylesheet" href="/css/layout-1.0.min.css">
+    <link rel="stylesheet" href="/css/external/component.css">
+    <link rel="stylesheet" href="/css/external/navigation.css">
+    <link rel="stylesheet" href="/css/external/icons.css">
+    {% endblock %}
+
+    {% block prefetch_resources %}
+    <!-- Prefetch resources -->
+    {% endblock %} {% block prefetch_content %}
+    <!-- Prefetch internal content -->
+    {% endblock %} {% block prefetch_external %}
+    <!-- Prefetch DNS -->
+    {% endblock %} {% block head_script %}
+    <script src="/js/external/jquery-2.1.0.min.js"></script>
+    <script defer src="/js/external/classie.js"></script>
+    <script defer src="/js/external/morphsearch.js"></script>
+    <script defer src="/js/session-1.0.min.js"></script>
+    <script defer src="/js/menu-1.0.min.js"></script>
+    <script defer src="/js/navigation-1.0.min.js"></script>
+    {% endblock %}
+    <!--[if lt IE 9]>
+            <script src="/js/external/html5.js"></script>
+        <![endif]-->
+
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/img/apple/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="57x57" href="/img/apple/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="/img/apple/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="/img/apple/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="/img/apple/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="/img/apple/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="/img/apple/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/img/apple/apple-touch-icon-152x152.png" />
+</head>
+
+<body ng-app="sc">
+    <div id="top">
+        <div>
+            <header id="main-header" class="container">
+                <div class="row">
+                    <div id="logo">
+                        <a href="/{{t('technical.lang')}}/"></a>
+                        <h1><small>{{t('meta:author')}}</small></h1>
+                        <h6>{{t('common.me.role')}}</h6>
+                    </div>
+                    {% block header_content %}{% endblock %}
+                    <nav id="bt-menu" class="bt-menu bt-menu-close hide-mobile">
+                        <a href="#" class="bt-menu-trigger"><span>Menu</span></a>
+                        <ul>
+                            <li><a href="/fr" class="bt-icon icon-home">Accueil</a>
+                            </li>
+                            <li><a href="#competences" class="bt-icon icon-star">Compétences</a>
+                            </li>
+                            <li><a href="https://github.com/FlipFlopWeekly/zori" class="bt-icon icon-volume">Zori</a>
+                            </li>
+                            <li><a href="https://github.com/iGitScor" class="bt-icon icon-github">GitHub</a>
+                            </li>
+                            <li><a href="/fr/mon-reseau-social" class="bt-icon icon-bubble">Réseau</a>
+                            </li>
+                            <li><a href="/fr/contact/formulaire-de-contact" class="bt-icon icon-email">Contact</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+        </div>
+    </div>
+    <div id="morphsearch" class="morphsearch hide-on-print hide-mobile" ng-controller="searchController">
+        <form class="morphsearch-form" ng-submit="search()">
+            <input class="morphsearch-input" type="search" placeholder="{{t('common.buttons.search')}}..." ng-model="searchText" />
+            <button class="morphsearch-submit" type="submit">{{t('common.buttons.validate')}}</button>
+            <div class="morphsearch-content">
+                <div ng-if="searchResult">
+                    <h2>{{t('search.results')}}</h2>
+                    <ul class="icons checks" ng-if="!error">
+                        <li class="check" ng-repeat="result in searchResult">
+                            <search-result></search-result>
+                        </li>
+                    </ul>
+                    <ul class="icons" ng-if="error">
+                        <li class="error">
+                            <small ng-bind="searchResult"></small>
+                        </li>
+                    </ul>
+                </div>
+                <div ng-if="searchResult" class="clear"></div>
+                <div class="four column">
+                    <h3 class="left">{{t('search.category.most')}}</h3>
+                    <span class="right radio-element">
+          				<input id="radio-search-main" type="radio" name="search_type" class="css-checkbox" checked="checked" value="main" ng-model="searchType"/><label for="radio-search-main" class="css-label">recherche</label>
+          			</span>
+                    <div class="clear"></div>
+                    <a class="dummy-media-object" href="http://www.linkedin.com/pub/s%C3%A9bastien-correaud/93/783/259/">
+                        <img src="/img/search/linkedin-48.png" alt="Linkedin" /> Profil Linkedin
+                    </a>
+                    <a class="dummy-media-object" href="http://github.com/iGitScor">
+                        <img src="/img/search/github-48.png" alt="Github" /> Profil GitHub
+                    </a>
+                    <a class="dummy-media-object" href="/fr/#realisations">
+                        <img src="/img/search/mean.png" alt="MEAN" /> MongoDB + ExporessJS + AngularJS + Node.js
+                    </a>
+                </div>
+                <div class="four column">
+                    <h3 class="left">{{t('search.category.pro')}}</h3>
+                    <span class="right radio-element">
+  					    <input id="radio-search-pro" type="radio" name="search_type" class="css-checkbox" value="professional" ng-model="searchType"/><label for="radio-search-pro" class="css-label">recherche</label>
+  					</span>
+                    <div class="clear"></div>
+                    <a class="dummy-media-object" href="/resources/CORREAUD-Curriculum_vitae.pdf">
+                        <img src="/img/search/pdf-48.png" alt="PagePreloadingEffect" /> Curriculum vitae : PDF
+                    </a>
+                    <a class="dummy-media-object" href="http://gdfsuez-dolcevita.fr">
+                        <img src="/img/search/logo-dolcevita.png" alt="GDF SUEZ DolceVita" /> Dernière expérience : lead developer Front-end GDF SUEZ (Paris)
+                    </a>
+                    <a class="dummy-media-object" href="/fr/#competences">
+                        <img src="/img/search/toolkit-48.png" alt="HoverEffectsIdeasNew" /> Domaine de compétence : Web &amp; Mobile
+                    </a>
+                </div>
+                <div class="four column end">
+                    <h3 class="left">{{t('search.category.people')}}</h3>
+                    <span class="right radio-element">
+  					    <input id="radio-search-people" type="radio" name="search_type" class="css-checkbox" value="people" ng-model="searchType"/><label for="radio-search-people" class="css-label">recherche</label>
+  					</span>
+                    <div class="clear"></div>
+                    <a class="dummy-media-object" href="http://thib.me">
+                        <img class="round" src="https://avatars0.githubusercontent.com/u/877585?v=3&s=400" alt="Thibaud Colas" /> Thibaud Colas
+                    </a>
+                    <a class="dummy-media-object" href="https://github.com/MonsieurLuge">
+                        <img class="round" src="https://avatars2.githubusercontent.com/u/5494947?v=3&s=460" alt="Laurent Vergé" /> Laurent Vergé
+                    </a>
+                    <a class="dummy-media-object" href="http://nimaen.com/">
+                        <img class="round" src="https://avatars0.githubusercontent.com/u/2648851?v=3&s=400" alt="Arnaud Bosc" /> Arnaud Bosc
+                    </a>
                 </div>
             </div>
-        </footer>
-        
-        <a href="#top" id="back-to-top" data-icon="t"></a>
-        
-        {% block footer_script %}
-            <!-- Site script loaded after the content -->
-           <!-- <script>
-                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m);
-                })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-              
-                ga('create', 'UA-43265839-1', 'auto');
-                ga('send', 'pageview');
-            </script>-->
-            
-            <script src="/js/external/morphsearch.js"></script>
-            <script src="/js/angular/angular.js"></script>
-            <script src="/js/angular/angular-cookies.js"></script>
-            <script src="/js/angular/controller/layoutController.js"></script>
-        {% endblock %}
-    </body>
+            <!-- /morphsearch-content -->
+        </form>
+        <span class="morphsearch-close">Fermer</span>
+    </div>
+    {% block toolbar %}
+    <div class="container page hide-on-print">
+        <aside class="aside-lswi row">
+            <div class="row lswi">
+                <ul class="bulletless">
+                    {% if french %}
+                    <li><a href="{{ french }}" hreflang="fr" class="blue" style="opacity:{{0.5 + (t('technical.lang') !== 'fr') }}">FR</a> | <a href="{{ english }}" hreflang="en" class="blue" style="opacity:{{ 0.5 + (t('technical.lang') !== 'en') }}">EN</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </aside>
+    </div>
+    {% endblock %}
+
+    {% block content %}{% endblock %}
+    {% block footer_content %}{% endblock %}
+
+    <footer id="main-footer" class="container">
+        <br />
+        <br />
+        <nav class="row">
+            <div class="twelve mean-background">
+                <h4>
+    			    <strong>{{t('common.footer.about')}}</strong>
+    			    <span class="right hide-on-print hide-mobile">
+    			        <a href="/resources/sebastien_correaud.vcf" download="sebastien_correaud.vcf">&#8594; <small><b>{{t('common.footer.downloadcard')}}</b></small></a>
+    			    </span>
+    			</h4>
+                <div class="row">
+                    <ul class="columns four">
+                        <li><b class="identity">{{t('meta:author')}}</b>
+                        </li>
+                        <li class="hide-on-print"><b>Ingénieur informatique</b>
+                        </li>
+                        <li>{{t('common.footer.phone')}} : 07 83 01 41 51</li>
+                        <li>Email : <a href="mailto:sebastien.correaud@gmail.com">sebastien.correaud@gmail.com</a>
+                        </li>
+                    </ul>
+                    <div class="columns four end">
+                        <ul class="icons">
+                            <li><a data-icon="B" href="http://www.facebook.com/sebastien.correaud" target="_blank"><span>Facebook</span></a>
+                            </li>
+                            <li><a data-icon="F" href="http://www.linkedin.com/pub/s%C3%A9bastien-correaud/93/783/259" target="_blank"><span>LinkedIn</span></a>
+                            </li>
+                            <li><a data-icon="D" href="https://twitter.com/iTweetScor" target="_blank"><span>Twitter</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="row util hide-on-print">
+            <div class="right">
+                <p>&copy; <a href="https://github.com/iGitScor/portfolio/">{{t('meta:author')}}</a> - 2014</p>
+            </div>
+        </div>
+
+        <div ng-controller="cookieController">
+            <div id="cookiebanner" class="standalone-tweet ltr cookiebanner" ng-if="!cookieAgree">
+                <blockquote class="tweet subject expanded">
+                    <div class="header_box">
+                        <div class="h-card p-author">
+                            <a class="u-url profile" href="http://www.aboutcookies.org/">
+                                <img class="u-photo avatar right" alt="info" src="/img/icons/picto-info-32.png" width="32" height="32">
+                                <span class="full-name">
+                                    <span class="p-name customisable-highlight">{{t('common.cookie.title')}}</span>
+                                </span>
+                                <span class="p-nickname">&gt; {{t('common.cookie.more')}}</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="content e-entry-content">
+                        <p class="e-entry-title">
+                            {{t('common.cookie.text')}}
+                        </p>
+                    </div>
+                    <div class="footer customisable-border">
+                        <div id="cookiebanner-close" class="cookiebanner-close" ng-click="agree()">✖</div>
+                    </div>
+                </blockquote>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#top" id="back-to-top" data-icon="t"></a>
+
+    {% block footer_script %}
+    <!-- Site script loaded after the content -->
+    <!-- <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m);
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-43265839-1', 'auto');
+        ga('send', 'pageview');
+    </script>-->
+
+    <script defer src="/js/external/hammer.min.js"></script>
+    <script defer src="/js/angular/angular.js"></script>
+    <script defer src="/js/angular/angular-cookies.js"></script>
+    <script defer src="/js/angular/angular-sanitize.js"></script>
+    <script defer src="/js/angular/angular-animate.js"></script>
+    <script defer src="/js/angular/angular-aria.js"></script>
+    <script defer src="/js/angular/angular-material.min.js"></script>
+    <script defer src="/js/angular/front.js"></script>
+    <script defer src="/js/angular/controllers/frontControllers.js"></script>
+    <script defer src="/js/angular/directives/frontDirectives.js"></script>
+    <script defer src="/js/angular/filters/filters.js"></script>
+    {% endblock %}
+</body>
+
 </html>

@@ -1,8 +1,4 @@
 <div class="row" id="{{t('homepage.navigation.presentation.anchor')}}" >
-  	<div class="divider twelve columns end">
-		<p>{{t('homepage.navigation.presentation.title')}}</p>
-  	</div>
-  	
   	<div class="three columns end hide-on-print">
 		<img alt="Presentation" src="/img/content/visuel_presentation.png" class="presentation-image"/>
   	</div>
@@ -20,12 +16,12 @@
 				<li>sebastien.correaud@gmail.com</li>
 			</ul>
 		{% endif %}
-		
+
 		{% if query.cv !== 'print' && t('technical.lang') == 'fr' %}
 		<div class="section-divider hide-on-print">
   			<h4>Moi</h4>
 		</div>
-		
+
 		<p class="hide-on-print">Les 5 grands champs de la personnalit&eacute; sont les suivants :</p>
 		<div class="big-box hide-on-print">
 			<h4 class="presentation-title communicate secondary">
@@ -37,7 +33,7 @@
 
         	<h4 class="presentation-title manage secondary">
         		Manager <br />
-        		<span class="talent-icon talent-manage"></span>		
+        		<span class="talent-icon talent-manage"></span>
         	</h4>
         	<p class="primary">Organiser, g&eacute;rer quelque chose ou quelqu'un.</p>
         	<div class="clear"></div>
@@ -62,22 +58,22 @@
 		    </h4>
 		    <p class="primary">Capacit&eacute; &agrave; aller au-del&agrave; d'un rep&egrave;re fix&eacute;, r&eacute;aliser une performance sup&eacute;rieure &agrave; celles produites auparavant.</p>
 			<div class="clear"></div>
-			
+
         	<a href="/fr/ma-personnalite" class="button-box" title="Ma personnalit&eacute;">D&eacute;tail de ma personnalit&eacute;</a>
         	<br/><br />
 		</div>
-		
+
 		{% endif %}
-		
+
 		{% if query.cv !== 'print' %}
-		
+
 		<div class="section-divider hide-on-print">
   			<h4>{{t('cv:presentation.future.title')}}</h4>
 		</div>
-		
+
 		<h4 class="hide-on-print">{{t('cv:presentation.future.computer.title')}}</h4>
 		<p>{{t('cv:presentation.future.computer.text')}}</p>
-		
+
 		{% endif %}
   	</div>
   	{% if query.cv !== 'print' %}
