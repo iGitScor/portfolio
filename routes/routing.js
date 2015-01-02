@@ -4,7 +4,7 @@
  * SCOR (iGitScor : http://github.com/iGitScor)
  *
  */
- 
+
 var i18n = require('i18next');
 
 exports.personnalite = function(req, res) {
@@ -18,6 +18,12 @@ exports.network = function(req, res) {
         title: i18n.t('routing:urls.network.title'),
         english: '/en/my-social-network',
         french: '/fr/mon-reseau-social'
+    });
+};
+
+exports.redbubble = function(req, res) {
+    res.render('shop/redbubble', {
+        title: 'Redbubble'
     });
 };
 

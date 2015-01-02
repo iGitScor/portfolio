@@ -152,26 +152,3 @@
 .icon-facebook:before {
   content: "\e01d";
 }
-
-/* Font Awesome */
-.icon-step-backward:before {
-  content: "\f048";
-}
-.icon-backward:before {
-  content: "\f04a";
-}
-.icon-pause:before {
-  content: "\f04c";
-}
-.icon-stop:before {
-  content: "\f04d";
-}
-.icon-forward:before {
-  content: "\f04e";
-}
-.icon-step-forward:before {
-  content: "\f051";
-}
-.icon-play:before {
-  content: "\f04b";
-}

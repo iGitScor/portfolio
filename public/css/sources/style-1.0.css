@@ -84,7 +84,8 @@ figure.figure-with-caption {
 	box-sizing: border-box
 }
 html {
-	font-size: 62.5%
+	font-size: 62.5%;
+	background: #96c241;
 }
 body {
 	background: white;
@@ -149,7 +150,7 @@ p a:visited {
 	.hide-mobile {
 		display: none;
 	}
-	
+
 	.show-mobile {
 		display: block;
 	}
@@ -287,7 +288,6 @@ abbr {
 	abbr[title]:after {
 		content: " (" attr(title)")"
 	}
-	.ir a:after,
 	a[href^="javascript:"]:after,
 	a[href^="#"]:after {
 		content: ""
@@ -620,68 +620,6 @@ img {
 	.pull-ten {
 		right: auto
 	}
-	.row .mobile-one {
-		width: 25%!important;
-		float: left;
-		padding: 0 15px
-	}
-	.row .mobile-one:last-child {
-		float: right
-	}
-	.row .mobile-one.end {
-		float: left
-	}
-	.row .mobile-two {
-		width: 50%!important;
-		float: left;
-		padding: 0 15px
-	}
-	.row .mobile-two:last-child {
-		float: right
-	}
-	.row .mobile-two.end {
-		float: left
-	}
-	.row .mobile-three {
-		width: 75%!important;
-		float: left;
-		padding: 0 15px
-	}
-	.row .mobile-three:last-child {
-		float: right
-	}
-	.row .mobile-three.end {
-		float: left
-	}
-	.row .mobile-four {
-		width: 100%!important;
-		float: left;
-		padding: 0 15px
-	}
-	.row .mobile-four:last-child {
-		float: right
-	}
-	.row .mobile-four.end {
-		float: left
-	}
-	.push-one-mobile {
-		left: 25%
-	}
-	.pull-one-mobile {
-		right: 25%
-	}
-	.push-two-mobile {
-		left: 50%
-	}
-	.pull-two-mobile {
-		right: 50%
-	}
-	.push-three-mobile {
-		left: 75%
-	}
-	.pull-three-mobile {
-		right: 75%
-	}
 }
 @font-face {
 	font-family: "Museo Sans W01 300";
@@ -698,20 +636,10 @@ img {
 	src: url("./fonts/3d0a39cf-115c-4800-9b1e-31c7912abfc2.eot?#iefix");
 	src: url("./fonts/3d0a39cf-115c-4800-9b1e-31c7912abfc2.eot?#iefix") format("eot"), url("./fonts/eadbb595-a394-48fc-834f-8bf5da15cddf.woff") format("woff"), url("./fonts/9bcba093-b507-4b9b-9c83-303003d3815c.ttf") format("truetype"), url("./fonts/9a2af429-2624-4bd1-a676-8f0eed3e7e31.svg#9a2af429-2624-4bd1-a676-8f0eed3e7e31") format("svg")
 }
-@font-face {
-	font-family: 'UA Icons';
-	src: url("./fonts/ua_icons-webfont.eot");
-	src: url("./fonts/ua_icons-webfont.eot?#iefix") format("embedded-opentype"), url("./fonts/ua_icons-webfont.woff") format("woff"), url("./fonts/ua_icons-webfont.ttf") format("truetype");
-	font-weight: normal;
-	font-style: normal
-}
 @media only screen and (max-width: 767px) {
 	.tiny-hide {
 		display: none!important
 	}
-}
-.layout-float-left {
-	float: left
 }
 :not(pre)>code[class*="language-"] {
 	background: #141414
@@ -738,248 +666,7 @@ pre[data-line] {
 	position: relative
 }
 * {
-	-webkit-tap-highlight-color: rgba(0, 0, 0, 0)!important
-}
-* {
-	font-family: "Museo Sans W01 300", arial, sans-serif;
-	font-weight: 300
-}
-*[data-icon] {
-	font-family: 'UA Icons'!important;
-	text-transform: none!important
-}
-*[data-icon][data-icon="|"]:before {
-	content: "|"
-}
-*[data-icon][data-icon="}"]:before {
-	content: "}"
-}
-*[data-icon][data-icon="?"]:before {
-	content: "?"
-}
-*[data-icon][data-icon="1"]:before {
-	content: "1"
-}
-*[data-icon][data-icon="2"]:before {
-	content: "2"
-}
-*[data-icon][data-icon="3"]:before {
-	content: "3"
-}
-*[data-icon][data-icon="4"]:before {
-	content: "4"
-}
-*[data-icon][data-icon="5"]:before {
-	content: "5"
-}
-*[data-icon][data-icon="6"]:before {
-	content: "6"
-}
-*[data-icon][data-icon="7"]:before {
-	content: "7"
-}
-*[data-icon][data-icon="8"]:before {
-	content: "8"
-}
-*[data-icon][data-icon="9"]:before {
-	content: "9"
-}
-*[data-icon][data-icon="0"]:before {
-	content: "0"
-}
-*[data-icon][data-icon=">"]:before {
-	content: ">"
-}
-*[data-icon][data-icon="!"]:before {
-	content: "!"
-}
-*[data-icon][data-icon="#"]:before {
-	content: "#"
-}
-*[data-icon][data-icon="$"]:before {
-	content: "$"
-}
-*[data-icon][data-icon="%"]:before {
-	content: "%"
-}
-*[data-icon][data-icon="&"]:before {
-	content: "&"
-}
-*[data-icon][data-icon="*"]:before {
-	content: "*"
-}
-*[data-icon][data-icon="("]:before {
-	content: "("
-}
-*[data-icon][data-icon="+"]:before {
-	content: "+"
-}
-*[data-icon][data-icon="©"]:before {
-	content: "©"
-}
-*[data-icon][data-icon="A"]:before {
-	content: "A"
-}
-*[data-icon][data-icon="B"]:before {
-	content: "B"
-}
-*[data-icon][data-icon="C"]:before {
-	content: "C"
-}
-*[data-icon][data-icon="D"]:before {
-	content: "D"
-}
-*[data-icon][data-icon="E"]:before {
-	content: "E"
-}
-*[data-icon][data-icon="F"]:before {
-	content: "F"
-}
-*[data-icon][data-icon="G"]:before {
-	content: "G"
-}
-*[data-icon][data-icon="H"]:before {
-	content: "H"
-}
-*[data-icon][data-icon="I"]:before {
-	content: "I"
-}
-*[data-icon][data-icon="J"]:before {
-	content: "J"
-}
-*[data-icon][data-icon="K"]:before {
-	content: "K"
-}
-*[data-icon][data-icon="L"]:before {
-	content: "L"
-}
-*[data-icon][data-icon="M"]:before {
-	content: "M"
-}
-*[data-icon][data-icon="N"]:before {
-	content: "N"
-}
-*[data-icon][data-icon="O"]:before {
-	content: "O"
-}
-*[data-icon][data-icon="P"]:before {
-	content: "P"
-}
-*[data-icon][data-icon="Q"]:before {
-	content: "Q"
-}
-*[data-icon][data-icon="R"]:before {
-	content: "R"
-}
-*[data-icon][data-icon="S"]:before {
-	content: "S"
-}
-*[data-icon][data-icon="T"]:before {
-	content: "T"
-}
-*[data-icon][data-icon="U"]:before {
-	content: "U"
-}
-*[data-icon][data-icon="V"]:before {
-	content: "V"
-}
-*[data-icon][data-icon="W"]:before {
-	content: "W"
-}
-*[data-icon][data-icon="X"]:before {
-	content: "X"
-}
-*[data-icon][data-icon="Y"]:before {
-	content: "Y"
-}
-*[data-icon][data-icon="Z"]:before {
-	content: "Z"
-}
-*[data-icon][data-icon="a"]:before {
-	content: "a"
-}
-*[data-icon][data-icon="b"]:before {
-	content: "b"
-}
-*[data-icon][data-icon="c"]:before {
-	content: "c"
-}
-*[data-icon][data-icon="d"]:before {
-	content: "d"
-}
-*[data-icon][data-icon="e"]:before {
-	content: "e"
-}
-*[data-icon][data-icon="f"]:before {
-	content: "f"
-}
-*[data-icon][data-icon="g"]:before {
-	content: "g"
-}
-*[data-icon][data-icon="h"]:before {
-	content: "h"
-}
-*[data-icon][data-icon="i"]:before {
-	content: "i"
-}
-*[data-icon][data-icon="j"]:before {
-	content: "j"
-}
-*[data-icon][data-icon="k"]:before {
-	content: "k"
-}
-*[data-icon][data-icon="l"]:before {
-	content: "l"
-}
-*[data-icon][data-icon="m"]:before {
-	content: "m"
-}
-*[data-icon][data-icon="n"]:before {
-	content: "n"
-}
-*[data-icon][data-icon="o"]:before {
-	content: "o"
-}
-*[data-icon][data-icon="p"]:before {
-	content: "p"
-}
-*[data-icon][data-icon="q"]:before {
-	content: "q"
-}
-*[data-icon][data-icon="r"]:before {
-	content: "r"
-}
-*[data-icon][data-icon="s"]:before {
-	content: "s"
-}
-*[data-icon][data-icon="t"]:before {
-	content: "t"
-}
-*[data-icon][data-icon="u"]:before {
-	content: "u"
-}
-*[data-icon][data-icon="v"]:before {
-	content: "v"
-}
-*[data-icon][data-icon="w"]:before {
-	content: "w"
-}
-*[data-icon][data-icon="x"]:before {
-	content: "x"
-}
-*[data-icon][data-icon="y"]:before {
-	content: "y"
-}
-*[data-icon][data-icon="z"]:before {
-	content: "z"
-}
-*[data-icon][data-icon="À"]:before {
-	content: "À"
-}
-*[data-icon][data-icon="Á"]:before {
-	content: "Á"
-}
-*[data-icon] span {
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0)!important;
 	font-family: "Museo Sans W01 300", arial, sans-serif;
 	font-weight: 300
 }
@@ -1232,33 +919,6 @@ a.blue {
 .center {
 	text-align: center
 }
-article .inline-img-left {
-	float: left;
-	padding: 0 24px 24px 0
-}
-article .inline-img-right {
-	float: right;
-	padding: 0 24px 24px 0
-}
-article .img-center {
-	float: center;
-	padding: 24px
-}
-article img.half-size {
-	width: 50%;
-	height: auto;
-	margin: 0 auto
-}
-article img.two-thirds-size {
-	width: 65%;
-	height: auto;
-	margin: 0 auto
-}
-article img.three-quarter-size {
-	width: 75%;
-	height: auto;
-	margin: 0 auto
-}
 article pre {
 	margin-bottom: 4em;
 	margin-bottom: 4rem
@@ -1288,18 +948,6 @@ ul.icons {
 }
 ul.icons li.icon {
 	padding-left: 70px
-}
-ul.icons li.icon.tab {
-	padding-left: 115px
-}
-ul.icons li.icon.talk {
-	background: transparent url(./images/icons/icn-talk.png) no-repeat left top
-}
-ul.icons li.icon.security {
-	background: transparent url(./images/icons/icn-security.png) no-repeat top left
-}
-ul.icons li.icon.code {
-	background: transparent url(./images/icons/icn-code.png) no-repeat top left
 }
 hr {
 	display: block;
@@ -1603,108 +1251,44 @@ only screen and (max-width: 767px) and (min-resolution: 1.3dppx) {
 		background-size: 44px 31px!important
 	}
 }
-body header#main-header nav#utility {
-	float: right;
-	clear: right;
-	margin-top: 7px;
-}
-body header#main-header nav#utility ul li {
-	margin: 0;
-	padding: 0;
-	display: inline-block
-}
-body header#main-header nav#utility ul li a {
-	margin: 4px 0;
-	padding: 4px 12px 0;
-	font-size: .85em;
-	color: #7b7b7a;
-	font-family: "Museo Sans W01 300", arial, sans-serif;
-	font-weight: 300
-}
-body header#main-header nav#utility ul li a:hover {
-	color: #708B45
-}
-@media only screen and (min-width: 767px) and (max-width: 958px) {
-	body header#main-header nav#utility ul li a {
-		padding: 4px 0 0
-	}
-}
-body header#main-header nav#utility ul li.last {
-	padding-right: 8px
-}
-@media only screen and (min-width: 959px) and (max-width: 1138px) {
-	body header#main-header nav#utility ul li {
-		border-right: 1px solid #e1e1e0
-	}
-	body header#main-header nav#utility ul li a {
-		padding-right: 4px;
-		padding-left: 1px
-	}
-	body header#main-header nav#utility ul li.last {
-		border-right: 0;
-		padding-right: 0;
-		margin-right: 0
-	}
-}
-@media only screen and (min-width: 767px) and (max-width: 958px) {
-	body header#main-header nav#utility ul {
-		margin-right: 5px
-	}
-	body header#main-header nav#utility ul li {
-		border-right: 1px solid #e1e1e0
-	}
-	body header#main-header nav#utility ul li a {
-		padding-right: 4px;
-		padding-left: 1px
-	}
-	body header#main-header nav#utility ul li.last {
-		border-right: 0;
-		padding-right: 0;
-		margin-right: 0
-	}
-}
-@media only screen and (max-width: 767px) {
-	body header#main-header nav#utility ul {
-		display: none
-	}
-}
-body footer#main-footer {
+body #main-footer {
 	background: #96C241;
 }
-body footer#main-footer * {
+#main-footer {
 	color: black;
 }
-body footer#main-footer * a {
+#main-footer  a {
 	color: rgb(242,242,242);
 }
-body footer#main-footer * a:hover {
+#main-footer a:hover {
 	color: #fff
 }
-body footer#main-footer ul.icons {
+#main-footer ul.icons {
 	width: 100%;
 	text-align: center;
 }
-body footer#main-footer ul.icons li {
+#main-footer ul.icons li {
 	display: inline-block;
 	font-size: 70px;
 	margin-right: 18px
 }
-body footer#main-footer ul.icons li a {
+#main-footer ul.icons li a {
 	color: rgb(242,242,242);
 	-webkit-transition: all .2s ease-out;
 	-moz-transition: all .2s ease-out;
+	-o-transition: all .2s ease-out;
 	transition: all .2s ease-out;
 	font-weight: normal
 }
-body footer#main-footer ul.icons li a:hover {
+#main-footer ul.icons li a:hover {
 	color: #fff;
 	margin-top: -2px
 }
-body footer#main-footer ul.icons li a span {
+#main-footer ul.icons li a span {
 	display: none
 }
 @media only screen and (max-width: 767px) {
-	body footer#main-footer ul.icons {
+	#main-footer ul.icons {
 		width: 100%
 	}
 	body footer#main-footer ul.icons li {
@@ -1720,7 +1304,7 @@ body footer#main-footer nav h4 {
 	font-size: 14px;
 	text-transform: uppercase;
 	border-bottom: 1px solid #d3d3cf;
-	color: #51c4cc
+	color: black
 }
 body footer#main-footer nav h4 a {
 	font-family: "Museo Sans W01 500", arial, sans-serif;
@@ -1850,10 +1434,6 @@ body .page article .row {
 	padding-top: 25px;
 	background: #fbfbfa url(./images/site/bg-light-noise.png) top right repeat!important
 }
-body .page article .row.pinned-nav {
-	padding-top: 0;
-	min-height: 0
-}
 body .page article .row .row {
 	padding-top: 0
 }
@@ -1876,10 +1456,6 @@ body .page div.feature {
 	border-top: 1px solid #cbcbc7;
 	border-bottom: 1px solid #cbcbc7
 }
-body .page div.feature.last {
-	margin-bottom: 0;
-	border-bottom: 0
-}
 body .page div.feature h3 {
 	padding: 0
 }
@@ -1895,59 +1471,22 @@ body .page div.feature dl {
 body .page div.feature dl div.row {
 	margin-bottom: 60px
 }
-.pinned-nav ul {
-	background: #fff!important;
-	height: 87px;
-	border-bottom: 1px solid #e5e5e5;
-	list-style-type: none!important;
-	margin: 0 -25px 0 -25px!important
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
 }
-.pinned-nav ul li {
-	float: left;
-	height: 87px;
-	text-align: center
-}
-.pinned-nav ul li a {
-	display: block;
-	min-width: 128px;
-	height: 86px;
-	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-	-webkit-transition: background-color .2s ease-out;
-	-moz-transition: background-color .2s ease-out;
-	transition: background-color .2s ease-out;
-	line-height: 60px;
-	font-size: 70px;
-	padding: 0 15px 0 15px;
-	color: #96C241
-}
-.pinned-nav ul li a span {
-	display: block;
-	font-size: 14px;
-	line-height: 1;
-	text-transform: uppercase;
-	color: #96C241;
-	font-family: "Museo Sans W01 500", arial, sans-serif;
-	font-weight: 500;
-	margin-top: 0
-}
-.pinned-nav ul li a.active,
-.pinned-nav ul li a:active,
-.pinned-nav ul li a:hover {
+md-tabs.md-default-theme .md-header {
+	margin-bottom: 10px;
 	background-color: #96C241;
-	height: 86px;
-	color: #fff;
 }
-.pinned-nav ul li a.active span,
-.pinned-nav ul li a:active span,
-.pinned-nav ul li a:hover span {
-	color: #fff;
+md-tabs.md-default-theme md-tab {
+	color: #F5F5F5;
 }
-@media only screen and (min-width: 767px) and (max-width: 958px) {
-	.pinned-nav ul li a {
-		font-size: 50px;
-		min-width: 100px
-	}
-	.pinned-nav ul li a span {
-		font-size: 12px
-	}
+md-tabs.md-default-theme md-tabs-ink-bar {
+	background: #414338;
+}
+md-tabs.md-default-theme md-tab:focus {
+	border: 0;
+}
+md-card.small-grid-cell {
+	height: 300px;
 }

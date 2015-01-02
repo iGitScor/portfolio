@@ -1,7 +1,5 @@
-var angular = angular;
-var app = angular.module("sc", ['ngCookies']);
 app.controller("searchController", ["$scope", "$http",
-    function($scope, $http, $cookies) {
+    function($scope, $http) {
         $scope.error = false;
 
         $scope.search = function() {
@@ -23,12 +21,6 @@ app.controller("searchController", ["$scope", "$http",
         };
     }
 ])
-.directive('searchResult', ['$location', function ($location) {
-  return {
-    restrict: 'E',
-    templateUrl: 'html/search/result.html'
-  };
-}])
 .controller("cookieController", ["$scope", "$cookies",
     function($scope, $cookies) {
         $scope.cookieAgree = ($cookies['cookiebanner-accepted'] === undefined) ? false : true;
@@ -37,5 +29,22 @@ app.controller("searchController", ["$scope", "$http",
             $cookies['cookiebanner-accepted'] = true;
             $scope.cookieAgree = true;
         };
+    }
+])
+.controller("redbubbleController" , ["$scope", "$http",
+    function($scope, $http) {
+        $scope.numberOfPages = 1;
+        $scope.currentPage = 0;
+        $scope.pageSize = 6;
+
+        $http.get('/api/f/red').success(function(data) {
+            $scope.results = data;
+        });
+
+        $scope.$watch('results', function(value) {
+            if (value) {
+                $scope.numberOfPages = Math.ceil($scope.results.length / $scope.pageSize);
+            }
+        }, true);
     }
 ]);

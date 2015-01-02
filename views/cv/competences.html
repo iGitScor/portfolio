@@ -1,13 +1,9 @@
 <div class="row" id="{{t('homepage.navigation.competences.anchor')}}">
-	<div class="divider twelve columns end">
-		<p>{{t('homepage.navigation.competences.title')}}</p>
-  	</div>
-
 	{% if query.cv !== 'print' %}
 	<div class="twelve columns end hide-on-print">
 		<p class="left">{{t('cv:skills.presentation')}}
 		<br /><small>1 : {{t('cv:skills.notes.one')}}, 2 : {{t('cv:skills.notes.two')}}, 3 : {{t('cv:skills.notes.three')}}, 4 : {{t('cv:skills.notes.four')}}</small></p>
-		
+
 		<div class="badge-lightcoral columns right">
 			<span class="hint hint--left hint--always hint--info" data-hint="{{t('cv:skills.degree.low')}}">&nbsp;&nbsp;-</span>
 		</div>
@@ -16,7 +12,7 @@
 		<br />
 		<div class="badge-lightsteelblue columns right">
 			<span class="hint hint--left hint--always hint--info" data-hint="{{t('cv:skills.degree.secondary')}}">&nbsp;&nbsp;-</span>
-		</div> 
+		</div>
 		<br />
 		<br />
 		<br />
@@ -61,10 +57,10 @@
 			</div>
 			<br />{{t('cv:skills.skill')}} : 3
 		</div>
-		
+
 		<div class="clear"></div>
 		<br />
-		
+
 		<div class="three columns">
 			<div class="badge">
 				<div class="portion badge-lightsteelblue badge-1fifth"></div>
@@ -103,7 +99,7 @@
 			<br />{{t('cv:skills.skill')}} : 3
 		</div>
 	</div>
-	
+
 	<div class="clear"></div>
 	<hr />
 	<div class="clear"></div>
@@ -126,7 +122,7 @@
 			</div>
 			<br />{{t('cv:skills.skill')}} : 2
 		</div>
-		
+
 		<div class="three columns">
 			<div class="badge">
 				<div class="portion badge-lightskyblue badge-3quarter"></div>
@@ -134,7 +130,7 @@
 			</div>
 			<br />{{t('cv:skills.skill')}} : 2
 		</div>
-		
+
 		<div class="three columns">
 			<div class="badge">
 				<div class="portion badge-lightsteelblue badge-2fifth"></div>
@@ -144,7 +140,7 @@
 		</div>
 	</div>
 	{% else %}
-	
+
 	<ul class="bulletless">
 		<li>Web</li>
 		<li>
@@ -171,6 +167,6 @@
 			</ul>
 		</li>
 	</ul>
-	
+
 	{% endif %}
 </div>

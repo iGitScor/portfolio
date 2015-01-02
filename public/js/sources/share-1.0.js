@@ -13,15 +13,15 @@
         else if (document.getSelection) {
             return document.getSelection();
         }
-        
+
         return false;
     };
-    
+
     // Remove previous sharer
     $('.page .twitter_sharer').remove();
 
     // Add the sharer
-    $('.page').append('<div class="twitter_sharer"><a href=""><span data-icon="D"></span></a></div>');
+    $('.page').append('<div class="twitter_sharer"><a><span class="fa fa-twitter"></span></a></div>');
 
     $domElements.mouseup(function(e) {
         var rect;
@@ -32,7 +32,7 @@
                 rect = range.getBoundingClientRect();
             selection_text = selection.toString();
         }
-        
+
         if (selection_text !== "") {
             var $sharer = $('.twitter_sharer');
 

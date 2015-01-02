@@ -1,8 +1,4 @@
 <div class="row" id="{{t('homepage.navigation.realisations.anchor')}}">
-  	<div class="divider twelve columns end">
-		<p>{{t('homepage.navigation.realisations.title')}}</p>
-  	</div>
-
 	{% if query.cv !== 'print' %}
 	<div class="nine columns end">
   		<div class="twelve columns end">
@@ -27,9 +23,9 @@
 	<div class="three columns end hide-on-print">
 		<img alt="Zori" src="/img/projets/zori_home_capture.png"/>
   	</div>
-  	
+
   	<hr />
-  	
+
   	<div class="nine columns end">
   		<div class="twelve columns end">
 			<h4>Knov</h4>
@@ -41,9 +37,9 @@
 			<p class="hide-on-print"><a href="/projets/knov" class="button-box">{{t('common.buttons.project')}}</a></p>
   		</div>
 	</div>
-	
+
 	<hr />
-	
+
 	<div class="nine columns end">
 	    <div class="twelve columns end">
 	        <h4>JS13K Game</h4>
@@ -52,7 +48,7 @@
 	        <p class="hide-on-print"><a href="/projets/js13k" class="button-box">{{t('common.buttons.project')}}</a></p>
 	    </div>
 	</div>
-	
+
 	{% else %}
 	<div class="nine columns end">
 		<ul>
@@ -61,6 +57,6 @@
 			<li>JS13K : Javascript</li>
 		</ul>
 	</div>
-	
+
 	{% endif %}
 </div>
