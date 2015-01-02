@@ -48,6 +48,8 @@ exports.index = function(req, res) {
                 callback: function(err, min) {
                     if (err) {
                         console.error(err);
+                    } else {
+                        console.log("Done.");
                     }
                 }
             });

@@ -23,7 +23,7 @@ var express = require('express'),
   mailer = require('./scripts/mailer'),
   auth = require('./scripts/auth'),
   i18n = require("i18next"),
-  searchindex = require('search-index')({ logLevel: 'debug' }),
+  searchindex = require('search-index'),
   glossary = require("glossary");
 
 // Instanciate express framework

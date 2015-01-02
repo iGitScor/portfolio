@@ -1,6 +1,6 @@
 (function() {
     var morphSearch = document.getElementById('morphsearch'),
-        input = morphSearch.querySelector('.morphsearch-input input'),
+        input = morphSearch.querySelector('input.morphsearch-input'),
         ctrlClose = morphSearch.querySelector('span.morphsearch-close'),
         isOpen = isAnimating = false,
         toggleSearch = function(evt) {

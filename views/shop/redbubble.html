@@ -8,9 +8,9 @@
                     <p>Boutique Redbubble</p>
               	</div>
             </div>
-            <div class="row">
+            <div class="row" ng-cloak class="ng-cloak">
                 <div class="column four end" ng-repeat="result in results | startFrom:currentPage*pageSize | limitTo:pageSize">
-                    <p ng-bind-html="result.description"></p>
+                    <md-card class="small-grid-cell" ng-if="result.description" ng-bind-html="result.description"></md-card>
                 </div>
 
                 <div class="clear"></div>

@@ -1,6 +1,69 @@
+<style>
+body .page article .row.pinned-nav {
+	padding-top: 0;
+	min-height: 0
+}
+.pinned-nav ul {
+	background: #fff!important;
+	height: 87px;
+	border-bottom: 1px solid #e5e5e5;
+	list-style-type: none!important;
+	margin: 0 -25px 0 -25px!important
+}
+.pinned-nav ul li {
+	float: left;
+	height: 87px;
+	text-align: center
+}
+.pinned-nav ul li a {
+	display: block;
+	min-width: 128px;
+	height: 86px;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	-webkit-transition: background-color .2s ease-out;
+	-moz-transition: background-color .2s ease-out;
+	transition: background-color .2s ease-out;
+	line-height: 60px;
+	font-size: 70px;
+	padding: 0 15px 0 15px;
+	color: #96C241
+}
+.pinned-nav ul li a span {
+	display: block;
+	font-size: 14px;
+	line-height: 1;
+	text-transform: uppercase;
+	color: #96C241;
+	font-family: "Museo Sans W01 500", arial, sans-serif;
+	font-weight: 500;
+	margin-top: 0
+}
+.pinned-nav ul li a.active,
+.pinned-nav ul li a:active,
+.pinned-nav ul li a:hover {
+	background-color: #96C241;
+	height: 86px;
+	color: #fff;
+}
+.pinned-nav ul li a.active span,
+.pinned-nav ul li a:active span,
+.pinned-nav ul li a:hover span {
+	color: #fff;
+}
+@media only screen and (min-width: 767px) and (max-width: 958px) {
+	.pinned-nav ul li a {
+		font-size: 50px;
+		min-width: 100px
+	}
+	.pinned-nav ul li a span {
+		font-size: 12px
+	}
+}
+</style>
+
 <div class="row pinned-nav tiny-hide hide-on-print">
   	<div class="twelve columns">
-  		<nav> 
+  		<nav>
 			<ul>
 				<li class="two columns">
 					<a class="pinned" data-icon="u" href="#{{t('homepage.navigation.presentation.anchor')}}">

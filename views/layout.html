@@ -29,6 +29,7 @@
     <title>{{t('meta:author')}} - {{t('common.seo.role')}} - {{ title }}</title>
 
     <link rel="stylesheet" href="/css/external/angular-material.css">
+    <link rel="stylesheet" href="/css/external/font-awesome.min.css">
     {% block head_style %}
     <!-- Website style -->
     <link rel="stylesheet" href="/css/style-1.0.min.css">
@@ -53,8 +54,8 @@
     <script defer src="/js/navigation-1.0.min.js"></script>
     {% endblock %}
     <!--[if lt IE 9]>
-            <script src="/js/external/html5.js"></script>
-        <![endif]-->
+        <script src="/js/external/html5.js"></script>
+    <![endif]-->
 
     <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
     <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
@@ -78,7 +79,15 @@
                         <h1><small>{{t('meta:author')}}</small></h1>
                         <h6>{{t('common.me.role')}}</h6>
                     </div>
-                    {% block header_content %}{% endblock %}
+                    {% block header_content %}
+                        <nav id="primary">
+                        	<ul class="tiny-hide">
+                        		<li>
+                          			<a>{{title}}</a>
+                        		</li>
+                          	</ul>
+                        </nav>
+                    {% endblock %}
                     <nav id="bt-menu" class="bt-menu bt-menu-close hide-mobile">
                         <a href="#" class="bt-menu-trigger"><span>Menu</span></a>
                         <ul>
@@ -213,11 +222,20 @@
                     </ul>
                     <div class="columns four end">
                         <ul class="icons">
-                            <li><a data-icon="B" href="http://www.facebook.com/sebastien.correaud" target="_blank"><span>Facebook</span></a>
+                            <li>
+                                <a href="http://www.facebook.com/sebastien.correaud" target="_blank">
+                                    <i class="fa fa-facebook-square"></i>
+                                </a>
                             </li>
-                            <li><a data-icon="F" href="http://www.linkedin.com/pub/s%C3%A9bastien-correaud/93/783/259" target="_blank"><span>LinkedIn</span></a>
+                            <li>
+                                <a href="http://www.linkedin.com/pub/s%C3%A9bastien-correaud/93/783/259" target="_blank">
+                                    <i class="fa fa-linkedin-square"></i>
+                                </a>
                             </li>
-                            <li><a data-icon="D" href="https://twitter.com/iTweetScor" target="_blank"><span>Twitter</span></a>
+                            <li>
+                                <a href="https://twitter.com/iTweetScor" target="_blank">
+                                    <i class="fa fa-twitter-square"></i>
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -257,7 +275,7 @@
         </div>
     </footer>
 
-    <a href="#top" id="back-to-top" data-icon="t"></a>
+    <a href="#top" id="back-to-top">&uarr;</a>
 
     {% block footer_script %}
     <!-- Site script loaded after the content -->
