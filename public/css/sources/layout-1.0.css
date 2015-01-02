@@ -234,6 +234,7 @@ body .page article .row:target .divider p:before {
 }
 .standalone-tweet .subject .header_box .profile .p-name {
     font-size: 14px;
+    color: black;
 }
 .standalone-tweet .subject .e-entry-title {
     font-size: 14px;
