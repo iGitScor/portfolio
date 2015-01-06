@@ -272,12 +272,8 @@ app.get('/api/s/:searchText/:searchType/:lang', function(req, res){
                     });
                     // Case no keyword
                     searchEngine(indexor, keywords, apiResults, res);
-                } else {
-                    console.log(addError);
                 }
             });
-        } else {
-            console.log(emptyError);
         }
     });
 });
@@ -286,9 +282,8 @@ app.get('/api/f/red', function (req, res) {
 
     var FeedParser = require('feedparser')
       , request = require('request')
-      , tplObj = Array();
-
-    var atom = request('http://www.redbubble.com/people/iscor/portfolio/recent.atom')
+      , tplObj = Array()
+      , atom = request('http://www.redbubble.com/people/iscor/portfolio/recent.atom')
       , feedparser = new FeedParser();
 
     atom.on('error', function (error) {
@@ -311,8 +306,7 @@ app.get('/api/f/red', function (req, res) {
 
     feedparser.on('readable', function () {
       // This is where the action is!
-      var stream = this
-        , item;
+      var stream = this, item;
 
       while (item = stream.read()) {
         if (item.title && item.description && item.link) {
@@ -365,19 +359,20 @@ app.del('/api/a/system/:path', auth.ensureAuthenticated, function(req, res){
 
 /*** HTTP Routing ***/
 app.get('/', routes.index);
-app.get('/fr/ma-personnalite|/en/my-personality', routing.personnalite);
-app.get('/fr/mon-reseau-social|/en/my-social-network', routing.network);
+app.get('/(fr/ma-personnalite|en/my-personality)', routing.personnalite);
+app.get('/(fr/mon-reseau-social|en/my-social-network)', routing.network);
 app.get('/redbubble', routing.redbubble);
 app.get('/knov', routing.knov);
 app.get('/projets/:name', routing.project);
 
-app.get('/~scor', auth.ensureAuthenticated, function(req, res) {
+var area51 = process.env.AREA51 || '~admin';
+app.get('/' + area51, auth.ensureAuthenticated, function(req, res) {
   res.render('admin/index', {
     user: req.user
   });
 });
 
-app.get('/~scor/:name', auth.ensureAuthenticated, function(req, res) {
+app.get('/' + area51 + '/:name', auth.ensureAuthenticated, function(req, res) {
   var name = req.params.name;
   res.render('admin/' + name, {
     user: req.user
@@ -493,7 +488,7 @@ app.get('/robots.txt', function(req, res) {
  ***                     Server
  *****************************************************/
 // Default route, homepage for all languages
-app.get('/fr|/en', routes.index);
+app.get('/(fr|en)', routes.index);
 
 // Create NodeJS server instance.
 http.createServer(app).listen(app.get('port'), function() {
