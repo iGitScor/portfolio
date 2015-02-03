@@ -1,18 +1,23 @@
 {% extends '../layout.html' %}
 
-{% block header_content %}
-<nav id="primary">
-	<ul class="tiny-hide">
-		<li>
-  			<a>{{ title }} - Share music !</a>
-		</li>
-  	</ul>
-</nav>
-{% endblock %}
-
 {% block content %}
 <div class="container page">
 	<article>
+		<div class="row">
+			<div class="twelve columns end">
+				<nav id="primary">
+					<ul class="pull-left">
+						<li>
+				  			<a>{{ title }} - Share music !</a>
+						</li>
+				  	</ul>
+				  	<span class="pull-right">
+	    				<a class="button-box blue" href="/knov"><i class="fa fa-angle-left"></i> Knov</a>
+	    				<a class="button-box blue" href="/js13k">JS13k <i class="fa fa-angle-right"></i></a>
+	    			</span>
+				</nav>
+	    	</div>
+		</div>
 	    <div class="row" id="presentation" >
           	<div class="divider twelve columns end">
         		<p>Pr&eacute;sentation</p>

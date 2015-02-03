@@ -38,9 +38,14 @@
 </nav>
 {% endblock %}
 
+{% block content_header_link %}
+rrf
+{% endblock %}
+
 {% block content %}
 <div class="container page">
 	<article>
+		{% parent %}
 		{% if message.length > 0  %}
 			<div class="row notice_wrapper" data-attr-notice="homepage-top">
 				<div class="notice columns end twelve">

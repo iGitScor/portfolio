@@ -1,4 +1,8 @@
 <!doctype html>
+<!--
+    @ all geeks or curious guys : check the sources here : https://github.com/iGitScor/portfolio
+    @ all recruiters : Hire me :)
+-->
 <html lang="{{t('technical.lang')}}" class="js pinned">
 
 <head>
@@ -18,9 +22,12 @@
     <meta name="twitter:image:width" content="57">
     <meta name="twitter:image:height" content="57">
     <meta name="twitter:url" content="http://sebastien-correaud.herokuapp.com/">
-    <meta name="keywords" content="Sebastien, CORREAUD, informatique, Portfolio, science computer, web, mobile, developpement, AngularJS, NodeJS, PHP, Javascript"> {% if meta_description %}
-    <meta name="description" content="{{ meta_description }}"> {% else %}
-    <meta name="description" content="{{t('meta:description.default')}}"> {% endif %}
+    <meta name="keywords" content="Sebastien, CORREAUD, informatique, Portfolio, science computer, web, mobile, developpement, AngularJS, NodeJS, PHP, Javascript">
+    {% if meta_description %}
+    <meta name="description" content="{{ meta_description }}">
+    {% else %}
+    <meta name="description" content="{{t('meta:description.default')}}">
+    {% endif %}
     <meta name="robots" content="index,follow">
     <meta name="viewport" content="width=device-width, initial-scale=.95, maximum-scale=.95">
 
@@ -41,11 +48,14 @@
 
     {% block prefetch_resources %}
     <!-- Prefetch resources -->
-    {% endblock %} {% block prefetch_content %}
+    {% endblock %}
+    {% block prefetch_content %}
     <!-- Prefetch internal content -->
-    {% endblock %} {% block prefetch_external %}
+    {% endblock %}
+    {% block prefetch_external %}
     <!-- Prefetch DNS -->
-    {% endblock %} {% block head_script %}
+    {% endblock %}
+    {% block head_script %}
     <script src="/js/external/jquery-2.1.0.min.js"></script>
     <script defer src="/js/external/classie.js"></script>
     <script defer src="/js/external/morphsearch.js"></script>
@@ -79,21 +89,12 @@
                         <h1><small>{{t('meta:author')}}</small></h1>
                         <h6>{{t('common.me.role')}}</h6>
                     </div>
-                    {% block header_content %}
-                        <nav id="primary">
-                        	<ul class="tiny-hide">
-                        		<li>
-                          			<a>{{title}}</a>
-                        		</li>
-                          	</ul>
-                        </nav>
-                    {% endblock %}
                     <nav id="bt-menu" class="bt-menu bt-menu-close hide-mobile">
                         <a href="#" class="bt-menu-trigger"><span>Menu</span></a>
                         <ul>
                             <li><a href="/fr" class="bt-icon icon-home">Accueil</a>
                             </li>
-                            <li><a href="#competences" class="bt-icon icon-star">Compétences</a>
+                            <li><a href="/redbubble" class="bt-icon icon-bubble">Boutique</a>
                             </li>
                             <li><a href="https://github.com/FlipFlopWeekly/zori" class="bt-icon icon-volume">Zori</a>
                             </li>
@@ -196,7 +197,24 @@
     </div>
     {% endblock %}
 
-    {% block content %}{% endblock %}
+    {% block content %}
+        {% block header_content %}
+        <div class="row">
+            <div class="twelve columns end">
+    			<nav id="primary">
+    				<ul class="pull-left">
+    					<li>
+    			  			<a>{{ title }}</a>
+    					</li>
+    			  	</ul>
+    			  	<span class="pull-right">
+    			  	    {% block header_content_links %}{% endblock %}
+        			</span>
+    			</nav>
+        	</div>
+    	</div>
+        {% endblock %}
+    {% endblock %}
     {% block footer_content %}{% endblock %}
 
     <footer id="main-footer" class="container">

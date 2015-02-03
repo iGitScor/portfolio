@@ -1,62 +1,66 @@
 <div class="row" id="{{t('homepage.navigation.realisations.anchor')}}">
 	{% if query.cv !== 'print' %}
-	<div class="nine columns end">
-  		<div class="twelve columns end">
-			<h4>Zori</h4>
-			<h5>
-				<a class="hide-mobile url-link external-link" href="http://github.com/FlipFlopWeekly/zori" target="_blank">github.com/FlipFlopWeekly/zori</a>
-				<a class="show-mobile url-link external-link" href="http://github.com/FlipFlopWeekly/zori" target="_blank">github.com/<wbr>FlipFlopWeekly/zori</a>
-			</h5>
-			<p>{{t('cv:realisations.zori')}}</p>
-  		</div>
+	<div class="twelve column end">
+		<div class="nine columns end">
+	  		<div class="twelve columns end">
+				<h4>Zori</h4>
+				<h5>
+					<a class="hide-mobile url-link external-link" href="http://github.com/FlipFlopWeekly/zori" target="_blank">github.com/FlipFlopWeekly/zori</a>
+					<a class="show-mobile url-link external-link" href="http://github.com/FlipFlopWeekly/zori" target="_blank">github.com/<wbr>FlipFlopWeekly/zori</a>
+				</h5>
+				<p>{{t('cv:realisations.zori')}}</p>
+	  		</div>
 
-  		<div class="twelve columns end">
-			<h4>Zorios</h4>
-			<h5>
-				<a class="hide-mobile url-link external-link" href="http://github.com/FlipFlopWeekly/zorios" target="_blank">github.com/FlipFlopWeekly/zorios</a>
-				<a class="show-mobile url-link external-link" href="http://github.com/FlipFlopWeekly/zorios" target="_blank">github.com/<wbr>FlipFlopWeekly/zorios</a>
-			</h5>
-			<p>{{t('cv:realisations.zorios')}}</p>
+	  		<div class="twelve columns end">
+				<h4>Zorios</h4>
+				<h5>
+					<a class="hide-mobile url-link external-link" href="http://github.com/FlipFlopWeekly/zorios" target="_blank">github.com/FlipFlopWeekly/zorios</a>
+					<a class="show-mobile url-link external-link" href="http://github.com/FlipFlopWeekly/zorios" target="_blank">github.com/<wbr>FlipFlopWeekly/zorios</a>
+				</h5>
+				<p>{{t('cv:realisations.zorios')}}</p>
+			</div>
+		</div>
+
+		<div class="three columns end hide-on-print">
+			<img alt="Zori" src="/img/projets/zori_home_capture.png"/>
+	  	</div>
+
+	  	<hr />
+	</div>
+
+	<div class="twelve colmun end" data-ng-click="focus='knov'" data-ng-class="{'md-whiteframe-z1':focus == 'knov', 'hide':focus && focus !== 'knov'}">
+		<div class="twelve columns end">
+	  		<div class="twelve columns end">
+				<h4>Knov</h4>
+				<h5>
+					<a class="hide-mobile url-link external-link" href="http://github.com/iGitScor/knov" target="_blank">github.com/iGitScor/knov</a>
+					<a class="show-mobile url-link external-link" href="http://github.com/iGitScor/knov" target="_blank">github.com/<wbr>iGitScor/knov</a>
+				</h5>
+				<p>{{t('cv:realisations.knov')}}</p>
+				<p class="hide-on-print"><a href="/projets/knov" class="button-box">{{t('common.buttons.project')}}</a></p>
+	  		</div>
+		</div>
+
+		<hr />
+	</div>
+
+	<div class="twelve colmun end">
+		<div class="twelve columns end">
+		    <div class="twelve columns end">
+		        <h4>JS13K Game</h4>
+		        <p>{{t('cv:realisations.js13k')}}</p>
+		        <blockquote class="hide-on-print">Js13kGames is a JavaScript coding competition for HTML5 game developers. The fun part of the compo is the file size limit set to 13 kilobytes.</blockquote>
+		        <p class="hide-on-print"><a href="/projets/js13k" class="button-box">{{t('common.buttons.project')}}</a></p>
+		    </div>
 		</div>
 	</div>
-
-	<div class="three columns end hide-on-print">
-		<img alt="Zori" src="/img/projets/zori_home_capture.png"/>
-  	</div>
-
-  	<hr />
-
-  	<div class="nine columns end">
-  		<div class="twelve columns end">
-			<h4>Knov</h4>
-			<h5>
-				<a class="hide-mobile url-link external-link" href="http://github.com/iGitScor/knov" target="_blank">github.com/iGitScor/knov</a>
-				<a class="show-mobile url-link external-link" href="http://github.com/iGitScor/knov" target="_blank">github.com/<wbr>iGitScor/knov</a>
-			</h5>
-			<p>{{t('cv:realisations.knov')}}</p>
-			<p class="hide-on-print"><a href="/projets/knov" class="button-box">{{t('common.buttons.project')}}</a></p>
-  		</div>
-	</div>
-
-	<hr />
-
-	<div class="nine columns end">
-	    <div class="twelve columns end">
-	        <h4>JS13K Game</h4>
-	        <p>{{t('cv:realisations.js13k')}}</p>
-	        <blockquote class="hide-on-print">Js13kGames is a JavaScript coding competition for HTML5 game developers. The fun part of the compo is the file size limit set to 13 kilobytes.</blockquote>
-	        <p class="hide-on-print"><a href="/projets/js13k" class="button-box">{{t('common.buttons.project')}}</a></p>
-	    </div>
-	</div>
-
 	{% else %}
-	<div class="nine columns end">
+	<div class="twelve columns end">
 		<ul>
 			<li>Zori : AngularJS, Firebase, iOS</li>
 			<li>Knov : AngularJS, Firebase</li>
 			<li>JS13K : Javascript</li>
 		</ul>
 	</div>
-
 	{% endif %}
 </div>
