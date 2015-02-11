@@ -38,24 +38,17 @@
 </nav>
 {% endblock %}
 
-{% block content_header_link %}
-rrf
-{% endblock %}
+{% block content_header_link %}{% endblock %}
 
 {% block content %}
 <div class="container page">
 	<article>
 		{% parent %}
-		{% if message.length > 0  %}
-			<div class="row notice_wrapper" data-attr-notice="homepage-top">
-				<div class="notice columns end twelve">
-					{{ message }}
-					<a class="right notice_close_button" data-attr-notice="homepage-top">X</a>
-				</div>
-			</div>
-		{% endif %}
-
 		<div class="row hide-on-print">
+				{% if message.length > 0  %}
+					<notice>{{message}}</notice>
+				{% endif %}
+
 				<md-tabs md-selected="selectedIndex" class="twelve columns">
 						<md-tab label="{{t('homepage.navigation.presentation.title')}}" md-no-ink>
 						{% include 'cv/presentation.html' %}
@@ -147,5 +140,4 @@ rrf
 		</div>
 	</div>
 </div>
-
 {% endblock %}
