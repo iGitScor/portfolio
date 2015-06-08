@@ -1,8 +1,4 @@
 <div class="row" id="{{t('homepage.navigation.hobbies.anchor')}}">
-	<div class="divider twelve columns end">
-		<p>{{t('homepage.navigation.hobbies.title')}}</p>
-	</div>
-
 	{% if query.cv !== 'print' %}
 	<div class="three columns caption end hide-on-print hide-mobile">
 		<figure class="figure-with-caption">
@@ -11,7 +7,7 @@
 			</figcaption>
 		</figure>
 	</div>
-	
+
 	<div class="nine columns end">
 		<div class="twelve columns end">
 			<h3>{{t('cv:hobbies.travel.title')}}</h3>
@@ -57,9 +53,9 @@
 			<p>{{t('cv:hobbies.travel.america.one.presentation')}}</p>
 		</div>
 	</div>
-	
+
 	{% else %}
-	
+
 	<div class="nine columns end">
 		<ul>
 			<li>Voyages</li>
@@ -67,6 +63,6 @@
 			<li>Art</li>
 		</ul>
 	</div>
-	
+
 	{% endif %}
 </div>

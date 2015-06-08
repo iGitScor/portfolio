@@ -4,13 +4,11 @@
 {% endblock %}
 
 {% block head_style %}
-  <link rel="stylesheet" href={{ styles }}>
-  <link rel="stylesheet" href="/css/external/component.css">
+  	<link rel="stylesheet" href={{ styles }}>
 {% endblock %}
 
 {% block head_script %}
-	<script src="/classie.js"></script>
-	<script defer src={{ scripts }}></script>
+		<script defer src={{ scripts }}></script>
 {% endblock %}
 
 {% block header_content %}
@@ -33,48 +31,61 @@
   </select>
 
 	<ul class="tiny-hide">
-		<li class="topnav here">
+		<li>
   		<a>{{t('routing:urls.home.title')}}</a>
 		</li>
   </ul>
 </nav>
 {% endblock %}
 
+{% block content_header_link %}{% endblock %}
+
 {% block content %}
 <div class="container page">
 	<article>
-    {% include 'cv/_navigation.html' %}
-		
-		{% if message.length > 0  %}
-			<div class="row notice_wrapper" data-attr-notice="homepage-top">
-				<div class="notice columns end twelve">
-					{{ message }} 
-					<a class="right notice_close_button" data-attr-notice="homepage-top">X</a>
-				</div>
-			</div>
-		{% endif %}
-		
-		{% if query.cv !== 'print' %}
-		{% endif %}
-		
-		{% include 'cv/presentation.html' %}
-		
-		{% if t('technical.lang') == 'fr' %}
-    	{% include 'cv/professional.html' %}
-    {% endif %}
-    
-    {% include 'cv/realisations.html' %}
-		{% include 'cv/etudes.html' %}
-		{% include 'cv/competences.html' %}
-		{% include 'cv/hobbies.html' %}
+		{% parent %}
+		<div class="row hide-on-print">
+				{% if message.length > 0  %}
+					<notice>{{message}}</notice>
+				{% endif %}
+
+				<md-tabs md-selected="selectedIndex" class="twelve columns">
+						<md-tab label="{{t('homepage.navigation.presentation.title')}}" md-no-ink>
+						{% include 'cv/presentation.html' %}
+						</md-tab>
+
+						{% if t('technical.lang') == 'fr' %}
+							<md-tab label="{{t('homepage.navigation.pro.title')}}" md-no-ink>
+				    	{% include 'cv/professional.html' %}
+				    	</md-tab>
+				    {% endif %}
+
+						<md-tab label="{{t('homepage.navigation.realisations.title')}}" md-no-ink>
+		    		{% include 'cv/realisations.html' %}
+		    		</md-tab>
+
+		    		<md-tab label="{{t('homepage.navigation.study.title')}}" md-no-ink>
+						{% include 'cv/etudes.html' %}
+						</md-tab>
+
+						<md-tab label="{{t('homepage.navigation.competences.title')}}" md-no-ink>
+						{% include 'cv/competences.html' %}
+						</md-tab>
+
+						<md-tab label="{{t('homepage.navigation.hobbies.title')}}" md-no-ink>
+						{% include 'cv/hobbies.html' %}
+						</md-tab>
+				</md-tabs>
+		</div>
 	</article>
 </div>
 {% endblock %}
 
 {% block footer_content %}
-<div class="container small-cta-touts hide-on-print">
+<div class="container sub-footer hide-on-print">
+	<br />
 	<div class="row">
-		<div class="four columns small-cta-tout">
+		<div class="four columns">
 			<div class="inner">
 				<h2>
 					<a class="pinned" data-icon="1">
@@ -94,7 +105,7 @@
   			</div>
 		</div>
 
-  		<div class="four columns small-cta-tout">
+  		<div class="four columns">
   			<div class="inner">
 				<h2>
 					<a class="pinned" data-icon="2">
@@ -114,7 +125,7 @@
   			</div>
 		</div>
 
- 		<div class="four columns small-cta-tout end">
+ 		<div class="four columns end">
 			<div class="inner">
 				<h2>
 					<a class="pinned" data-icon="3">

@@ -5,7 +5,7 @@
  */
 
 
-/***************************************************** 
+/*****************************************************
  ***                     Initialization
  *****************************************************/
 // Module dependencies / imports
@@ -15,6 +15,10 @@ var express = require('express'),
   swig = require('swig'),
   fileSystem = require('fs'),
   flash = require('connect-flash'),
+  methodOverride = require('method-override'),
+  cookieParser = require('cookie-parser'),
+  bodyParser = require('body-parser'),
+  cookieSession = require('cookie-session'),
   passport = require('passport'),
   GitHubStrategy = require('passport-github').Strategy,
   routes = require('./routes'),
@@ -32,35 +36,20 @@ var app = express();
 // Define SWIG as the default template rendering
 app.engine('html', swig.renderFile);
 
-/***************************************************** 
+/*****************************************************
  ***                     Configuration
  *****************************************************/
 // Internationalization configuration.
 i18n.registerAppHelper(app);
-i18n.init({ 
+i18n.init({
   lng: "fr",
   detectLngFromPath: 0,
   supportedLngs: ['fr', 'en'],
   resGetPath: 'content/i18n/__lng__/__ns__.json',
   useCookie: false,
-  ns: { 
-    namespaces: ['translation', 'meta', 'routing', 'cv', 'pages'], 
+  ns: {
+    namespaces: ['translation', 'meta', 'routing', 'cv', 'pages'],
     defaultNs: 'translation'
-  } 
-});
-
-var batchName = 'main';
-var filters = ['metadata'];
-var batch = JSON.parse(fileSystem.readFileSync('./content/search/' + batchName + '/fr/search-index.json'));
-
-searchindex.add({'batchName': batchName, 'filters': filters}, batch, function(err) {
-  if (!err) {
-    // Generate a snapshot backup !
-    searchindex.snapShot(function(readStream) {
-      readStream.pipe(fileSystem.createWriteStream('./content/search/' + batchName + '/search-index.gz'))
-        .on('close', function() {
-      });
-    });
   }
 });
 
@@ -72,123 +61,113 @@ app.use(function(req, res, next){
     urlParsed.shift();
     urlParsed = urlParsed.join('/');
     urlParsed = '/' + urlParsed;
-    
+
     res.locals.requestedURL = urlParsed;
   }
-  
+
   next();
 });
 
+// Common application configuration
+app.set('port', 80);
+app.set('port', process.env.PORT || 80);
+app.set('views', __dirname + '/views');
+app.set('view engine', 'html');
+app.set('_scorProtocol', 'http');
+app.set('_scorURL', process.env.SITE || 'sebastien-correaud.herokuapp.com');
+app.use(express.logger('dev'));
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(bodyParser.json());
+app.use(i18n.handle);
+app.use(methodOverride('X-HTTP-Method-Override'));
+app.use(cookieSession({
+  secret: 'keyboard cat',
+  cookie: { maxAge: 60000 }
+}));
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(app.router);
+app.use(express.compress());
+app.use(express.static(path.join(__dirname, 'public'), {
+  maxAge: 604800000
+}));
+app.use(express.favicon(__dirname + '/public/img/favicon.ico'));
 
-// Default configuration.
-app.configure(function() {
-  // Common application configuration 
-  app.set('port', process.env.PORT || 80);
-  app.set('views', __dirname + '/views');
-  app.set('view engine', 'html');
-  app.set('_scorProtocol', 'http');
-  app.set('_scorURL', process.env.SITE || 'sebastien-correaud.herokuapp.com');
-  app.use(express.logger('dev'));
-  app.use(express.cookieParser());
-  app.use(express.bodyParser());
-  app.use(i18n.handle);
-  app.use(express.methodOverride());
-  app.use(express.session({
-    secret: 'keyboard cat', 
-    cookie: { maxAge: 60000 }
-  }));
-  app.use(flash());
-  app.use(passport.initialize());
-  app.use(passport.session());
-  app.use(app.router);
-  app.use(express.compress());
-  app.use(express.static(path.join(__dirname, 'public'), {
-    maxAge: 604800000
-  }));
-  app.use(express.favicon(__dirname + '/public/img/favicon.ico'));
+/*
+ * Cache-control on all resources
+ */
+app.use(function(req, res, next) {
+  res.setHeader("Cache-Control", "max-age=" + 604800000);
+  next();
+});
 
-  /*
-   * Cache-control on all resources
-   */
-  app.use(function(req, res, next) {
-    res.setHeader("Cache-Control", "max-age=" + 604800000);
-    next();
-  });
-  
-  /*
-   * Errors
-   */
-  app.use(function(req, res, next) {
-    // Allowed image extension handler
-    var extensions = ["png", "jpg", "gif"];
+/*
+ * Errors
+ */
+app.use(function(req, res, next) {
+  // Allowed image extension handler
+  var extensions = ["png", "jpg", "gif"];
 
-    // If the requested url is an image url and the extension of the image allows the replacement
-    if (!!~extensions.indexOf(req.originalUrl.substr(req.originalUrl.length - 3))) {
-      var qcqImage = fileSystem.readFileSync('./public/img/error/not_found.png');
-      res.status(404);
-      res.type('png');
-      res.end(qcqImage, 'binary');
-    }
-    else {
-      // Continue to other errors handling middlewares
-      next();
-    }
-  });
-
-  app.use(function(req, res, next) {
+  // If the requested url is an image url and the extension of the image allows the replacement
+  if (!!~extensions.indexOf(req.originalUrl.substr(req.originalUrl.length - 3))) {
+    var qcqImage = fileSystem.readFileSync('./public/img/error/not_found.png');
     res.status(404);
-
-    // Respond with HTML page
-    if (req.accepts('html')) {
-      res.render(
-        'error/404.html', {
-          title: i18n.t('error.page.qcq.title'),
-          error: i18n.t('error.page.qcq.message', { url: req.url }),
-          subTitle: i18n.t('error.page.qcq.subtitle'),
-          errorCode: '404'
-        }
-      );
-
-      return;
-    }
-
-    // Default to plain-text. send()
-    res.type('txt').send('Not found');
-  });
-
-  app.use(function(error, req, res, next) {
-    res.status(500);
-
-    // Respond with html page
-    if (req.accepts('html')) {
-      res.render(
-        'error/500.html', {
-          title: i18n.t('error.page.cc.title'),
-          error: error,
-          subTitle: i18n.t('error.page.cc.subtitle'),
-          errorCode: '500'
-        }
-      );
-
-      return;
-    }
-
-    // Default to plain-text. send()
-    res.type('txt').send('Not found');
-  });
-
+    res.type('png');
+    res.end(qcqImage, 'binary');
+  }
+  else {
+    // Continue to other errors handling middlewares
+    next();
+  }
 });
 
-// Development-only configuration
-app.configure('development', function() {
-  app.use(express.errorHandler());
-  app.set('view cache', false);
-  swig.setDefaults({
-    cache: false
-  });
+app.use(function(req, res, next) {
+  res.status(404);
+
+  // Respond with HTML page
+  if (req.accepts('html')) {
+    res.render(
+      'error/404.html', {
+        title: i18n.t('error.page.qcq.title'),
+        error: i18n.t('error.page.qcq.message', { url: req.url }),
+        subTitle: i18n.t('error.page.qcq.subtitle'),
+        errorCode: '404'
+      }
+    );
+
+    return;
+  }
+
+  // Default to plain-text. send()
+  res.type('txt').send('Not found');
 });
 
-/***************************************************** 
+app.use(function(error, req, res, next) {
+  res.status(500);
+
+  // Respond with html page
+  if (req.accepts('html')) {
+    res.render(
+      'error/500.html', {
+        title: i18n.t('error.page.cc.title'),
+        error: error,
+        subTitle: i18n.t('error.page.cc.subtitle'),
+        errorCode: '500'
+      }
+    );
+
+    return;
+  }
+
+  // Default to plain-text. send()
+  res.type('txt').send('Not found');
+});
+
+/*****************************************************
  ***                     Security
  *****************************************************/
 var GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID;
@@ -215,67 +194,15 @@ passport.use(new GitHubStrategy({
   }
 ));
 
-/***************************************************** 
+/*****************************************************
  ***                     Routing
  *****************************************************/
-/*** REST Routing ***/
-app.get('/api/s/:searchText/:searchType/:lang', function(req, res){
-    var apiResults = {};
-    var search = decodeURIComponent(req.params.searchText.toLowerCase()); 
-    var keywords = glossary.extract(search);
-    if (keywords.length === 0) {
-       keywords = search.split(' ');
-    }
-    var indexor = 0;
-    
-    keywords.forEach(function(entry) {
-        searchindex.match(entry, function(err, matches) {
-            if (!err && matches.length > 0) {
-                var query = {
-                    "query": {
-                        "*": matches
-                    }
-                };
-                searchindex.search(query, function(err, results) {
-                    if (!err) {
-                        if (results.totalHits) {
-                            results.hits.forEach(function(hit) {
-                                //if (!apiResults.contains(hit)) {
-                                  apiResults[hit.document.id] = hit.document.body;
-                                  indexor++;
-                                  
-                                  if (indexor == keywords.length) {
-                                      if (Object.keys(apiResults).length) {
-                                          return res.json(apiResults);
-                                      } else {
-                                          return res.json({
-                                              error: {
-                                                  code: '__',
-                                                  message: 'Aucun résultat'
-                                              }
-                                          });
-                                      }
-                                  }
-                               // }
-                            });
-                        } else {
-                          indexor++;
-                        }
-                    } else {
-                        indexor++;
-                    }
-                }); 
-            } else {
-                indexor++;
-            }
-        });
-    });
-    
-    if (indexor == keywords.length) {
-        if (Object.keys(apiResults).length) {
-            return res.json(apiResults);
+var searchEngine = function(index, keywords, results, response) {
+    if (index == keywords.length) {
+        if (Object.keys(results).length) {
+            return response.json(results);
         } else {
-            return res.json({
+            return response.json({
                 error: {
                     code: '__',
                     message: 'Aucun résultat'
@@ -283,6 +210,112 @@ app.get('/api/s/:searchText/:searchType/:lang', function(req, res){
             });
         }
     }
+};
+
+/*** REST Routing ***/
+app.get('/api/s/:searchText/:searchType/:lang', function(req, res){
+    var searchType = (req.params.searchType == 'undefined') ? 'main' : req.params.searchType;
+    var filters = ['metadata'];
+
+    var batch = JSON.parse(fileSystem.readFileSync('./content/search/' + searchType + '/fr/search-index.json'));
+
+    searchindex.empty(function(emptyError) {
+        if (!emptyError) {
+            searchindex.add({'batchName': searchType, 'filters': filters}, batch, function(addError) {
+                if(!addError) {
+                    var apiResults = {};
+                    var search = decodeURIComponent(req.params.searchText.toLowerCase());
+                    var keywords = glossary.extract(search);
+
+                    if (keywords.length === 0) {
+                       keywords = search.split(' ');
+                    }
+                    var indexor = 0;
+
+                    keywords.forEach(function(entry) {
+                        searchindex.match(entry, function(matchError, matches) {
+                            if (!matchError && matches.length > 0) {
+                                var query = {
+                                    "query": {
+                                        "metadata": matches
+                                    }
+                                };
+                                searchindex.search(query, function(searchError, results) {
+                                    if (!searchError) {
+                                        if (results.totalHits) {
+                                            results.hits.forEach(function(hit) {
+                                                var resultIndex = new Buffer(JSON.stringify(hit.document)).toString('base64');
+                                                apiResults[resultIndex] = {body:hit.document.body, link:hit.document.link };
+                                            });
+                                            indexor++;
+                                            searchEngine(indexor, keywords, apiResults, res);
+                                        } else {
+                                          indexor++;
+                                          searchEngine(indexor, keywords, apiResults, res);
+                                        }
+                                    } else {
+                                      indexor++;
+                                      searchEngine(indexor, keywords, apiResults, res);
+                                    }
+                                });
+                            } else {
+                              indexor++;
+                              searchEngine(indexor, keywords, apiResults, res);
+                            }
+                        });
+                    });
+                    // Case no keyword
+                    searchEngine(indexor, keywords, apiResults, res);
+                }
+            });
+        }
+    });
+});
+
+app.get('/api/f/red', function (req, res) {
+
+    var FeedParser = require('feedparser')
+      , request = require('request')
+      , tplObj = Array()
+      , atom = request('http://www.redbubble.com/people/iscor/portfolio/recent.atom')
+      , feedparser = new FeedParser();
+
+    atom.on('error', function (error) {
+      // handle any request errors
+    });
+
+    atom.on('response', function (res) {
+        var stream = this;
+
+        if (res.statusCode != 200) {
+            return this.emit('error', new Error('Bad status code'));
+        }
+
+        stream.pipe(feedparser);
+    });
+
+    feedparser.on('error', function (error) {
+      // always handle errors
+    });
+
+    feedparser.on('readable', function () {
+      // This is where the action is!
+      var stream = this, item;
+
+      while (item = stream.read()) {
+        if (item.title && item.description && item.link) {
+            tplObj.push({
+                title: item.title,
+                description: item.description,
+                link: item.link
+            });
+        }
+      }
+    });
+
+    feedparser.on('end', function () {
+        return  res.json(tplObj);
+    });
 });
 
 app.post('/api/a/engine/:context', auth.ensureAuthenticated, function(req, res){
@@ -291,7 +324,7 @@ app.post('/api/a/engine/:context', auth.ensureAuthenticated, function(req, res){
             var batchName = req.params.context;
             var filters = ['metadata'];
             var batch = JSON.parse(fileSystem.readFileSync('./content/search/' + batchName + '/fr/search-index.json'));
-            
+
             searchindex.add({'batchName': batchName, 'filters': filters}, batch, function(err) {
                 if (err) {
                     return res.json({error : 1});
@@ -309,7 +342,7 @@ app.get('/api/a/system', auth.ensureAuthenticated, function(req, res){
     return res.json(engineFiles);
 });
 
-app.del('/api/a/system/:path', auth.ensureAuthenticated, function(req, res){
+app.delete('/api/a/system/:path', auth.ensureAuthenticated, function(req, res){
     fileSystem.unlink('./si/' + req.params.path, function (err) {
         if (err) {
             return res.json({error : 1});
@@ -320,18 +353,20 @@ app.del('/api/a/system/:path', auth.ensureAuthenticated, function(req, res){
 
 /*** HTTP Routing ***/
 app.get('/', routes.index);
-app.get('/fr/ma-personnalite|/en/my-personality', routing.personnalite);
-app.get('/fr/mon-reseau-social|/en/my-social-network', routing.network);
+app.get('^(\/fr/ma-personnalite\/?|\/en/my-personality\/?)$', routing.personnalite);
+app.get('^(\/fr/mon-reseau-social\/?|\/en/my-social-network\/?)$', routing.network);
+app.get('/redbubble', routing.redbubble);
 app.get('/knov', routing.knov);
 app.get('/projets/:name', routing.project);
 
-app.get('/~scor', auth.ensureAuthenticated, function(req, res) {
+var area51 = process.env.AREA51 || '~admin';
+app.get('/' + area51, auth.ensureAuthenticated, function(req, res) {
   res.render('admin/index', {
     user: req.user
   });
 });
 
-app.get('/~scor/:name', auth.ensureAuthenticated, function(req, res) {
+app.get('/' + area51 + '/:name', auth.ensureAuthenticated, function(req, res) {
   var name = req.params.name;
   res.render('admin/' + name, {
     user: req.user
@@ -378,7 +413,7 @@ app.get('/logout', function(req, res) {
   res.redirect('/fr');
 });
 
-/***************************************************** 
+/*****************************************************
  ***                     Contact
  *****************************************************/
 var allowedContactForms = ["formulaire-de-contact", "contact-form", "formulaire-embauche", "job-proposal-form"];
@@ -426,7 +461,7 @@ app.post('/:lang/contact/:type', function(req, res) {
   }
 });
 
-/***************************************************** 
+/*****************************************************
  ***                     Sitemap
  *****************************************************/
 appSitemap.generateSitemap(app.get('_scorURL'));
@@ -443,11 +478,11 @@ app.get('/robots.txt', function(req, res) {
   res.type('txt').send(content);
 });
 
-/***************************************************** 
+/*****************************************************
  ***                     Server
  *****************************************************/
 // Default route, homepage for all languages
-app.get('/fr|/en', routes.index);
+app.get("^(\/fr\/?|\/en\/?)$", routes.index);
 
 // Create NodeJS server instance.
 http.createServer(app).listen(app.get('port'), function() {

@@ -1,31 +1,36 @@
 {% extends '../layout.html' %}
 
-{% block header_content %}
-<nav id="primary">          
-	<ul class="tiny-hide">
-		<li id="products" class="topnav here">
-  			<a>{{ title }} - Share music !</a>
-		</li>
-  	</ul>
-</nav>
-{% endblock %}
-
 {% block content %}
 <div class="container page">
 	<article>
+		<div class="row">
+			<div class="twelve columns end">
+				<nav id="primary">
+					<ul class="pull-left">
+						<li>
+				  			<a>{{ title }} - Share music !</a>
+						</li>
+				  	</ul>
+				  	<span class="pull-right">
+	    				<a class="button-box blue" href="/knov"><i class="fa fa-angle-left"></i> Knov</a>
+	    				<a class="button-box blue" href="/js13k">JS13k <i class="fa fa-angle-right"></i></a>
+	    			</span>
+				</nav>
+	    	</div>
+		</div>
 	    <div class="row" id="presentation" >
           	<div class="divider twelve columns end">
         		<p>Pr&eacute;sentation</p>
           	</div>
-          	
+
           	<div class="one columns end">
         		<img src="/img/projets/github_ff_logo.png" alt="Flip Flop Logo"/>
           	</div>
-          	
+
           	<div class="eleven columns end">
         		<p>"Real-time music link sharer using Firebase as its backend and AngularJS on the frontend."</p>
           	</div>
-        
+
           	<div class="twelve columns">
                 <div class="section-divider">
   			        <h4>Equipe</h4>
@@ -38,7 +43,7 @@
                     <li>S&eacute;bastien Correaud (moi-m&ecirc;me - iGitScor) : <a href="https://github.com/iGitScor" class="external-link" target="_blank">GITHUB</a></li>
                 </ul>
           	</div>
-          	
+
           	 <div class="twelve columns">
                 <div class="section-divider">
   			        <h4>Projet</h4>
@@ -47,7 +52,7 @@
                 <p>Zori est un projet d'appréhension des technologies AngularJS et Firebase.</p>
           	</div>
         </div>
-	
+
 	    <div class="row" id="conception-graphique">
 	        <div class="divider twelve columns end">
         		<p>Conception graphique</p>
@@ -56,7 +61,7 @@
 	            <img src="/img/projets/zori_home_capture.png"/>
             </div>
 	    </div>
-	    
+
 	    <div class="row" id="conception-dev">
 	        <div class="divider twelve columns end">
         		<p>R&eacute;alisation du projet</p>
@@ -68,52 +73,4 @@
 
 
 {% block footer_content %}
-<!--<div class="container small-cta-touts hide-on-print">
-	<div class="row">
-		<div class="four columns small-cta-tout">
-			<div class="inner">
-				<h2>
-					<a class="pinned" data-icon="1">
-      					<span>Téléchargement</span>
-    				</a>
-    			</h2>
-				<p>Ressources à télécharger.</p>
-	    		<p class="tight">
-	    			<a href="#" class="button-box">Curriculum vitae</a>
-	    		</p>
-  			</div>
-		</div>
-
-  		<div class="four columns small-cta-tout">
-  			<div class="inner">
-				<h2>
-					<a class="pinned" data-icon="2">
-      					<span>Liens relatifs</span>
-    				</a>
-    			</h2>
-				<p>Liens relatifs à mon curriculum vitae</p>
-	    		<p class="tight">
-	    			<a href="http://github.com/FlipFlopWeekly" class="button-box external-link">Projets open source</a>
-	    		</p>
-	    		<p class="tight">
-	    			<a href="http://github.com/iGitScor" class="button-box external-link">Projets open source (suite)</a>
-	    		</p>
-  			</div>
-		</div>
-
- 		<div class="four columns small-cta-tout end">
-			<div class="inner">
-				<h2>
-					<a class="pinned" data-icon="3">
-      					<span>Et aussi</span>
-    				</a>
-    			</h2>
-    			<p>Ma carte de voyageur</p>
-	    		<p class="tight">
-	    			<a href="https://mapsengine.google.com/map/viewer?mid=zJbOY1XSMido.k5KGhF2HHf8Q" class="button-box external-link">Google maps</a>
-	    		</p>
-  			</div>
-		</div>
-	</div>
-</div>-->
 {% endblock %}

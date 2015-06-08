@@ -1,0 +1,29 @@
+[
+    {
+        "title": "tc",
+        "body": "Thibaud Colas : Full-Stack Developer",
+        "link": "http://thib.me",
+        "metadata": [
+            "thibaud",
+            "colas"
+        ]
+    },
+    {
+        "title": "lv",
+        "body": "Laurent Vergé : IT Engineer",
+        "link": "https://github.com/MonsieurLuge",
+        "metadata": [
+            "laurent",
+            "verge"
+        ]
+    },
+    {
+        "title": "ab",
+        "body": "Arnaud Bosc : Front-end developer",
+        "link": "http://nimaen.com",
+        "metadata": [
+            "arnaud",
+            "bosc"
+        ]
+    }
+]

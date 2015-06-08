@@ -1,20 +1,11 @@
-html, body {
-	height: 100%;
-}
-
-body {
-	overflow-x: hidden;
-	overflow-y: scroll;
-}
-
 .morphsearch {
-	width: 120px;
+	width: 170px;
 	min-height: 40px;
 	background: transparent;
 	position: absolute;
 	z-index: 10000;
-	top: 155px;
-	right: 230px;
+	top: 110px;
+	right: 96px;
 	-webkit-transform-origin: 100% 0;
 	transform-origin: 100% 0;
 	-webkit-transition-property: min-height, width, top, right;
@@ -68,7 +59,7 @@ body {
 	font-weight: 700;
 	border: none;
 	background: transparent;
-	font-size: 0.8em;
+	font-size: 1.4em;
 	color: #ec5a62;
 	-webkit-transition: font-size 0.5s cubic-bezier(0.7,0,0.3,1);
 	transition: font-size 0.5s cubic-bezier(0.7,0,0.3,1);
@@ -78,8 +69,14 @@ body {
     display: none;
 }
 
+.morphsearch-input::-webkit-search-cancel-button { /* remove cross in Chrome */
+	display: none;
+}
+
 .morphsearch.hideInput .morphsearch-input {
 	color: transparent;
+	-moz-transition: color 0.3s;
+	-o-transition: color 0.3s;
 	-webkit-transition: color 0.3s;
 	transition: color 0.3s;
 }
@@ -90,7 +87,7 @@ body {
 
 /* placeholder */
 .morphsearch-input::-webkit-input-placeholder {
-	color: #c2c2c2;
+	color: #ec5a62;
 }
 
 .morphsearch-input:-moz-placeholder {
@@ -111,8 +108,8 @@ body {
 }
 
 input[type="search"] { /* reset normalize */
-	-webkit-box-sizing: border-box; 
-	box-sizing: border-box;	
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .morphsearch-input:focus,
@@ -211,11 +208,10 @@ input[type="search"] { /* reset normalize */
 
 .morphsearch-content {
 	color: #333;
-	margin-top: 4.5em;
+	margin-top: 2em;
 	width: 100%;
 	height: 0;
 	overflow: hidden;
-	padding: 0 10.5%;
 	background: #f1f1f1;
 	position: absolute;
 	pointer-events: none;
@@ -296,7 +292,7 @@ input[type="search"] { /* reset normalize */
 
 .dummy-media-object img {
 	display: inline-block;
-	width: 50px;	
+	width: 50px;
 	margin: 0 10px 0 0;
 	vertical-align: middle;
 }

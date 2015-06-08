@@ -1,5 +1,3 @@
-var angular = angular;
-var app = angular.module("sc", []);
 app.controller("adminController", ["$scope", "$http",
     function($scope, $http) {
 

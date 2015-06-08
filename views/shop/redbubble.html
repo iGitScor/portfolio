@@ -1,0 +1,28 @@
+{% extends '../layout.html' %}
+
+{% block content %}
+<div class="container page">
+    <article ng-controller="redbubbleController">
+        <div class="row"></div>
+        <div class="row">
+	        <div class="divider twelve columns end">
+                <p>Boutique Redbubble</p>
+          	</div>
+        </div>
+        <div class="row" ng-cloak class="ng-cloak">
+            <div class="column four end" ng-repeat="result in results | startFrom:currentPage*pageSize | limitTo:pageSize">
+                <md-card class="small-grid-cell" ng-if="result.description" ng-bind-html="result.description"></md-card>
+            </div>
+
+            <div class="clear"></div>
+
+            <div class="text-center">
+                <button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">&lt;</button>
+                <span ng-bind="currentPage + 1"></span> / <span ng-bind="numberOfPages"></span>
+                <button ng-disabled="currentPage >= results.length/pageSize - 1" ng-click="currentPage=currentPage+1">&gt;</button>
+            </div>
+            <p class="divider"></p>
+        </div>
+    </article>
+</div>
+{% endblock %}

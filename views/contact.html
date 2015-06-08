@@ -1,9 +1,9 @@
 {% extends 'layout.html' %}
 
 {% block header_content %}
-<nav id="primary">          
+<nav id="primary">
 	<ul class="tiny-hide">
-		<li class="topnav here">
+		<li>
   		    <a>{{t('form.title')}}</a>
 		</li>
   </ul>
@@ -21,7 +21,7 @@
                     <strong>{{t('form.common.success.thankyou')}}</strong> {{t('form.common.success.message')}} <strong>{{name}}</strong>
                 </div>
                 {% endif %}
-            
+
                 <form role="form" action={{ '/' }}{{t('technical.lang')}}{{ '/contact/' }}{{ type }} method="post" class="big-box columns end six push-three">
                     <div class="form-group">
                         <label for="email" class="secondary">{{t('form.common.email.label')}}</label>

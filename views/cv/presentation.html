@@ -1,8 +1,4 @@
 <div class="row" id="{{t('homepage.navigation.presentation.anchor')}}" >
-  	<div class="divider twelve columns end">
-		<p>{{t('homepage.navigation.presentation.title')}}</p>
-  	</div>
-  	
   	<div class="three columns end hide-on-print">
 		<img alt="Presentation" src="/img/content/visuel_presentation.png" class="presentation-image"/>
   	</div>
@@ -10,6 +6,19 @@
   	<div class="nine columns">
   		{% if query.cv !== 'print' %}
 			<p itemscope itemtype="http://data-vocabulary.org/Person">{{t('cv:presentation.intro')}}</p>
+			<p>
+				<span class="row">
+					<span class="four columns end text-center">
+						<img width="100" height="100" src="//3.bp.blogspot.com/-p7FmgCOsIxE/U3RbmRukK4I/AAAAAAAAAFw/6hcwWM_U-ts/s1600/Angular.pngg"/>
+					</span>
+					<span class="four columns end text-center">
+						<img width="100" height="100" src="//pbs.twimg.com/profile_images/558637992269463552/LinhliBR_400x400.png"/>
+					</span>
+					<span class="four columns end text-center">
+						<img width="100" height="100" src="http://www.lafrenchtech.com/sites/default/files/logo-ft-new.png"/>
+					</span>
+				</span>
+			</p>
 		{% else %}
 			<ul class="bulletless" itemscope itemtype="http://data-vocabulary.org/Person">
 				<li itemprop="name">S&eacute;bastien Correaud</li>
@@ -20,64 +29,64 @@
 				<li>sebastien.correaud@gmail.com</li>
 			</ul>
 		{% endif %}
-		
+
 		{% if query.cv !== 'print' && t('technical.lang') == 'fr' %}
 		<div class="section-divider hide-on-print">
   			<h4>Moi</h4>
 		</div>
-		
+
 		<p class="hide-on-print">Les 5 grands champs de la personnalit&eacute; sont les suivants :</p>
 		<div class="big-box hide-on-print">
 			<h4 class="presentation-title communicate secondary">
 				Communiquer <br />
-				<div class="talent-icon talent-communicate"></div>
+				<span class="talent-icon talent-communicate"></span>
 			</h4>
 			<p class="primary">&Ecirc;tre en lien avec autrui, transmettre quelque chose &agrave; quelqu'un, en g&eacute;n&eacute;ral par le langage (&eacute;crit ou oral).</p>
-        		<div class="clear"></div>
+        	<div class="clear"></div>
 
-        		<h4 class="presentation-title manage secondary">
-        			Manager <br />
-        			<div class="talent-icon talent-manage"></div>		
-        		</h4>
-        		<p class="primary">Organiser, g&eacute;rer quelque chose ou quelqu'un.</p>
-        		<div class="clear"></div>
+        	<h4 class="presentation-title manage secondary">
+        		Manager <br />
+        		<span class="talent-icon talent-manage"></span>
+        	</h4>
+        	<p class="primary">Organiser, g&eacute;rer quelque chose ou quelqu'un.</p>
+        	<div class="clear"></div>
 
-		        <h4 class="presentation-title dare secondary">
-		        	Oser <br />
-		        	<div class="talent-icon talent-dare"></div>
-		        </h4>
-		        <p class="primary">Avoir le courage, l'audace, la hardiesse de faire quelque chose.</p>
-		        <div class="clear"></div>
+		    <h4 class="presentation-title dare secondary">
+		    	Oser <br />
+		        <span class="talent-icon talent-dare"></span>
+		    </h4>
+		    <p class="primary">Avoir le courage, l'audace, la hardiesse de faire quelque chose.</p>
+		    <div class="clear"></div>
 
-		        <h4 class="presentation-title adapt secondary">
-		        	S'adapter <br />
-		        	<div class="talent-icon talent-adapt"></div>
-		        </h4>
-		        <p class="primary">Modifier son attitude, sa pens&eacute;e, son comportement pour le mettre en accord avec une situation nouvelle, s'ajuster.</p>
-		        <div class="clear"></div>
+		    <h4 class="presentation-title adapt secondary">
+		    	S'adapter <br />
+		        <span class="talent-icon talent-adapt"></span>
+		    </h4>
+		    <p class="primary">Modifier son attitude, sa pens&eacute;e, son comportement pour le mettre en accord avec une situation nouvelle, s'ajuster.</p>
+		    <div class="clear"></div>
 
-		        <h4 class="presentation-title excel secondary">
-		        	Se d&eacute;passer <br />
-		        	<div class="talent-icon talent-excel"></div>
-		        </h4>
-		        <p class="primary">Capacit&eacute; &agrave; aller au-del&agrave; d'un rep&egrave;re fix&eacute;, r&eacute;aliser une performance sup&eacute;rieure &agrave; celles produites auparavant.</p>
-				<div class="clear"></div>
-			
-        		<a href="/ma-personnalite" class="button-box" title="Ma personnalit&eacute;">D&eacute;tail de ma personnalit&eacute;</a>
-        		<br/><br />
+		    <h4 class="presentation-title excel secondary">
+		    	Se d&eacute;passer <br />
+		        <span class="talent-icon talent-excel"></span>
+		    </h4>
+		    <p class="primary">Capacit&eacute; &agrave; aller au-del&agrave; d'un rep&egrave;re fix&eacute;, r&eacute;aliser une performance sup&eacute;rieure &agrave; celles produites auparavant.</p>
+			<div class="clear"></div>
+
+        	<a href="/fr/ma-personnalite" class="button-box" title="Ma personnalit&eacute;">D&eacute;tail de ma personnalit&eacute;</a>
+        	<br/><br />
 		</div>
-		
+
 		{% endif %}
-		
+
 		{% if query.cv !== 'print' %}
-		
+
 		<div class="section-divider hide-on-print">
   			<h4>{{t('cv:presentation.future.title')}}</h4>
 		</div>
-		
+
 		<h4 class="hide-on-print">{{t('cv:presentation.future.computer.title')}}</h4>
 		<p>{{t('cv:presentation.future.computer.text')}}</p>
-		
+
 		{% endif %}
   	</div>
   	{% if query.cv !== 'print' %}
