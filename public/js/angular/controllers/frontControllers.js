@@ -19,6 +19,18 @@ app.controller("searchController", ["$scope", "$http",
                 });
             }
         };
+
+        $scope.focusSearch = function () {
+            $('body').css('overflow-y', 'hidden');
+            $('body').css('height', '100vh');
+            $('article').css('display', 'none');
+        };
+
+        $scope.closeSearch = function () {
+            $('body').css('overflow-y', 'visible');
+            $('body').css('height', 'auto');
+            $('article').css('display', 'block');
+        };
     }
 ])
 .controller("cookieController", ["$scope", "$cookies",

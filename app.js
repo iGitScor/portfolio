@@ -15,6 +15,10 @@ var express = require('express'),
   swig = require('swig'),
   fileSystem = require('fs'),
   flash = require('connect-flash'),
+  methodOverride = require('method-override'),
+  cookieParser = require('cookie-parser'),
+  bodyParser = require('body-parser'),
+  cookieSession = require('cookie-session'),
   passport = require('passport'),
   GitHubStrategy = require('passport-github').Strategy,
   routes = require('./routes'),
@@ -64,113 +68,103 @@ app.use(function(req, res, next){
   next();
 });
 
+// Common application configuration
+app.set('port', 80);
+app.set('port', process.env.PORT || 80);
+app.set('views', __dirname + '/views');
+app.set('view engine', 'html');
+app.set('_scorProtocol', 'http');
+app.set('_scorURL', process.env.SITE || 'sebastien-correaud.herokuapp.com');
+app.use(express.logger('dev'));
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(bodyParser.json());
+app.use(i18n.handle);
+app.use(methodOverride('X-HTTP-Method-Override'));
+app.use(cookieSession({
+  secret: 'keyboard cat',
+  cookie: { maxAge: 60000 }
+}));
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(app.router);
+app.use(express.compress());
+app.use(express.static(path.join(__dirname, 'public'), {
+  maxAge: 604800000
+}));
+app.use(express.favicon(__dirname + '/public/img/favicon.ico'));
 
-// Default configuration.
-app.configure(function() {
-  // Common application configuration
-  app.set('port', process.env.PORT || 80);
-  app.set('views', __dirname + '/views');
-  app.set('view engine', 'html');
-  app.set('_scorProtocol', 'http');
-  app.set('_scorURL', process.env.SITE || 'sebastien-correaud.herokuapp.com');
-  app.use(express.logger('dev'));
-  app.use(express.cookieParser());
-  app.use(express.bodyParser());
-  app.use(i18n.handle);
-  app.use(express.methodOverride());
-  app.use(express.session({
-    secret: 'keyboard cat',
-    cookie: { maxAge: 60000 }
-  }));
-  app.use(flash());
-  app.use(passport.initialize());
-  app.use(passport.session());
-  app.use(app.router);
-  app.use(express.compress());
-  app.use(express.static(path.join(__dirname, 'public'), {
-    maxAge: 604800000
-  }));
-  app.use(express.favicon(__dirname + '/public/img/favicon.ico'));
-
-  /*
-   * Cache-control on all resources
-   */
-  app.use(function(req, res, next) {
-    res.setHeader("Cache-Control", "max-age=" + 604800000);
-    next();
-  });
-
-  /*
-   * Errors
-   */
-  app.use(function(req, res, next) {
-    // Allowed image extension handler
-    var extensions = ["png", "jpg", "gif"];
-
-    // If the requested url is an image url and the extension of the image allows the replacement
-    if (!!~extensions.indexOf(req.originalUrl.substr(req.originalUrl.length - 3))) {
-      var qcqImage = fileSystem.readFileSync('./public/img/error/not_found.png');
-      res.status(404);
-      res.type('png');
-      res.end(qcqImage, 'binary');
-    }
-    else {
-      // Continue to other errors handling middlewares
-      next();
-    }
-  });
-
-  app.use(function(req, res, next) {
-    res.status(404);
-
-    // Respond with HTML page
-    if (req.accepts('html')) {
-      res.render(
-        'error/404.html', {
-          title: i18n.t('error.page.qcq.title'),
-          error: i18n.t('error.page.qcq.message', { url: req.url }),
-          subTitle: i18n.t('error.page.qcq.subtitle'),
-          errorCode: '404'
-        }
-      );
-
-      return;
-    }
-
-    // Default to plain-text. send()
-    res.type('txt').send('Not found');
-  });
-
-  app.use(function(error, req, res, next) {
-    res.status(500);
-
-    // Respond with html page
-    if (req.accepts('html')) {
-      res.render(
-        'error/500.html', {
-          title: i18n.t('error.page.cc.title'),
-          error: error,
-          subTitle: i18n.t('error.page.cc.subtitle'),
-          errorCode: '500'
-        }
-      );
-
-      return;
-    }
-
-    // Default to plain-text. send()
-    res.type('txt').send('Not found');
-  });
-
+/*
+ * Cache-control on all resources
+ */
+app.use(function(req, res, next) {
+  res.setHeader("Cache-Control", "max-age=" + 604800000);
+  next();
 });
 
-// Development-only configuration
-app.configure('development', function() {
-  app.use(express.errorHandler());
-  app.set('view cache', false);
-  swig.setDefaults({
-    cache: false
-  });
+/*
+ * Errors
+ */
+app.use(function(req, res, next) {
+  // Allowed image extension handler
+  var extensions = ["png", "jpg", "gif"];
+
+  // If the requested url is an image url and the extension of the image allows the replacement
+  if (!!~extensions.indexOf(req.originalUrl.substr(req.originalUrl.length - 3))) {
+    var qcqImage = fileSystem.readFileSync('./public/img/error/not_found.png');
+    res.status(404);
+    res.type('png');
+    res.end(qcqImage, 'binary');
+  }
+  else {
+    // Continue to other errors handling middlewares
+    next();
+  }
+});
+
+app.use(function(req, res, next) {
+  res.status(404);
+
+  // Respond with HTML page
+  if (req.accepts('html')) {
+    res.render(
+      'error/404.html', {
+        title: i18n.t('error.page.qcq.title'),
+        error: i18n.t('error.page.qcq.message', { url: req.url }),
+        subTitle: i18n.t('error.page.qcq.subtitle'),
+        errorCode: '404'
+      }
+    );
+
+    return;
+  }
+
+  // Default to plain-text. send()
+  res.type('txt').send('Not found');
+});
+
+app.use(function(error, req, res, next) {
+  res.status(500);
+
+  // Respond with html page
+  if (req.accepts('html')) {
+    res.render(
+      'error/500.html', {
+        title: i18n.t('error.page.cc.title'),
+        error: error,
+        subTitle: i18n.t('error.page.cc.subtitle'),
+        errorCode: '500'
+      }
+    );
+
+    return;
+  }
+
+  // Default to plain-text. send()
+  res.type('txt').send('Not found');
 });
 
 /*****************************************************
@@ -348,7 +342,7 @@ app.get('/api/a/system', auth.ensureAuthenticated, function(req, res){
     return res.json(engineFiles);
 });
 
-app.del('/api/a/system/:path', auth.ensureAuthenticated, function(req, res){
+app.delete('/api/a/system/:path', auth.ensureAuthenticated, function(req, res){
     fileSystem.unlink('./si/' + req.params.path, function (err) {
         if (err) {
             return res.json({error : 1});
@@ -359,8 +353,8 @@ app.del('/api/a/system/:path', auth.ensureAuthenticated, function(req, res){
 
 /*** HTTP Routing ***/
 app.get('/', routes.index);
-app.get('/(fr/ma-personnalite|en/my-personality)', routing.personnalite);
-app.get('/(fr/mon-reseau-social|en/my-social-network)', routing.network);
+app.get('^(\/fr/ma-personnalite\/?|\/en/my-personality\/?)$', routing.personnalite);
+app.get('^(\/fr/mon-reseau-social\/?|\/en/my-social-network\/?)$', routing.network);
 app.get('/redbubble', routing.redbubble);
 app.get('/knov', routing.knov);
 app.get('/projets/:name', routing.project);
@@ -488,7 +482,7 @@ app.get('/robots.txt', function(req, res) {
  ***                     Server
  *****************************************************/
 // Default route, homepage for all languages
-app.get('/(fr|en)', routes.index);
+app.get("^(\/fr\/?|\/en\/?)$", routes.index);
 
 // Create NodeJS server instance.
 http.createServer(app).listen(app.get('port'), function() {
